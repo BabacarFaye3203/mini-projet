@@ -9,7 +9,7 @@ $user="root";
 $pwd="";
 try{
     $connect=mysqli_connect($host,$user,$pwd);
-    echo"connexion etablie avec succes";
+    //echo"connexion etablie avec succes";
     echo"<br>";
 
 }catch(Exception $e){

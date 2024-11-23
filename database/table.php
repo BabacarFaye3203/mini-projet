@@ -22,7 +22,7 @@ try{
     CIN_Patient VARCHAR,
     PRIMARY KEY (idP_Patient)) ENGINE=InnoDB;";
     $res=mysqli_query($connect,$rq1);
-    echo"créer avec succes";
+    //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
 }
@@ -35,7 +35,7 @@ try{
     idM_Medecin **NOT FOUND**,
     PRIMARY KEY (idR_Rendez-Vous)) ENGINE=InnoDB; ";
     mysqli_query($connect,$rq1);
-    echo"créer avec succes";
+   // echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
 }
@@ -54,7 +54,7 @@ try{
     sexe_Medecin ENUM,
     PRIMARY KEY (idM_Medecin)) ENGINE=InnoDB;";
     mysqli_query($connect,$rq1);
-    echo"créer avec succes";
+   // echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
 }
@@ -64,7 +64,7 @@ try{
     idM_Medecin **NOT FOUND** NOT NULL,
     PRIMARY KEY (idP_Patient,  idM_Medecin)) ENGINE=InnoDB;";
     mysqli_query($connect,$rq1);
-    echo"créer avec succes";
+    //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
 }

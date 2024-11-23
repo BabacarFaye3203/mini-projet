@@ -1,14 +1,16 @@
 <?php
 session_start();
-if($_SESSION["connection"]!="oui"){
-    echo"veuillez d abord vous inscrire";
-    header("location:Patient/insPatient.php");
-    exit;
-}else{
-    header("profilpatient.php");
-}
-?>
-<?php include 'configuration/head.php';?>
+
+include 'configuration/head.php';?>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    S'inscrire
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li><a class="dropdown-item" href="insPatient.php">Oui, je suis Sur</a></li>
+  </ul>
+</div>
+
     <br><br>
     <div class="container">
       <form method="post">
@@ -19,7 +21,7 @@ if($_SESSION["connection"]!="oui"){
 
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" name="pwd">
+          <input type="password" class="form-control" name="pwd">
         </div>
 
         <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">

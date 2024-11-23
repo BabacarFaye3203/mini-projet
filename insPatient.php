@@ -1,14 +1,13 @@
 <?php
 session_start();
- include '../database/connexion_db.php';
- include '../database/table.php';
- include '../database/DatabaseCreat.php';
+ @include 'database/connexion_db.php';
+ @include 'database/table.php';
+ @include 'database/DatabaseCreat.php';
 $erreur="";
 if(isset($_POST["ok"])){
     if(empty($_POST["cin"]) || empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])||empty($_POST["adresse"])||empty($_POST["pays"])||empty($_POST["ville"])||empty($_POST["gsang"])||empty($_POST["matri"])||empty($_POST["profession"])||empty($_POST["statut"])||empty($_POST["age"])||empty($_POST["sexe"])||empty($_POST["poids"])||empty($_POST["taille"])||empty($_POST["contact"])||empty($_POST["pwd"])||empty($_POST["cpwd"])){
       header("location:insPatient.php");
       $erreur="tous les champs doivent etre remplis";
-      exit();
     }else{
         @$nom=$_POST["nom"];
         @$prenom=$_POST["prenom"];
@@ -26,11 +25,13 @@ if(isset($_POST["ok"])){
         }else{
           $email=$_POST["email"];
         }
-        echo"inscription avec succes";
+        header("location:connPatient.php");
+        exit;
     }
   }
 ?>
-<?php include '../configuration/head.php'; ?>
+<?php 
+include 'configuration/head.php'; ?>
     <br><br>
     <div class="container">
       <form action="" method="POST">
@@ -111,5 +112,5 @@ if(isset($_POST["ok"])){
       </form>
     </div>
 <?php
-include '../configuration/pied.php';
+include 'configuration/pied.php';
 ?>
