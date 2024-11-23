@@ -2,6 +2,7 @@
 session_start();
 
 include 'configuration/head.php';?>
+<h3>Connexion</h3><br>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     S'inscrire

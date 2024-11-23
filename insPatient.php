@@ -32,6 +32,7 @@ if(isset($_POST["ok"])){
 ?>
 <?php 
 include 'configuration/head.php'; ?>
+<h3>Inscription du paient</h3>
     <br><br>
     <div class="container">
       <form action="" method="POST">
