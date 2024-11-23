@@ -21,8 +21,7 @@ try{
     contactP VARCHAR(20),
     CIN_Patient VARCHAR,
     PRIMARY KEY (idP_Patient)) ENGINE=InnoDB;";
-    $stm=$connect->prepare($rq1);
-    $stm->execute();
+    $res=mysqli_query($connect,$rq1);
     echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
@@ -35,8 +34,7 @@ try{
     idP_Patient **NOT FOUND**,
     idM_Medecin **NOT FOUND**,
     PRIMARY KEY (idR_Rendez-Vous)) ENGINE=InnoDB; ";
-    $stm=$connect->prepare($rq1);
-    $stm->execute();
+    mysqli_query($connect,$rq1);
     echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
@@ -55,8 +53,7 @@ try{
     contactM_Medecin VARCHAR(20),
     sexe_Medecin ENUM,
     PRIMARY KEY (idM_Medecin)) ENGINE=InnoDB;";
-    $stm=$connect->prepare($rq1);
-    $stm->execute();
+    mysqli_query($connect,$rq1);
     echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
@@ -66,8 +63,7 @@ try{
     CREATE TABLE avoir (idP_Patient **NOT FOUND** AUTO_INCREMENT NOT NULL,
     idM_Medecin **NOT FOUND** NOT NULL,
     PRIMARY KEY (idP_Patient,  idM_Medecin)) ENGINE=InnoDB;";
-    $stm=$connect->prepare($rq1);
-    $stm->execute();
+    mysqli_query($connect,$rq1);
     echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
