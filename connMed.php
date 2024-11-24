@@ -1,34 +1,36 @@
 <?php
 session_start();
 include 'database/connexion_db.php'; //connexion à la base
-  if (isset($_POST["ok"])){
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $pwd= $_POST['pwd'];
-    $stm="SELECT * FROM `patient` WHERE `emailP`=$email AND `password`=$pwd";
-    $res=mysqli_query($connect,$stm);
-    if($res){
-      echo"selection avec succes";
-    }else{
 
-      echo "erreur de selection";}
-    while($rows=mysqli_fetch_assoc($res)) {
-      @$_SESSION['idP_Patient'] = $rows['idP_Patient'];
-      @$_SESSION['nomP_Patient'] = $rows['nomP_Patient'];
-      header("Location:Patient/profilPatient.php"); // Redirection vers le profil du patient
-      exit();
-  }
- 
+    // Vérification des informations du patient dans la base de données
+    $query = "SELECT * FROM medecin WHERE emailM = '$email' AND password = '$pwd'";
+    $result =$connect->query($query);
+    if($result===false){
+      echo"erreur de selection";
+    }
+    if ($row =mysqli_fetch_assoc($result)) {
+        $_SESSION['id_Medecin'] = $row['idP_Medecin'];
+        $_SESSION['username'] = $row['nomM_Medecin'];
+        header("Location:medecin/profilMed.php"); // Redirection vers le profil du medecin
+        exit();
+    } else {
+        echo "Identifiants incorrects.";
+    }
 }
 ?>
 <?php
 include 'configuration/head.php';?>
-<h3>Connexion en tant que patient</h3><br>
+<h3>Connexion en tant que medecin</h3><br>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="insPatient.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="inscMedecin.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
 
@@ -45,7 +47,7 @@ include 'configuration/head.php';?>
           <input type="password" class="form-control" name="pwd">
         </div>
 
-        <input type="submit" class="btn btn-primary" value="je me connecte" name="ok">
+        <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">
       </form>
     </div>
 <?php include 'configuration/pied.php';?>

@@ -31,7 +31,7 @@ if(isset($_POST["ok"])){
 <?php
 include 'configuration/head.php'; 
 ?>
-<h3>Inscription du patient</h3>
+<h3>Inscription du Medecin</h3>
     <br><br>
     <div class="container">
       <form action="" method="POST">
@@ -64,36 +64,20 @@ include 'configuration/head.php';
           <input type="text" class="form-control" name="ville">
         </div>
         <div class="mb-3">
-          <label for="gsang" class="form-label">gsang</label>
-          <input type="text" class="form-control" name="gsang">
-        </div>
-        <div class="mb-3">
-          <label for="matrimonialle" class="form-label">situation matrimoniale</label>
-          <input type="text" class="form-control" name="matri">
-        </div>
-        <div class="mb-3">
           <label for="profession" class="form-label">profession</label>
           <input type="text" class="form-control"  name="profession">
         </div>
         <div class="mb-3">
-          <label for="statut" class="form-label">statut</label>
-          <input type="text" class="form-control"  name="statut">
-        </div>
-        <div class="mb-3">
-          <label for="age" class="form-label">age</label>
-          <input type="text" class="form-control"  name="age">
+          <label for="statut" class="form-label">specialité</label>
+          <input type="text" class="form-control"  name="specialité">
         </div>
         <div class="mb-3">
           <label for="sexe" class="form-label">sexe</label>
           <input type="text" class="form-control"  name="sexe">
         </div>
         <div class="mb-3">
-          <label for="poids" class="form-label">poids</label>
-          <input type="text" class="form-control" name="poids">
-        </div>
-        <div class="mb-3">
-          <label for="taille" class="form-label">taille</label>
-          <input type="text" class="form-control"  name="taille">
+          <label for="taille" class="form-label">Numero de service</label>
+          <input type="text" class="form-control"  name="numservice">
         </div>
         <div class="mb-3">
           <label for="contact" class="form-label">contact</label>

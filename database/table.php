@@ -20,6 +20,7 @@ try{
     taille_Patient DOUBLE,
     contactP VARCHAR(20),
     CIN_Patient VARCHAR,
+    password VARCHAR(20),
     PRIMARY KEY (idP_Patient)) ENGINE=InnoDB;";
     $res=mysqli_query($connect,$rq1);
     //echo"créer avec succes";
@@ -63,6 +64,43 @@ try{
     CREATE TABLE avoir (idP_Patient **NOT FOUND** AUTO_INCREMENT NOT NULL,
     idM_Medecin **NOT FOUND** NOT NULL,
     PRIMARY KEY (idP_Patient,  idM_Medecin)) ENGINE=InnoDB;";
+    mysqli_query($connect,$rq1);
+    //echo"créer avec succes";
+}catch(Exception $e){
+    echo"erreur lors de la création de la base".$e->getMessage();
+}
+try{
+    $rq1="DROP TABLE IF EXISTS avoir ;
+    CREATE TABLE documents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    file_name VARCHAR(255),
+    file_path VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES utilisateurs(id)
+)";
+    mysqli_query($connect,$rq1);
+    //echo"créer avec succes";
+}catch(Exception $e){
+    echo"erreur lors de la création de la base".$e->getMessage();
+}
+try{
+    $rq1="INSERT INTO `patient` (`idP_Patient`,
+    `nomP_Patient`,
+    `prenomP`,
+    `adresseP`,
+    `emailP`,
+    `paysP`,
+    `villeP`,
+    `groupe_sanguin_Patient`,
+    `situation_matri_Patient`,
+    `profession_Patient`,
+    `statut_Patient`,
+    `ageP`,
+    `sexeP`,
+    `poids_Patient`,
+    `taille_Patient`,
+    `contactP`,
+    `CIN_Patient`) VALUES ('1', 'faye', 'babacar', 'doha', 'bf322003@gmail.com', 'maroc', 'beni mellal', 'A+', 'celibataire', 'etudiant', 'etudiant', '21', 'Masculin', '81', '189', '06193364', '147');";
     mysqli_query($connect,$rq1);
     //echo"créer avec succes";
 }catch(Exception $e){

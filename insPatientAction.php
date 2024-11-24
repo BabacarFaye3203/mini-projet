@@ -1,8 +1,6 @@
 <?php
 session_start();
  include '../database/connexion_db.php';
- include '../database/table.php';
- include '../database/DatabaseCreat.php';
 
  $erreur="";
 if(isset($_POST["ok"])){
