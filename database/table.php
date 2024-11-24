@@ -61,8 +61,8 @@ try{
 }
 try{
     $rq1="DROP TABLE IF EXISTS avoir ;
-    CREATE TABLE avoir (idP_Patient **NOT FOUND** AUTO_INCREMENT NOT NULL,
-    idM_Medecin **NOT FOUND** NOT NULL,
+    CREATE TABLE avoir (idP_Patient INT AUTO_INCREMENT NOT NULL,
+    idM_Medecin INt NOT NULL,
     PRIMARY KEY (idP_Patient,  idM_Medecin)) ENGINE=InnoDB;";
     mysqli_query($connect,$rq1);
     //echo"créer avec succes";
@@ -73,10 +73,10 @@ try{
     $rq1="DROP TABLE IF EXISTS avoir ;
     CREATE TABLE documents (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    file_name VARCHAR(255),
-    file_path VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES utilisateurs(id)
+    idP_Patient INT,
+    doc_name VARCHAR(255),
+    doc_path VARCHAR(255),
+    FOREIGN KEY (idP_Patient) REFERENCES patient(idP_Patient)
 )";
     mysqli_query($connect,$rq1);
     //echo"créer avec succes";

@@ -70,6 +70,8 @@ $patient = mysqli_fetch_assoc($result);
     <form action="planifier_rendezVous.php" method="POST">
         <input type="date" name="date" required>
         <input type="text" name="type" placeholder="type du rendez-vous" required>
+        <input type="idM_Medecin" name="idM" required>
+
         <button type="submit">Planifier un rendez-vous</button>
     </form>
 

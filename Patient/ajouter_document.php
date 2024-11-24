@@ -3,6 +3,7 @@ session_start();
 include '../database/connexion_db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $idP_Patient = $_SESSION['idP_Patient'];
     $dossier = "uploads/"; // Dossier cible pour les fichiers
     $nomDocument = basename($_FILES["document"]["name"]);
     $targerdocpath = $dossier.$nomDocument;
@@ -10,8 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Vérifier si le fichier a été téléchargé
     if (move_uploaded_file($_FILES["document"]["tmp_name"], $targetdocPath)) {
         // insertion du doc dans la base de données
-        $stmt = $connect->prepare("INSERT INTO documents (nom, chemin) VALUES (?, ?)");
-        $stmt->bind_param("ss",$nomDocument, $targerdocpath);
+        $stmt = $connect->prepare("INSERT INTO documents ( id ,idP_Patient,doc_name ,doc_path) VALUES ($idP_Patient,$nomDocument, $targerdocpath)");
         if ($stmt->execute()) {
             echo "Le document a été ajouté avec succès.";
         } else {
