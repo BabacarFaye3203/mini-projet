@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 ?>
-<?php include '../configuration/head.php';?>
+<?php include '../configuration/headPatient.php';?>
 
 <form action="" method="post">
   <div class="mb-3">

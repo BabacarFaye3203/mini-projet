@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include '../database/connexion_db.php';
 
@@ -14,7 +14,7 @@ $result = mysqli_query($connect, $query);
 $patient = mysqli_fetch_assoc($result);
 
 ?>
-<?php include '../configuration/head.php';?>
+<?php include '../configuration/headPatient.php';?>
 
     <h1>Bienvenue, <?php echo $patient['nomP_patient']; ?></h1>
 

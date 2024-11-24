@@ -33,13 +33,13 @@
           <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profil</a>
+          <a class="nav-link" href="#Profil">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">A Propos</a>
+          <a class="nav-link" href="#RendezVous">Mes Rendez-vous</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="#Mes Documents">Mes documents</a>
         </li>
       </ul>
     </div>

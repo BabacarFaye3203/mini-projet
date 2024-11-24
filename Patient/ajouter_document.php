@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php
-include '../configuration/head.php';
+include '../configuration/headPatient.php';
 ?>
 <form action="" method="post" enctype="multipart/form-data">
   <div class="mb-3">
