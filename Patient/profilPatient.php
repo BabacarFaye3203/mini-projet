@@ -10,16 +10,13 @@ if (!isset($_SESSION['idP_Patient'])) {
 
 $idP_Patient = $_SESSION['idP_Patient'];
 $query = "SELECT * FROM patient WHERE id = $idP_Patient";
-$idP_Patient =1;
-$query = "SELECT * FROM patient WHERE id =$idP_Patient";
-
 $result = mysqli_query($connect, $query);
 $patient = mysqli_fetch_assoc($result);
 
 ?>
 <?php include '../configuration/head.php';?>
 
-    <h1>Bienvenue, <?php// echo $patient['nomP_patient']; ?></h1>
+    <h1>Bienvenue, <?php echo $patient['nomP_patient']; ?></h1>
 
     <!-- Modifier les informations personnelles du patient -->
     <h3>Modifier votre profil</h3>
