@@ -4,13 +4,16 @@
  if(isset($_POST["ok"])){
      if(empty($_POST["cin"]) || empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])||empty($_POST["adresse"])||empty($_POST["pays"])||empty($_POST["ville"])||empty($_POST["gsang"])||empty($_POST["matri"])||empty($_POST["profession"])||empty($_POST["statut"])||empty($_POST["age"])||empty($_POST["sexe"])||empty($_POST["poids"])||empty($_POST["taille"])||empty($_POST["contact"])||empty($_POST["pwd"])||empty($_POST["cpwd"])){
        header("location:insPatient.php");
-       $erreur="tous les champs doivent etre remplis";
+       $erreur="tous les champs doivent être remplis";
      }else{
          @$nom=$_POST["nom"];
          @$prenom=$_POST["prenom"];
          @$cin=$_POST["cin"];
-         @$pays=$_POST["pays"]; @$adresse=$_POST["adresse"]; @$ville=$_POST["ville"]; @$gsang=$_POST["gsang"]; @$matricule=$_POST["matri"]; @$profession=$_POST["profession"]; @$statut=$_POST["statut"]; @$age=$_POST["age"]; @$sexe=$_POST["sexe"]; @$poids=$_POST["poids"]; @$taille=$_POST["taille"]; @$contact=$_POST["contact"];
-   
+         @$pays=$_POST["pays"]; @$adresse=$_POST["adresse"];
+         @$ville=$_POST["ville"]; @$gsang=$_POST["gsang"]; @$matricule=$_POST["matri"];
+         @$profession=$_POST["profession"]; @$statut=$_POST["statut"]; @$age=$_POST["age"];
+         @$sexe=$_POST["sexe"]; @$poids=$_POST["poids"]; @$taille=$_POST["taille"];
+         @$contact=$_POST["contact"];
          if($_POST["pwd"]==$_POST["cpwd"]){
            $pwd=$_POST["pwd"];
          }else{
