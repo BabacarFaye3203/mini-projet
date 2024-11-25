@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="Modification des donnees de la table.php (Medecin)">
-      <change afterPath="$PROJECT_DIR$/insMedecinAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insPatientAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/insPatientAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inscMedecin.php" beforeDir="false" afterPath="$PROJECT_DIR$/inscMedecin.php" afterDir="false" />
+    <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="Insertin des donnees dans la table Medicin">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/connMed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -71,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732469224552</updated>
       <workItem from="1732469226515" duration="7676000" />
-      <workItem from="1732544229121" duration="10996000" />
+      <workItem from="1732544229121" duration="13136000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -105,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732558794763</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Insertin des donnees dans la table Medicin">
+      <option name="closed" value="true" />
+      <created>1732558887108</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732558887108</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +148,7 @@
     <MESSAGE value="insertion du patient" />
     <MESSAGE value="Modification des donnees de la table.php" />
     <MESSAGE value="Modification des donnees de la table.php (Medecin)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification des donnees de la table.php (Medecin)" />
+    <MESSAGE value="Insertin des donnees dans la table Medicin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Insertin des donnees dans la table Medicin" />
   </component>
 </project>

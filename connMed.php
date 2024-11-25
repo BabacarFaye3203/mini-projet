@@ -39,12 +39,12 @@ include 'configuration/head.php';?>
       <form method="post">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="mail professionnelle" name="email" required>
         </div>
 
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" name="pwd">
+          <input type="password" class="form-control" name="pwd" placeholder="Votre mot de passe" required>
         </div>
 
         <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">

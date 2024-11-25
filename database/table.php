@@ -1,9 +1,9 @@
 <?php
 include 'connexion_db.php';
-include 'connexion_db.php';
+//include 'connexion_db.php';
 try{
-    $rq1="DROP TABLE IF EXISTS Patient ;
-     CREATE TABLE Patient (idP_Patient INT AUTO_INCREMENT NOT NULL,
+    $rq1="
+     CREATE TABLE IF NOT EXISTS Patient (idP_Patient INT AUTO_INCREMENT NOT NULL,
     nomP_Patient VARCHAR(50),
     prenomP VARCHAR(50),
     adresseP VARCHAR(100),
@@ -15,6 +15,7 @@ try{
     profession_Patient varchar(70),
     statut_Patient VARCHAR(15),
     ageP INT(3),
+    check ( ageP<=120 ),
     sexeP varchar(15),
     poids_Patient DOUBLE,
     taille_Patient DOUBLE,
@@ -28,8 +29,8 @@ try{
     echo"erreur lors de la création de la base".$e->getMessage();
 }
 try{
-    $rq1="DROP TABLE IF EXISTS RendezVous ;
-     CREATE TABLE RendezVous (idR_RendezVous INT AUTO_INCREMENT NOT NULL,
+    $rq1="
+     CREATE TABLE IF NOT EXISTS RendezVous (idR_RendezVous INT AUTO_INCREMENT NOT NULL,
      dateR_RendezVous DATETIME,
     type_RendezVous varchar(20),
     idP_Patient INT,
@@ -41,8 +42,8 @@ try{
     echo"erreur lors de la création de la base".$e->getMessage();
 }
 try{
-    $rq1="DROP TABLE IF EXISTS Medecin ;
-    CREATE TABLE Medecin (idM_Medecin INT AUTO_INCREMENT NOT NULL,
+    $rq1="
+    CREATE TABLE IF NOT EXISTS Medecin (idM_Medecin INT AUTO_INCREMENT NOT NULL,
     nomM_Medecin VARCHAR(50),
     prenomM_Medecin VARCHAR(50),
     matriculeM_Medecin VARCHAR(15),
@@ -63,8 +64,8 @@ try{
     echo"erreur lors de la création de la base".$e->getMessage();
 }
 try{
-    $rq1="DROP TABLE IF EXISTS avoir ;
-    CREATE TABLE avoir (idP_Patient INT AUTO_INCREMENT NOT NULL,
+    $rq1="
+    CREATE TABLE IF NOT EXISTS avoir (idP_Patient INT AUTO_INCREMENT NOT NULL,
     idM_Medecin INt NOT NULL,
     PRIMARY KEY (idP_Patient,  idM_Medecin)) ENGINE=InnoDB;";
     mysqli_query($connect,$rq1);
@@ -73,8 +74,8 @@ try{
     echo"erreur lors de la création de la base".$e->getMessage();
 }
 try{
-    $rq1="DROP TABLE IF EXISTS avoir ;
-    CREATE TABLE documents (
+    $rq1="
+    CREATE TABLE IF NOT EXISTS documents (
     id INT AUTO_INCREMENT PRIMARY KEY,
     idP_Patient INT,
     doc_name VARCHAR(255),
@@ -85,7 +86,7 @@ try{
     //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
-}
+}/*
 try{
     $rq1="INSERT INTO `patient` (`idP_Patient`,
     `nomP_Patient`,
@@ -108,4 +109,4 @@ try{
     //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
-}
+}*/
