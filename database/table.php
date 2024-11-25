@@ -10,16 +10,16 @@ try{
     emailP VARCHAR(100),
     paysP VARCHAR(20),
     villeP VARCHAR(20),
-    groupe_sanguin_Patient ENUM,
-    situation_matri_Patient ENUM,
-    profession_Patient VARCHAR(50),
+    groupe_sanguin_Patient varchar(2),
+    situation_matri_Patient varchar(15),
+    profession_Patient varchar(70),
     statut_Patient VARCHAR(15),
     ageP INT(3),
-    sexeP ENUM,
+    sexeP varchar(15),
     poids_Patient DOUBLE,
     taille_Patient DOUBLE,
     contactP VARCHAR(20),
-    CIN_Patient VARCHAR,
+    CIN_Patient VARCHAR(15),
     password VARCHAR(20),
     PRIMARY KEY (idP_Patient)) ENGINE=InnoDB;";
     $res=mysqli_query($connect,$rq1);
@@ -28,13 +28,13 @@ try{
     echo"erreur lors de la création de la base".$e->getMessage();
 }
 try{
-    $rq1="DROP TABLE IF EXISTS Rendez-Vous ;
-     CREATE TABLE Rendez-Vous (idR_Rendez-Vous INT AUTO_INCREMENT NOT NULL,
-     dateR_Rendez-Vous DATETIME,
-    type_Rendez-Vous ENUM,
-    idP_Patient **NOT FOUND**,
-    idM_Medecin **NOT FOUND**,
-    PRIMARY KEY (idR_Rendez-Vous)) ENGINE=InnoDB; ";
+    $rq1="DROP TABLE IF EXISTS RendezVous ;
+     CREATE TABLE RendezVous (idR_RendezVous INT AUTO_INCREMENT NOT NULL,
+     dateR_RendezVous DATETIME,
+    type_RendezVous varchar(20),
+    idP_Patient INT,
+    idM_Medecin INT,
+    PRIMARY KEY (idR_RendezVous)) ENGINE=InnoDB; ";
     mysqli_query($connect,$rq1);
    // echo"créer avec succes";
 }catch(Exception $e){
@@ -50,9 +50,10 @@ try{
     paysM_Medecin VARCHAR(20),
     matriculeM_Medecin VARCHAR(15),
     villeM_Medecin VARCHAR(20),
-    specialite_Medecin VARCHAR,
+    specialite_Medecin VARCHAR(100),
     contactM_Medecin VARCHAR(20),
-    sexe_Medecin ENUM,
+    sexe_Medecin VARCHAR(15),
+    password varchar(255),
     PRIMARY KEY (idM_Medecin)) ENGINE=InnoDB;";
     mysqli_query($connect,$rq1);
    // echo"créer avec succes";
