@@ -8,7 +8,7 @@ if (!isset($_SESSION['idP_Patient'])) {
     exit();
 }
 
-$idP_Patient = $_SESSION['idP_Patient'];
+ $idP_Patient = $_SESSION['idP_Patient'];
 $query = "SELECT * FROM patient WHERE idP_Patient = $idP_Patient";
 $result = mysqli_query($connect, $query);
 $patient = mysqli_fetch_assoc($result);
@@ -29,7 +29,7 @@ $patient = mysqli_fetch_assoc($result);
     <!--  gestions des documents du patient -->
     <h3>Vos documents</h3>
     <?php
-     $doc_query = "SELECT * FROM documents WHERE idP_Patient =$idP_patient";
+     $doc_query = "SELECT * FROM documents WHERE idP_Patient =$idP_Patient";
      $doc_result = mysqli_query($connect, $doc_query);
 
     while ($doc = mysqli_fetch_assoc($doc_result)) {

@@ -28,7 +28,7 @@ include 'configuration/head.php';?>
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="insPatient.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="/insPatient.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
 
