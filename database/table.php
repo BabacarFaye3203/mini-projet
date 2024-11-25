@@ -45,15 +45,17 @@ try{
     CREATE TABLE Medecin (idM_Medecin INT AUTO_INCREMENT NOT NULL,
     nomM_Medecin VARCHAR(50),
     prenomM_Medecin VARCHAR(50),
+    matriculeM_Medecin VARCHAR(15),
     emailM_Medecin VARCHAR(100),
     adresseM_Medecin VARCHAR(100),
     paysM_Medecin VARCHAR(20),
-    matriculeM_Medecin VARCHAR(15),
     villeM_Medecin VARCHAR(20),
     specialite_Medecin VARCHAR(100),
     contactM_Medecin VARCHAR(20),
+    age int not null,
     sexe_Medecin VARCHAR(15),
     password varchar(255),
+    check ( age<=120 ),
     PRIMARY KEY (idM_Medecin)) ENGINE=InnoDB;";
     mysqli_query($connect,$rq1);
    // echo"créer avec succes";
