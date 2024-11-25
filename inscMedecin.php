@@ -1,32 +1,7 @@
 <?php
 session_start();
  @include 'database/connexion_db.php';
-$erreur="";
-if(isset($_POST["ok"])){
-    if(empty($_POST["cin"]) || empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])||empty($_POST["adresse"])||empty($_POST["pays"])||empty($_POST["ville"])||empty($_POST["gsang"])||empty($_POST["matri"])||empty($_POST["profession"])||empty($_POST["statut"])||empty($_POST["age"])||empty($_POST["sexe"])||empty($_POST["poids"])||empty($_POST["taille"])||empty($_POST["contact"])||empty($_POST["pwd"])||empty($_POST["cpwd"])){
-      header("location:insPatient.php");
-      $erreur="tous les champs doivent etre remplis";
-    }else{
-        @$nom=$_POST["nom"];
-        @$prenom=$_POST["prenom"];
-        @$cin=$_POST["cin"];
-        @$pays=$_POST["pays"]; @$adresse=$_POST["adresse"]; @$ville=$_POST["ville"]; @$gsang=$_POST["gsang"]; @$matricule=$_POST["matri"]; @$profession=$_POST["profession"]; @$statut=$_POST["statut"]; @$age=$_POST["age"]; @$sexe=$_POST["sexe"]; @$poids=$_POST["poids"]; @$taille=$_POST["taille"]; @$contact=$_POST["contact"];
-  
-        if($_POST["pwd"]==$_POST["cpwd"]){
-          $pwd=$_POST["pwd"];
-        }else{
-          echo"les deux mdp doivent etre identiques";
-          
-        }
-        if(!preg_match("#^[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z]{2,3}#",$_POST["email"])){
-          echo"email invalide";
-        }else{
-          $email=$_POST["email"];
-        }
-        header("location:connPatient.php");
-        exit;
-    }
-  }
+include ("insMedecinAction.php")
 ?>
 <?php
 include 'configuration/head.php'; 
@@ -36,12 +11,8 @@ include 'configuration/head.php';
     <div class="container">
       <form action="" method="POST">
         <div class="mb-3">
-          <label for="ecin" class="form-label">cin</label>
-          <input type="text" class="form-control" name="cin">
-        </div>
-        <div class="mb-3">
           <label for="nom" class="form-label">nom</label>
-          <input type="text" class="form-control" name="idpatient">
+          <input type="text" class="form-control" name="nom">
         </div>
         <div class="mb-3">
           <label for="prenom" class="form-label">prenom</label>
@@ -75,8 +46,12 @@ include 'configuration/head.php';
           <label for="sexe" class="form-label">sexe</label>
           <input type="text" class="form-control"  name="sexe">
         </div>
+          <div class="mb-3">
+              <label for="age" class="form-label">Âge</label>
+              <input type="number" class="form-control" name="age" id="age">
+          </div>
         <div class="mb-3">
-          <label for="taille" class="form-label">Numero de service</label>
+          <label for="taille" class="form-label">Numéro de service</label>
           <input type="text" class="form-control"  name="numservice">
         </div>
         <div class="mb-3">

@@ -26,7 +26,7 @@
     situation_matri_Patient,profession_Patient,statut_Patient,ageP,sexeP,poids_Patient,
 taille_Patient,contactP,CIN_Patient,password) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
          $stm=connect->prepare($req1);
-         $stm->bin_param($nom,$prenom,$adresse,$email,$pays,$ville,$gsang,$matricule,$profession,$statut,$age,$sexe,$poids,$taille,$contact,$cin,$pwd);
+         $stm->bin_param("ssssssssssisddsss",$nom,$prenom,$adresse,$email,$pays,$ville,$gsang,$matricule,$profession,$statut,$age,$sexe,$poids,$taille,$contact,$cin,$pwd);
         if($stm->execute()){echo "Inscription avec succes";
         header("Locate:connPatient.php");}
         else{echo "Desole";}
