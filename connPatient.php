@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'database/connexion_db.php'; //connexion à la base
+include 'database/DatabaseCreat.php'; //connexion à la base
   if (isset($_POST["ok"])){
     $email = $_POST['email'];
     $pwd= $_POST['pwd'];

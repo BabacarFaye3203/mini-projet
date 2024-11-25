@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include '../database/connexion_db.php';
+include '../database/DatabaseCreat.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
     $email = $_POST['email'];
 
-    $query = "UPDATE patient SET nom = '$nom', email = '$email' WHERE idP_Patient = $idP_Patient";
+    $query = "UPDATE patient SET nomP_Patient = '$nom', emailP = '$email' WHERE idP_Patient = $idP_Patient";
     mysqli_query($connect, $query);
 
     header("Location: profilPatient.php");

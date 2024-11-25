@@ -9,7 +9,7 @@ include 'configuration/head.php';
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="connPatient.php">Patient</a></li>
-    <li><a class="dropdown-item" href="connMed.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="/connMed.php">Medecin</a></li>
   </ul>
 </div>
 

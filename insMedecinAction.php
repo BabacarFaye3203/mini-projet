@@ -1,5 +1,5 @@
 <?php
-include 'database/connexion_db.php';
+include 'database/DatabaseCreat.php';
 $erreur="";
 if(isset($_POST["ok"])){
     if(empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])
@@ -25,11 +25,10 @@ if(isset($_POST["ok"])){
         }else{
             $email=$_POST["email"];
         }
-        $req1=("INSERT INTO patient (nomM_Medecin,prenomM_Medecin,emailM_Medecin,adresseM_Medecin,
-paysM_Medecin,matriculeM_Medecin,villeM_Medecin,specialite_Medecin,
-    contactM_Medecin,sexe_Medecin,password) values (?,?,?,?,?,?,?,?,?,?,?)");
+        $req1=("INSERT INTO medecin (nomM_Medecin, prenomM_Medecin, matriculeM_Medecin, emailM_Medecin, adresseM_Medecin, paysM_Medecin,
+                     villeM_Medecin, specialite_Medecin, contactM_Medecin, age, sexe_Medecin, password) values (?,?,?,?,?,?,?,?,?,?,?,?)");
         $stm=connect->prepare($req1);
-        $stm->bin_param($nom,$prenom,$email,$adresse,$pays,$ville,$specialite,$contact,$age,$sexe,$pwd);
+        $stm->bin_param("sssssssssiss",$nom,$prenom,$code,$email,$adresse,$pays,$ville,$specialite,$contact,$age,$sexe,$pwd);
         if($stm->execute()){echo "Inscription avec succès";
             header("Locate:connMed.php");}
         else{echo "Désolé";}

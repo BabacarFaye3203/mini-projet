@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database/connexion_db.php';
+include '../database/DatabaseCreat.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $idP_Patient = $_SESSION['idP_Patient'];
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $targerdocpath = $dossier.$nomDocument;
 
     // Vérifier si le fichier a été téléchargé
-    if (move_uploaded_file($_FILES["document"]["tmp_name"], $targetdocPath)) {
+    if (move_uploaded_file($_FILES["document"]["tmp_name"], $targerdocpath)) {
         // insertion du doc dans la base de données
         $stmt = $connect->prepare("INSERT INTO documents ( id ,idP_Patient,doc_name ,doc_path) VALUES ($idP_Patient,$nomDocument, $targerdocpath)");
         if ($stmt->execute()) {

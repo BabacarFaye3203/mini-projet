@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database/connexion_db.php';
+include '../database/DatabaseCreat.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idP_Patient = $_SESSION['idP_Patient'];

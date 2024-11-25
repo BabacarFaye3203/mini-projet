@@ -1,13 +1,13 @@
 <?php
 session_start();
-include 'database/connexion_db.php'; //connexion à la base
+include 'database/DatabaseCreat.php'; //connexion à la base
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $pwd= $_POST['pwd'];
 
     // Vérification des informations du patient dans la base de données
-    $query = "SELECT * FROM medecin WHERE emailM = '$email' AND password = '$pwd'";
+    $query = "SELECT * FROM medecin WHERE emailM_Medecin = '$email' AND password = '$pwd'";
     $result =$connect->query($query);
     if($result===false){
       echo"erreur de selection";
@@ -30,7 +30,7 @@ include 'configuration/head.php';?>
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="inscMedecin.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="/inscMedecin.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
 

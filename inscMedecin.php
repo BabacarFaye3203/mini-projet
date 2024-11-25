@@ -1,6 +1,6 @@
 <?php
 session_start();
- @include 'database/connexion_db.php';
+ @include 'database/DatabaseCreat.php';
 include ("insMedecinAction.php")
 ?>
 <?php

@@ -1,12 +1,12 @@
 <?php
 // inclusion de la Connexion à la base de données
-include '../database/connexion_db.php';
+include '../database/DatabaseCreat.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = intval($_POST['id']);
 
     // Récupérer le chemin du fichier depuis la base de données
-    $stmt = $connect->prepare("SELECT chemin FROM documents WHERE id = ?");
+    $stmt = $connect->prepare("SELECT doc_path FROM documents WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->bind_result($filePath);

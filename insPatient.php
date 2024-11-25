@@ -13,7 +13,7 @@ include 'configuration/head.php';
     connexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="connPatient.php">Me Connecter</a></li>
+    <li><a class="dropdown-item" href="/connPatient.php">Me Connecter</a></li>
   </ul>
 </div>
     <br><br>
