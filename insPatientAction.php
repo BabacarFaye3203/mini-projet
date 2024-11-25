@@ -16,6 +16,7 @@
          @$contact=$_POST["contact"];
          if($_POST["pwd"]==$_POST["cpwd"]){
            $pwd=$_POST["pwd"];
+             $email=$_POST["email"];
          }else{
            echo"les deux mdp doivent etre identiques";
            
@@ -25,11 +26,15 @@
          }else{
            $email=$_POST["email"];
          }
-         $req1=("INSERT INTO patient (nomP_Patient,prenomP,adresseP,emailP,paysP,villeP,groupe_sanguin_Patient,
-    situation_matri_Patient,profession_Patient,statut_Patient,ageP,sexeP,poids_Patient,
+         $req1=("INSERT INTO patient (nomP_Patient,prenomP,adresseP,emailP,paysP,
+                     villeP,groupe_sanguin_Patient,
+    situation_matri_Patient,profession_Patient,
+                     statut_Patient,ageP,sexeP,poids_Patient,
 taille_Patient,contactP,CIN_Patient,password) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-         $stm=connect->prepare($req1);
-         $stm->bin_param("ssssssssssisddsss",$nom,$prenom,$adresse,$email,$pays,$ville,$gsang,$matricule,$profession,$statut,$age,$sexe,$poids,$taille,$contact,$cin,$pwd);
+         $stm=$connect->prepare($req1);
+         $stm->bind_param("ssssssssssssddiss",$nom,$prenom,$adresse,$email,$pays,
+             $ville,$gsang,$matricule,$profession,$statut,$age,$sexe,
+             $poids,$taille,$contact,$cin,$pwd);
         if($stm->execute()){echo "Inscription avec succes";
         header("Locate:connPatient.php");}
         else{echo "Desole";}
