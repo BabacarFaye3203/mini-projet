@@ -18,7 +18,7 @@ if(isset($_POST["ok"])){
           echo"les deux mdp doivent etre identiques";
           
         }
-        if(!preg_match("#^[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.{1}[a-ZA-Z]{2,3}#",$_POST["email"])){
+        if(!preg_match("#^[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z]{2,3}#",$_POST["email"])){
           echo"email invalide";
         }else{
           $email=$_POST["email"];
