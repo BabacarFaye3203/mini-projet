@@ -1,6 +1,6 @@
 <?php
-include 'connexion_db.php';
 //include 'connexion_db.php';
+include 'DatabaseCreat.php';
 try{
     $rq1="
      CREATE TABLE IF NOT EXISTS Patient (idP_Patient INT AUTO_INCREMENT NOT NULL,

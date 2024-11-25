@@ -7,9 +7,10 @@
 $host="localhost";
 $user="root";
 $pwd="";
+$connect=null;
 try{
     $connect=mysqli_connect($host,$user,$pwd);
-    //echo"connexion etablie avec succes";
+    echo"connexion etablie avec succes";
     echo"<br>";
 
 }catch(Exception $e){
