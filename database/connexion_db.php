@@ -6,7 +6,8 @@
 //GRANT PROXY ON ``@`` TO `root`@`localhost` WITH GRANT OPTION;
 $host="localhost";
 $user="root";
-$pwd="2003";
+$pwd="";
+$connect=null;
 try{
     $connect=mysqli_connect($host,$user,$pwd);
     echo"connexion etablie avec succes";
@@ -15,28 +16,4 @@ try{
 }catch(Exception $e){
     echo"erreur de connexion".$e->getMessage();
     
-}
-try{
-    $rq1="CREATE DATABASE carnet";
-    $stm=$connect->prepare($rq1);
-    $stm->execute();
-    echo"créer avec succes";
-}catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
-}
-try{
-    $selec=mysqli_select_db($connect,"carnet");
-    echo"selection avec succes";
-}catch(Exception $e){
-    echo"erreur de selection".$e->getMessage();
-}
-try{
-    $rq1="CREATE TABLE Patient(id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(50)
-    )";
-    $stm=$connect->prepare($rq1);
-    $stm->execute();
-    echo"créer avec succes";
-}catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
 }
