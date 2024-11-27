@@ -74,7 +74,7 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
         <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
           <div class="card-body p-4 p-xxl-5">
             <figure>
-              <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="./assets/img/testimonial-img-2.jpg" alt="Felix">
+              <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" id="samatof" src="images/WhatsApp Image 2024-11-27 at 21.37.58.jpeg" alt="Felix">
               <figcaption>
                 <div class="bsb-ratings text-warning mb-3" data-bsb-star="4" data-bsb-star-off="1"></div>
                 <blockquote class="bsb-blockquote-icon mb-4">"En tant que patient souffrant d'une maladie chronique, 
@@ -94,7 +94,7 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
         <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
           <div class="card-body p-4 p-xxl-5">
             <figure>
-              <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" src="./assets/img/testimonial-img-4.jpg" alt="Emmanuel">
+              <img class="img-fluid rounded rounded-circle mb-4 border border-5" id="samatof" loading="lazy" src="images/WhatsApp Image 2024-11-27 at 21.46.47.jpeg" alt="Emmanuel">
               <figcaption>
                 <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
                 <blockquote class="bsb-blockquote-icon mb-4">"J'utilise le Carnet de Santé Numérique depuis quelques mois, 
@@ -150,7 +150,7 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
 
  <!-- section FAQ-->
   <br><br>
-  <section class="container">
+  <section class="container" id="FAQ">
   <h1>FAQ - Carnet de Santé Numérique (CSN)</h1>
   <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
@@ -241,7 +241,7 @@ Partage sécurisé : Transmission des données médicales à des professionnels 
     </h2>
     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">Pour toute question ou demande concernant le projet, vous pouvez nous contacter à l'adresse suivante : <br>
-      [bf322003@gmail.com] <code>.accordion-flush</code></div>
+      [bf322003@gmail.com] <code>.CSN</code></div>
     </div>
   </div>
   <div class="accordion-item">
@@ -345,12 +345,12 @@ Une application mobile dédiée. <code>.CSN</code></div>
   <footer class="" >
     <div class="row" >
       <div class="col-6 col-md-2 mb-3" >
-        <h5>Redrigez-vous!</h5>
+        <h5>Redirigez-vous!</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#logid" class="nav-link p-0 text-body-secondary">Accueil</a></li>
           <li class="nav-item mb-2"><a href="#temoignage" class="nav-link p-0 text-body-secondary">Temoignages</a></li>
           <li class="nav-item mb-2"><a href="#contact" class="nav-link p-0 text-body-secondary">Nous Contacter</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#FAQ" class="nav-link p-0 text-body-secondary">FAQs</a></li>
           <li class="nav-item mb-2"><a href="#About" class="nav-link p-0 text-body-secondary">A Propos</a></li>
         </ul>
       </div>
@@ -370,7 +370,7 @@ Une application mobile dédiée. <code>.CSN</code></div>
           <h5>Chokran!</h5>
           <p>CSN Vous Remercie pour votre Visite !</p>
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <button class="btn btn-primary" type="button" id="footerbutton"><a href=""></a>Prenez Contact avec notre equipe</button>
+            <button class="btn btn-primary" type="button" id="footerbutton"><a href="contact.php" id="prenezcontact">Prenez Contact avec notre equipe</a></button>
           </div>
         </form>
       </div>

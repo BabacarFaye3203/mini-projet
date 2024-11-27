@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 } else {
-    echo "Identifiant patient non défini dans la session.";
+   // echo "Identifiant patient non défini dans la session.";
 }
 
 if (isset($_SESSION['idP_Patient'])) {
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 </nav>
-<h1>Bienvenue, <?php echo $patient['nomP_Patient']."Ici, vous pouvez planifiez des rendez-vous avec vos medecins préférés !"; ?></h1>
+<h1>Bienvenue, <?php echo $patient['nomP_Patient'].". Ici, vous pouvez planifiez des rendez-vous avec vos medecins préférés !"; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Se connecter

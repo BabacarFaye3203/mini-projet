@@ -3,7 +3,7 @@ session_start();
 include '../database/DatabaseCreat.php';
 if (isset($_SESSION['idP_Patient'])) {
     $idP_Patient = $_SESSION['idP_Patient'];
-    $_SESSION["nomP_Patient"]=$patient["nomP_Patient"];
+    $_SESSION["nomP_Patient"]=$_SESSION["nomP_Patient"];
 } else {
     //echo "Identifiant patient non défini dans la session.";
     exit;
@@ -43,9 +43,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-include '../configuration/headPatient.php';
+//include '../configuration/headPatient.php';
 ?>
-    <h1>Bienvenue, <?php echo $patient['nomP_Patient']." Ici, vous pouvez ajuster votre Profil !"; ?></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carnet-de-santé</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      
+    nav{
+            background:rgb(0,100,0);
+            text-align: center;
+        }
+                {
+                    background:rgb(0,100,0);
+                    text-align: center;
+                }
+
+    </style>
+</head>
+<body>
+  <header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../images/CSN Contact.webp" alt="Logo CSN" class="logo-navbar">
+        </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.php">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ProfilPatient">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="planifier_rendezVous.php">Mes Rendez-vous</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mesDocuments.php">Mes documents</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<h1>Bienvenue, <?php echo $patient['nomP_Patient'].". Ici, vous pouvez planifiez des rendez-vous avec vos medecins préférés !"; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Se connecter
@@ -74,6 +124,8 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
       </div>
     </div>
   </div>
+
+
 
 
  </section>

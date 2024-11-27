@@ -137,6 +137,7 @@
 }
 #footerbutton{
   background-color: rgba(20, 122, 20, 0.534);
+  color: white;
 }
 #verslehaut{
   color:rgba(20, 122, 20, 0.534) ;
@@ -201,4 +202,7 @@ section{
 }
 #samatof{
   max-width: 150px;
+}
+#prenezcontact{
+  color: white;
 }

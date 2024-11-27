@@ -3,7 +3,7 @@ session_start();
 include '../database/DatabaseCreat.php';
 if (isset($_SESSION['idP_Patient'])) {
   $idP_Patient = $_SESSION['idP_Patient'];
-  $_SESSION["nomP_Patient"]=$patient["nomP_Patient"];
+  $_SESSION["nomP_Patient"]=$_SESSION["nomP_Patient"];
 } else {
   //echo "Identifiant patient non défini dans la session.";
   exit;
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   </div>
 </nav>
-<h1>Bienvenue, <?php echo $patient['nomP_Patient']."Ici, vous trouverez tous vos documents"; ?></h1>
+<h1>Bienvenue, <?php echo $_SESSION['nomP_Patient'].". Ici, vous trouverez tous vos documents"; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Se connecter

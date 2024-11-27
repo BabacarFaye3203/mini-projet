@@ -16,7 +16,6 @@
          @$contact=$_POST["contact"];
          if($_POST["pwd"]==$_POST["cpwd"]){
            $pwd=$_POST["pwd"];
-             $email=$_POST["email"];
          }else{
            echo"les deux mdp doivent etre identiques";
            
