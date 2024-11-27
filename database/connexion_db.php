@@ -10,8 +10,8 @@ $pwd="";
 $connect=null;
 try{
     $connect=mysqli_connect($host,$user,$pwd);
-    echo"connexion etablie avec succes";
-    echo"<br>";
+   // echo"connexion etablie avec succes";
+    //echo"<br>";
 
 }catch(Exception $e){
     echo"erreur de connexion".$e->getMessage();

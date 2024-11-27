@@ -36,9 +36,10 @@ taille_Patient,contactP,CIN_Patient,password) values (?,?,?,?,?,?,?,?,?,?,?,?,?,
              $ville,$gsang,$matricule,$profession,$statut,$age,$sexe,
              $poids,$taille,$contact,$cin,$pwd);
         if($stm->execute()){//cho "Inscription avec succes";
-            $_SESSION['au']= header("Locate:connPatient.php");}
-        else{echo "Desole";}
+            echo"inscription avec succes";
+        
 
      }
    }
 
+  }

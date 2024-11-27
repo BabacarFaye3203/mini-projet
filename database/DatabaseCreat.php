@@ -4,7 +4,7 @@ try{
     $rq1="CREATE DATABASE if not exists carnet";
     $stm=$connect->prepare($rq1);
     $stm->execute();
-    echo"créer avec succes";
+    //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
 }

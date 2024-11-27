@@ -6,6 +6,7 @@
     <title>carnet-de-santé</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
       
     nav{
@@ -23,23 +24,25 @@
   <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">CSN</a>
+        <a class="navbar-brand" href="#">
+            <img src="images/CSN Contact.webp" alt="Logo CSN" class="logo-navbar">
+        </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="../index.php">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#Profil">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#RendezVous">Mes Rendez-vous</a>
+          <a class="nav-link" href="../patient/planifier_rendezVous.php">Mes Rendez-vous</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#Mes Documents">Mes documents</a>
+          <a class="nav-link" href="../Patient/mesDocuments.php">Mes documents</a>
         </li>
       </ul>
     </div>
