@@ -1,26 +1,42 @@
 <?php
 session_start();
-include 'database/DatabaseCreat.php'; //connexion à la base
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//include 'database/DatabaseCreat.php'; //connexion à la base
+$connect = new mysqli('localhost', 'root', '', 'carnet');
+if (isset($_POST["ok"])) {
     $email = $_POST['email'];
     $pwd= $_POST['pwd'];
-
     // Vérification des informations du patient dans la base de données
-    $query = "SELECT * FROM medecin WHERE emailM_Medecin = '$email' AND password = '$pwd'";
+  /*  $query = "SELECT * FROM medecin WHERE emailM_Medecin = '$email' AND password = '$pwd'";
     $result =$connect->query($query);
     if($result===false){
       echo"erreur de selection";
     }
     if ($row =mysqli_fetch_assoc($result)) {
-        $_SESSION['id_Medecin'] = $row['idP_Medecin'];
-        $_SESSION['username'] = $row['nomM_Medecin'];
+        $_SESSION['id_Medecin'] = $row['idM_Medecin'];
+        $_SESSION['nomM_Medecin'] = $row['nomM_Medecin'];
         header("Location:medecin/profilMed.php"); // Redirection vers le profil du medecin
         exit();
     } else {
         echo "Identifiants incorrects.";
+    }*/
+    $req="SELECT idM_Medecin,nomM_Medecin FROM `medecin` WHERE `emailM_Medecin`= ? AND `password`= ?";
+    $stmt = $connect->prepare($req);
+    $stmt->bind_param("ss", $email, $pwd);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id,$nom);
+        $stmt->fetch();
+        @$_SESSION['id_Medecin'] = $id;
+        @$_SESSION['nomM_Medecin'] = $nom;
+        header("Location:medecin/profilMed.php"); // Redirection vers le profil du patient
+        exit();
+    } else {
+        echo "Identifiants incorrects !";
     }
 }
+
 ?>
 <?php
 include 'configuration/head.php';?>
@@ -30,7 +46,7 @@ include 'configuration/head.php';?>
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="/inscMedecin.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="inscMedecin.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
 

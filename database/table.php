@@ -23,7 +23,7 @@ try{
     CIN_Patient VARCHAR(15),
     password VARCHAR(20),
     PRIMARY KEY (idP_Patient)) ENGINE=InnoDB;";
-    $res=mysqli_query($connect,$rq1);
+    $connect->query($rq1);
     //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
@@ -35,11 +35,14 @@ try{
     type_RendezVous varchar(20),
     idP_Patient INT,
     idM_Medecin INT,
-    PRIMARY KEY (idR_RendezVous)) ENGINE=InnoDB; ";
-    mysqli_query($connect,$rq1);
+    PRIMARY KEY (idR_RendezVous),
+   FOREIGN KEY (idP_Patient) REFERENCES patient(idP_Patient),
+    FOREIGN KEY (idM_Medecin) REFERENCES medecin(idM_Medecin))
+ ENGINE=InnoDB; ";
+    $connect->query($rq1);
    // echo"créer avec succes";
 }catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
+    echo"<br>erreur lors de la création de la base ".$e->getMessage();
 }
 try{
     $rq1="
@@ -58,9 +61,26 @@ try{
     password varchar(255),
     check ( age<=120 ),
     PRIMARY KEY (idM_Medecin)) ENGINE=InnoDB;";
-    mysqli_query($connect,$rq1);
+    $connect->query($rq1);
    // echo"créer avec succes";
 }catch(Exception $e){
+    echo"erreur lors de la création de la base".$e->getMessage();
+}
+try {
+    $req1="
+    CREATE TABLE IF NOT EXISTS consultation (
+    idC INT AUTO_INCREMENT PRIMARY KEY,
+    id_Patient INT ,
+    id_Medecin INT ,
+    date_consultation DATETIME ,
+    motif TEXT ,
+    FOREIGN KEY (id_Patient) REFERENCES patient(idP_Patient),
+    FOREIGN KEY (id_Medecin) REFERENCES medecin(idM_Medecin)
+)ENGINE=InnoDB;";
+    $connect->query($rq1);
+    //echo "<br>Table creer";
+}
+catch (Exception $ex){
     echo"erreur lors de la création de la base".$e->getMessage();
 }
 try{
@@ -68,7 +88,7 @@ try{
     CREATE TABLE IF NOT EXISTS avoir (idP_Patient INT AUTO_INCREMENT NOT NULL,
     idM_Medecin INt NOT NULL,
     PRIMARY KEY (idP_Patient,  idM_Medecin)) ENGINE=InnoDB;";
-    mysqli_query($connect,$rq1);
+    $connect->query($rq1);
     //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
@@ -82,11 +102,14 @@ try{
     doc_path VARCHAR(255),
     FOREIGN KEY (idP_Patient) REFERENCES patient(idP_Patient)
 )";
-    mysqli_query($connect,$rq1);
+    $connect->query($rq1);
     //echo"créer avec succes";
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
-}/*
+}
+
+
+/*
 try{
     $rq1="INSERT INTO `patient` (`idP_Patient`,
     `nomP_Patient`,
