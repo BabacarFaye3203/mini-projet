@@ -24,13 +24,6 @@ include 'configuration/headindex.php';
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
            organiser et sécuriser toutes vos informations médicales.
-           Que vous soyez patient ou professionnel de santé,<br>
-           Prenez le contrôle de votre santé dès aujourd’hui avec CSN, <br>votre compagnon numérique pour un bien-être optimal.
-
-Accédez à vos données en toute simplicité, où que vous soyez !</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"></button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4"></button>
         </div>
       </div>
     </div>

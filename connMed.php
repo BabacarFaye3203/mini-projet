@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       echo"erreur de selection";
     }
     if ($row =mysqli_fetch_assoc($result)) {
-        $_SESSION['id_Medecin'] = $row['idP_Medecin'];
+        $_SESSION['id_Medecin'] = $row['idM_Medecin'];
         $_SESSION['username'] = $row['nomM_Medecin'];
         header("Location:medecin/profilMed.php"); // Redirection vers le profil du medecin
         exit();
@@ -30,9 +30,10 @@ include 'configuration/headindex.php';?>
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="/inscMedecin.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="inscMedecin.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
+
 
  <section class="notrecouleur text-secondary px-4 py-5 text-center">
  <div >
@@ -41,19 +42,10 @@ include 'configuration/headindex.php';?>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
            organiser et sécuriser toutes vos informations médicales.
-           Que vous soyez patient ou professionnel de santé,<br>
-           Prenez le contrôle de votre santé dès aujourd’hui avec CSN, <br>votre compagnon numérique pour un bien-être optimal.
-
-Accédez à vos données en toute simplicité, où que vous soyez !</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"></button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4"></button>
         </div>
       </div>
     </div>
   </div>
-
-
  </section>
 
 

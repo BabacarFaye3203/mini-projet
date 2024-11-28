@@ -4,8 +4,9 @@ $erreur="";
 if(isset($_POST["ok"])){
     if(empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])
         ||empty($_POST["adresse"])||empty($_POST["pays"])||empty($_POST["ville"])
-        ||empty($_POST["age"])||empty($_POST["sexe"])||empty($_POST['specialite'])||empty($_POST["contact"])
-        ||empty($_POST["pwd"])||empty($_POST["cpwd"])){
+        ||empty($_POST["age"])||empty($_POST["sexe"])
+        ||empty($_POST['specialite'])||empty($_POST["contact"])
+        ||empty($_POST["pwd"])||empty($_POST["cpwd"])|| empty($_POST["numservice"])){
         header("location:inscMedecin.php");
         $erreur="tous les champs doivent être remplis";
     }else{
@@ -25,12 +26,15 @@ if(isset($_POST["ok"])){
         }else{
             $email=$_POST["email"];
         }
-        $req1=("INSERT INTO medecin (nomM_Medecin, prenomM_Medecin, matriculeM_Medecin, emailM_Medecin, adresseM_Medecin, paysM_Medecin,
-                     villeM_Medecin, specialite_Medecin, contactM_Medecin, age, sexe_Medecin, password) values (?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stm=connect->prepare($req1);
-        $stm->bin_param("sssssssssiss",$nom,$prenom,$code,$email,$adresse,$pays,$ville,$specialite,$contact,$age,$sexe,$pwd);
+        $req1=("INSERT INTO medecin (nomM_Medecin, prenomM_Medecin, matriculeM_Medecin,
+                     emailM_Medecin, adresseM_Medecin, paysM_Medecin,
+                     villeM_Medecin, specialite_Medecin, contactM_Medecin,
+                     age, sexe_Medecin, password) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stm=$connect->prepare($req1);
+        $stm->bind_param("sssssssssiss",$nom,$prenom,$code,$email,$adresse,
+            $pays,$ville,$specialite,$contact,$age,$sexe,$pwd);
         if($stm->execute()){echo "Inscription avec succès";
-            header("Locate:connMed.php");}
+            header("Location:connMed.php");}
         else{echo "Désolé";}
 
     }
