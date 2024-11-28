@@ -17,7 +17,8 @@ $stmt = $connect->prepare($req);
 $stmt->execute();
 $result0 = $stmt->get_result();
 
-$query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.specialite_Medecin as spe,m.emailM_Medecin as mail,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM
+$query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.specialite_Medecin as spe,
+       m.emailM_Medecin as mail,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM
           FROM rendezvous rdv
           JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
           WHERE rdv.idP_Patient = ?

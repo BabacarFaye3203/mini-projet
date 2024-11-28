@@ -12,6 +12,7 @@ $patient= $result->fetch_assoc();
 <?php
 include '../configuration/headPatient.php';
 ?>
+
 <h2>Prendre rendez-vous avec Mr/Mme <?= htmlspecialchars($patient['nomP_Patient']); ?></h2>
 <form action="enreg_rdv.php" method="post" >
     <input type="hidden" name="idP" value="<?= $idP; ?>">

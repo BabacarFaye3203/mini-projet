@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/formulaire_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/formulaire_rdvM.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patient/profilPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/profilPatient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/annulerRendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/annulerRendezVous.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/formulaire_rdvP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/formulaire_rdvP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/profilMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/profilMed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/voirPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/voirPatient.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +91,7 @@
       <workItem from="1732664567566" duration="37000" />
       <workItem from="1732664642128" duration="1029000" />
       <workItem from="1732665785273" duration="5930000" />
-      <workItem from="1732795488988" duration="18119000" />
+      <workItem from="1732795488988" duration="20145000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -143,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732803413977</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1732816893609</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732816893609</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
