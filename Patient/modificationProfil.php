@@ -4,7 +4,7 @@ include '../database/DatabaseCreat.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idP_Patient = $_SESSION['idP_Patient'];
+    $idP_Patient = $_SESSION['idM_Medecin'];
     $nom = $_POST['nom'];
     $email = $_POST['email'];
 
@@ -21,3 +21,4 @@ include '../configuration/headPatient.php';
 
 include '../configuration/pied.php';
 ?>
+

@@ -3,8 +3,8 @@ session_start();
 //include 'database/DatabaseCreat.php'; //connexion à la base
 $connect = new mysqli('localhost', 'root', '', 'carnet');
 if (isset($_POST["ok"])) {
-    $email = $_POST['email'];
-    $pwd= $_POST['pwd'];
+    $email = strip_tags($_POST['email']);
+    $pwd= strip_tags($_POST['pwd']);
     // Vérification des informations du patient dans la base de données
   /*  $query = "SELECT * FROM medecin WHERE emailM_Medecin = '$email' AND password = '$pwd'";
     $result =$connect->query($query);
@@ -28,7 +28,7 @@ if (isset($_POST["ok"])) {
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id,$nom);
         $stmt->fetch();
-        @$_SESSION['id_Medecin'] = $id;
+        @$_SESSION['idM_Medecin'] = $id;
         @$_SESSION['nomM_Medecin'] = $nom;
         header("Location:medecin/profilMed.php"); // Redirection vers le profil du patient
         exit();

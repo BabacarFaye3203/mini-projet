@@ -25,12 +25,45 @@ if ($stmt->num_rows > 0) {
   $patient=  $stmt->fetch();
    // @$_SESSION['idP_Patient'] = $id;
    // @$_SESSION['nomP_Patient'] = $nom;
+  //$medecin_id = $_POST['medecin_id'];
+    $query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed, rdv.dateR_RendezVous as date_rdv
+          FROM rendezvous rdv
+          JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
+          WHERE rdv.idP_Patient = ?
+          ORDER BY rdv.dateR_RendezVous DESC";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param("i", $idP_Patient);
+    $stmt->execute();
+    $result = $stmt->get_result();
 }
 ?>
+
 <?php include '../configuration/headPatient.php';?>
 
     <h1>Bienvenue, <?php echo $_SESSION['nomP_Patient']; ?></h1>
-
+<h1>Mes medecins</h1>
+<?php if($result->num_rows > 0) { ?>
+    <table class='table'>
+        <thead class='table-dark'>
+        <tr><th></th><th>Nom</th><th>Date de RENDEZ-VOUS</th><th>Details</th></tr>
+        </thead>
+        <?php $i=1;?>
+        <?php while ($row = $result->fetch_assoc()) {?>
+            <tr>
+                <td><?php $i ?></td>
+                <td><?= htmlspecialchars($row['nomMed']); ?></td>
+                <td><?= htmlspecialchars($row['date_rdv']); ?></td>
+                <td><form action=".php" method="post" style="display: inline;">
+                        <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
+                        <button type="submit">Details</button>
+                    </form>
+                </td>
+            </tr>
+            <?php $i++;?>
+            }
+        <?php } ?>
+    </table>
+<?php }?>
     <!-- Modifier les informations personnelles du patient -->
     <h3>Modifier votre profil</h3>
     <form action="/Patient/modificationProfil.php" method="POST">
@@ -67,6 +100,8 @@ if ($stmt->num_rows > 0) {
             <button type="submit" class="btn btn-primary">Ajouter ce document</button>
         </div>
     </form>
+
+
     <!-- Gestion des rendez-vous -->
     <h3>Mes rendez-vous</h3>
     <?php
@@ -84,15 +119,6 @@ if ($stmt->num_rows > 0) {
             </form>";
    }
     ?>
-
-    <form action="/Patient/planifier_rendezVous.php" method="POST">
-        <input type="date" name="date" required>
-        <input type="text" name="type" placeholder="type du rendez-vous" required>
-        <input type="idM_Medecin" name="idM" required>
-
-        <button type="submit">Planifier un rendez-vous</button>
-    </form>
-
 <?php
 include '../configuration/pied.php';
 ?>

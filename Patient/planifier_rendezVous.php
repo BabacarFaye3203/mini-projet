@@ -13,8 +13,8 @@ include '../database/DatabaseCreat.php';
     header("Location: profilPatient.php");
     exit();
 }*/
-$patient_id = $_SESSION['idP_Patient'];
-$medecin_id = $_POST['medecin_id'];
+
+/*
 $date_rendez_vous = $_POST['date_rendez_vous'];
 $description = $_POST['description'];
 // Validation des données...
@@ -28,6 +28,7 @@ if ($stmt->affected_rows > 0) {
 } else {
     echo "Erreur lors de l'ajout du rendez-vous.";
 }
+*/
 
 ?>
 <?php
