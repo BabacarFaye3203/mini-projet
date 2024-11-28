@@ -126,11 +126,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <h1>Bienvenue, <?php echo $_SESSION['nomP_Patient'].". Ici, vous trouverez tous vos documents"; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Se connecter
+    Deconnexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="connMed.php">Medecin</a></li>
+    <li><a class="dropdown-item active" href="deconnexion.php" id="connbutton">Patient</a></li>
   </ul>
 </div>
 

@@ -85,11 +85,11 @@ if (!isset($_SESSION['idP_Patient'])) {
 <h1>Bienvenue, <?php echo $patient['nomP_Patient']." ".$patient['prenomP']; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Se connecter
+    Déconnexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="connMed.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="deconnexion.php">Medecin</a></li>
   </ul>
 </div>
 

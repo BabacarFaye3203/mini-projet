@@ -4,7 +4,7 @@ session_start();
 include ("insMedecinAction.php")
 ?>
 <?php
-include 'configuration/head.php';
+include 'configuration/headindex.php';
 
 ?>
 <div class="dropdown" class="container" id="logid">
@@ -103,6 +103,6 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
       </form>
     </div>
 <?php
-include 'configuration/footer.php';
 include 'configuration/pied.php';
+include 'configuration/footer.php';
 ?>

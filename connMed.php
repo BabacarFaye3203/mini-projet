@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <?php
-include 'configuration/head.php';?>
+include 'configuration/headindex.php';?>
 <h3>Connexion en tant que medecin</h3><br>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,4 +73,6 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
         <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">
       </form>
     </div>
-<?php include 'configuration/pied.php';?>
+<?php include 'configuration/pied.php';
+      include 'configuration/footer.php';
+?>
