@@ -198,7 +198,7 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
         <label for="contact" class="form-label">Contact:</label>
         <input type="tel" class="form-control" id="contact" value="<?php echo $patient["contactP"]; ?>">
     </div>
-    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    <button type="submit" id="btn">Mettre à jour</button>
 </form>
 
 <?php

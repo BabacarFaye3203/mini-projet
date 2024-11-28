@@ -101,7 +101,7 @@
           <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#temoignage">Temoignages</a>
+          <a class="nav-link" href="#temoig">Temoignages</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#About">A Propos</a>

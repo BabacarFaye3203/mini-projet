@@ -120,7 +120,6 @@
 #temoig{
   background-color:rgba(20, 122, 20, 0.534);
   transform: scale(0.8);
-  border-radius: 55%;
   border-color: white;
   
   
@@ -200,9 +199,21 @@ section{
   background-color: rgba(20, 122, 20, 0.534);
   color: rgba(20, 122, 20, 0.534);
 }
-#samatof{
-  max-width: 150px;
-}
+
 #prenezcontact{
   color: white;
+}
+#titreprofilpatient{
+  color: green;
+}
+#butprofpatient{
+  background-color: green;
+}
+#btn{
+  background-color: green;
+}
+#samatof{
+  position: absolute;
+  max-width: 120px;
+  max-height: 120px;
 }

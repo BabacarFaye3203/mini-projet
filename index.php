@@ -38,80 +38,6 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
 
 <!-- avis des utilisateurs(patients et medecins)-->
 
-<section class="avis-light py-5 py-xl-8" id="temoignage">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-        <h2 class="display-5 mb-4 mb-md-5 text-center">CE QU'ILS PENSENT DE <b>CSN</b></h2>
-        <p class="fs-6 text-secondary mb-2 text-uppercase text-center">Découvrez ce que nos utilisateurs pensent de CSN et comment il simplifie leur gestion de santé au quotidien</p>
-        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
-      </div>
-    </div>
-  </div>
-
-  <div class="container overflow-hidden">
-    <div class="row gy-4 gy-md-0 gx-xxl-5" >
-      <div class="col-12 col-md-4" >
-        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
-          <div class="card-body p-4 p-xxl-5">
-            <figure>
-              <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" id="samatof" src="images/WhatsApp Image 2024-11-16 at 16.07.00 (1).jpeg" alt="Babacar">
-              <figcaption>
-                <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
-                <blockquote class="bsb-blockquote-icon mb-4">"J’ai découvert cette plateforme récemment,
-           et je dois dire qu’elle est très intuitive.
-            Trouver un spécialiste dans ma ville est devenu facile,
-             et le système de visioconférence m’a sauvé plusieurs fois quand je n’ai pas pu me déplacer.
-           Merci pour cette initiative qui rend la santé plus accessible à tous !"</blockquote>
-                <h4 class="mb-2">Babacar</h4>
-                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>Informatique</b> <br>Maroc</h5>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4" >
-        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
-          <div class="card-body p-4 p-xxl-5">
-            <figure>
-              <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy" id="samatof" src="images/WhatsApp Image 2024-11-27 at 21.37.58.jpeg" alt="Felix">
-              <figcaption>
-                <div class="bsb-ratings text-warning mb-3" data-bsb-star="4" data-bsb-star-off="1"></div>
-                <blockquote class="bsb-blockquote-icon mb-4">"En tant que patient souffrant d'une maladie chronique, 
-          ce site est une bénédiction pour moi.
-           Mon médecin peut suivre mon état de santé à distance 
-           et ajuster mon traitement sans que je me déplace constamment.
-            La messagerie sécurisée est parfaite pour poser mes questions entre deux consultations.
-           Je recommande vivement ce service.</blockquote>
-                <h4 class="mb-2">Felix Ngamakita</h4>
-                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>Informatique</b> <br>Maroc</h5>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4" >
-        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
-          <div class="card-body p-4 p-xxl-5">
-            <figure>
-              <img class="img-fluid rounded rounded-circle mb-4 border border-5" id="samatof" loading="lazy" src="images/WhatsApp Image 2024-11-27 at 21.46.47.jpeg" alt="Emmanuel">
-              <figcaption>
-                <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
-                <blockquote class="bsb-blockquote-icon mb-4">"J'utilise le Carnet de Santé Numérique depuis quelques mois, 
-            et je suis ravie de cette solution. J’ai pu centraliser tous mes résultats d’examens médicaux et 
-            mes ordonnances en un seul endroit. En plus, la prise de rendez-vous est super simple, 
-            et je n’ai plus besoin de passer des heures au téléphone avec les cabinets médicaux.
-             Un vrai gain de temps et d’efficacité !"</blockquote>
-                <h4 class="mb-2">Emmanuel</h4>
-                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>informatique</b> <br>Maroc</h5>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -292,6 +218,76 @@ Une application mobile dédiée. <code>.CSN</code></div>
 </section>
  
 
+ <!--section avis-->
+
+  <div class="container overflow-hidden">
+    <div class="row gy-4 gy-md-0 gx-xxl-5" >
+      <div class="col-12 col-md-4" >
+ 
+        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
+          <div class="card-body p-4 p-xxl-5">
+            <figure>
+            <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy"  src="images/WhatsApp Image 2024-11-27 at 21.37.58.jpeg" alt="Felix">
+              <figcaption>
+                <div class="bsb-ratings text-warning mb-3" data-bsb-star="4" data-bsb-star-off="1"></div>
+                <blockquote class="bsb-blockquote-icon mb-4">"En tant que patient souffrant d'une maladie chronique, 
+          ce site est une bénédiction pour moi.
+           Mon médecin peut suivre mon état de santé à distance 
+           et ajuster mon traitement sans que je me déplace constamment.
+            La messagerie sécurisée est parfaite pour poser mes questions entre deux consultations.
+           Je recommande vivement ce service.</blockquote>
+                <h4 class="mb-2">Felix Ngamakita</h4>
+                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>Informatique</b> <br>Maroc</h5>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4" >
+      <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
+          <div class="card-body p-4 p-xxl-5">
+            <figure>
+            <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy"  src="images/WhatsApp Image 2024-11-16 at 16.07.00 (1).jpeg" alt="Babacar">
+              <figcaption>
+                <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
+                <blockquote class="bsb-blockquote-icon mb-4">"J’ai découvert cette plateforme récemment,
+           et je dois dire qu’elle est très intuitive.
+            Trouver un spécialiste dans ma ville est devenu facile,
+             et le système de visioconférence m’a sauvé plusieurs fois quand je n’ai pas pu me déplacer.
+           Merci pour cette initiative qui rend la santé plus accessible à tous !"</blockquote>
+                <h4 class="mb-2">Babacar</h4>
+                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>Informatique</b> <br>Maroc</h5>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4" >
+        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
+          <div class="card-body p-4 p-xxl-5">
+            <figure>
+            <img class="img-fluid rounded rounded-circle mb-4 border border-5 "  loading="lazy" src="images/WhatsApp Image 2024-11-27 at 21.46.47.jpeg" alt="Emmanuel">
+              <figcaption>
+                <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
+                <blockquote class="bsb-blockquote-icon mb-4">"J'utilise le Carnet de Santé Numérique depuis quelques mois, 
+            et je suis ravie de cette solution. J’ai pu centraliser tous mes résultats d’examens médicaux et 
+            mes ordonnances en un seul endroit. En plus, la prise de rendez-vous est super simple, 
+            et je n’ai plus besoin de passer des heures au téléphone avec les cabinets médicaux.
+             Un vrai gain de temps et d’efficacité !"</blockquote>
+                <h4 class="mb-2">Emmanuel</h4>
+                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>informatique</b> <br>Maroc</h5>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- fin de la section avis-->
 
 <!-- section contact-->
 <section id="contact" class="py-5 contact-light">
@@ -311,8 +307,8 @@ Une application mobile dédiée. <code>.CSN</code></div>
             </div>
             <!-- Formulaire de contact -->
             <div class="col-lg-6">
-                <h2 class="fw-bold mb-4">Contactez-nous</h2>
-                <p class="text-muted mb-4">Pour toute question ou assistance, CSN vous reserve une équipe dediée est à votre disposition.</p>
+                <h2 class="fw-bold mb-4"></h2>
+                <p class="text-muted mb-4">Notre equipe veillera a votre satisfaction</p>
                 <form action="traitement_contact.php" method="POST" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom</label>

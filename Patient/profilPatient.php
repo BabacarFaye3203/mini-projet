@@ -119,78 +119,79 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
 
     <!--les informations personnelles du patient -->
     <div class="container mt-5">
-    <h1 class="text-center mb-4">Profil Patient</h1>
+    <h1 id="titreprofilpatient"> Profil Patient</h1>
+    <br><br>
     <form action="modificationProfil.php" method="POST">
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
                     <th>CIN</th>
-                    <td><input type="tel" class="form-control" value="<?php echo $patient["CIN_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["CIN_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Nom</th>
-                    <td><input type="text" name="nom" class="form-control" value="<?php echo $patient["nomP_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["nomP_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td><input type="email" name="email" class="form-control" value="<?php echo $patient["emailP"]; ?>" disabled></td>
+                    <td><?php echo $patient["emailP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Prénom</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["prenomP"]; ?>" disabled></td>
+                    <td><?php echo $patient["prenomP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Adresse</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["adresseP"]; ?>" disabled></td>
+                    <td><?php echo $patient["adresseP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Pays</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["paysP"]; ?>" disabled></td>
+                    <td><?php echo $patient["paysP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Ville</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["villeP"]; ?>" disabled></td>
+                    <td><?php echo $patient["villeP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Groupe sanguin</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["groupe_sanguin_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["groupe_sanguin_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Situation matrimoniale</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["situation_matri_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["situation_matri_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Profession</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["profession_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["profession_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Statut</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["statut_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["statut_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Âge</th>
-                    <td><input type="number" class="form-control" value="<?php echo $patient["ageP"]; ?>" disabled></td>
+                    <td><?php echo $patient["ageP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Sexe</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["sexeP"]; ?>" disabled></td>
+                    <td><?php echo $patient["sexeP"]; ?></td>
                 </tr>
                 <tr>
                     <th>Poids</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["poids_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["poids_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Taille</th>
-                    <td><input type="text" class="form-control" value="<?php echo $patient["taille_Patient"]; ?>" disabled></td>
+                    <td><?php echo $patient["taille_Patient"]; ?></td>
                 </tr>
                 <tr>
                     <th>Contact</th>
-                    <td><input type="tel" class="form-control" value="<?php echo $patient["contactP"]; ?>" disabled></td>
+                    <td><?php echo $patient["contactP"]; ?></td>
                 </tr>
             </tbody>
         </table>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            <button type="submit" id="butprofpatient">Mettre à jour</button>
         </div>
     </form>
 </div>
