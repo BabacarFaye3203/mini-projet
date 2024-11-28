@@ -1,9 +1,10 @@
 <?php
+session_start();
 include "../database/DatabaseCreat.php"; // Connexion à la base de données
 
 // Vérifier si un patient est spécifié
-if (isset($_GET['idP'])) {
-    $idP = $_GET['idP'];
+if (isset($_POST['Detail'])) {
+    $idP = $_POST['idP'];
 
     // Récupérer les informations du patient
     $query_patient = "SELECT nomP_Patient, prenomP, dat_naiss, emailP FROM patient WHERE idP_Patient = ?";
@@ -12,7 +13,11 @@ if (isset($_GET['idP'])) {
     $stmt_patient->execute();
     $result_patient = $stmt_patient->get_result();
     $patient = $result_patient->fetch_assoc();
-
+//Mise ajour des rendez-vous qui depasse la date prevue
+   $query_rendez_vous0="DELETE FROM rendezvous WHERE dateR_RendezVous< LOCALTIME and idP_Patient = $idP;";
+    if ($connect->query($query_rendez_vous0) === TRUE) {
+        echo "Record deleted successfully";
+    }
     // Récupérer les rendez-vous du patient
     $query_rendez_vous = "SELECT dateR_RendezVous as date_rdv, type_RendezVous as motif FROM rendezvous WHERE idP_Patient = ?";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
@@ -37,7 +42,7 @@ if (isset($_GET['idP'])) {
     <?php if ($patient){ ?>
         <p><strong>Nom :</strong> <?= htmlspecialchars($patient['nomP_Patient']); ?></p>
         <p><strong>Prénom :</strong> <?= htmlspecialchars($patient['prenomP']); ?></p>
-        <p><strong>Date de naissance :</strong> <?= htmlspecialchars($patient['date_naiss']); ?></p>
+        <p><strong>Date de naissance :</strong> <?= htmlspecialchars($patient['dat_naiss']); ?></p>
         <p><strong>Email :</strong> <?= htmlspecialchars($patient['emailP']); ?></p><br>
 
         <h3>Rendez-vous</h3>

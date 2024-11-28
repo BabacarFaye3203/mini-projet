@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 @include '../database/DatabaseCreat.php';
 
 // Vérifier si l'utilisateur est connecté
@@ -19,7 +18,7 @@ $stmt->store_result();
 if ($stmt->num_rows > 0) {
     $med=  $stmt->fetch();
 }
-$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.emailP as mail,p.prenomP as pren,rdv.idP_Patient as idP
+$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.emailP as mail,p.prenomP as pren,rdv.idP_Patient as idP,rdv.dateR_RendezVous as date_rdv
           FROM rendezvous rdv
           JOIN patient p ON rdv.idP_Patient = p.idP_Patient
           WHERE rdv.idM_Medecin = ?
@@ -28,19 +27,24 @@ $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idM_Med);
 $stmt->execute();
 $result = $stmt->get_result();
+$result2=$result;
 ?>
-<?php include '../configuration/headPatient.php';?>
+<?php //include '../configuration/headPatient.php';
+    include '../configuration/head.php';
+;?>
 
-<h1>Bienvenue, <?php echo $_SESSION['nomM_Medecin']; ?></h1>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<h1>Bienvenue, <?php echo $_SESSION['nomM_Medecin'] ?></h1>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+<?php echo "<div style='padding:10% 200px 0% 200px ;
+                margin:8% 23px 10% auto ;'>";?>
 <h1>Liste des patients</h1>
 <?php if($result->num_rows > 0) { ?>
     <table class='table'>
         <thead class='table-dark'>
-        <tr><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th></tr>
+        <tr><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th><th>Details</th></tr>
         </thead>
         <?php ?>
-        <?php $i=0; while ($row = $result->fetch_assoc()) { $i++;
+        <?php $i=0; while ($row = $result2->fetch_assoc()) { $i++;
             echo "<tr>
                 <td> $i</td>";?>
                 <td><?= htmlspecialchars($row['nomPatient']); ?></td>
@@ -48,11 +52,15 @@ $result = $stmt->get_result();
                 <td><?= htmlspecialchars($row['mail']); ?></td>
                 <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
                         <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
-                        <input type="submit" name="RDV" value="Prendre rendez-vous">
+                        <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
                     </form>
                 </td>
-            </tr>
-            }
+            <td><form action="voirPatient.php" method="post" style="display: inline;">
+                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+                    <input type="submit" value="Details" class="btn btn-info" name="Detail">
+                </form>
+            </td>
+            <?php echo "</tr>";?>
         <?php } ?>
     </table>
 <?php }else{?>
@@ -78,7 +86,7 @@ if($result1->num_rows > 0) { ?>
                 <td><?= htmlspecialchars($row1['email']); ?></td>
                 <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
                         <input type="hidden" name="idP" value="<?= $row1['idP_Patient']; ?>">
-                        <input type="submit" name="RDV" value="Prendre rendez-vous">
+                        <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
                     </form>
                 </td>
             </tr>
@@ -108,61 +116,10 @@ if($result1->num_rows > 0) { ?>
 </form>
 <!-- Gestion des rendez-vous -->
 
-<a href="voirPatient.php"><h3>Mes rendez-vous</h3></a>
-<?php if($result->num_rows > 0) {$i=1; ?>
-    <table class='table'>
-        <thead class='table-dark'>
-        <tr><th></th><th>Nom</th><th>Date de RENDEZ-VOUS</th><th>Details</th></tr>
-        </thead>
-        <?php while ($row = $result->fetch_assoc()) {?>
-            <tr>
-                <td><?php $i ?></td>
-                <td><?= htmlspecialchars($row['nomMed']); ?></td>
-                <td><?= htmlspecialchars($row['date_rdv']); ?></td>
-                <td><form action="voirPatient.php" method="post" style="display: inline;">
-                        <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                        <button type="submit">Details</button>
-                    </form>
-                </td>
-            </tr>
-        <?php $i++; } ?>
-    </table>
-<?php }?>
+<a href="Gest_RDV.php"><h3>Mes rendez-vous</h3></a>
+
+<?php echo "</div>"?>
 <?php
-/*
-$idM_Med = $_SESSION['id_Medecin'];
-$req="SELECT * FROM `patient` WHERE `idM_Medecin`= ? ";
-$stmt = $connect->prepare($req);
-$stmt->bind_param("i", $idM_Med);
-$stmt->execute();
-$stmt->store_result();
-if ($stmt->num_rows > 0) {
-    $med=  $stmt->fetch();
-}
-
-$rq = "SELECT * FROM rendezvous WHERE idM_Medecin = $idM_Med";
-$rdv_result = mysqli_query($connect, $rq);
-
-while ($rdv = mysqli_fetch_assoc($rdv_result)) {
-    echo "<div>";
-    echo "Date : " . @$rdv['dateR_RendezVous'] . "   type : " . @$rdv['type_RendezVous'];
-    echo "<form action='../Patient/annulerRendezVous.php' method='POST'>
-            <div class='mb-3'>
-                <input type='hidden' class='form-control' name='rdv_id' value='" . @$rdv['idR_RendezVous'] . "'>
-                <button type='submit' class='btn btn-primary'>Annuler le rendez-vous</button>
-            </div>
-            </form>";
-}
-
-*/
-/*
-$result = $connect->query("
-    SELECT rendezvous.idP_Patient, rendezvous.nomP_Patient as nomPatient, patient.emailP 
-    FROM rendezvous
-    JOIN medecin ON patient.idM_Medecin = patient.idP_Patient
-    WHERE medecin.idM_Medecin = $idM_Med;
-");
-*/
 ?>
 <?php
 include '../configuration/pied.php';

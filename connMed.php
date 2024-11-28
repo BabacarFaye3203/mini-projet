@@ -30,6 +30,7 @@ if (isset($_POST["ok"])) {
         $stmt->fetch();
         @$_SESSION['idM_Medecin'] = $id;
         @$_SESSION['nomM_Medecin'] = $nom;
+        //@$_SESSION['prenomM_Medecin']=$pren;
         header("Location:medecin/profilMed.php"); // Redirection vers le profil du patient
         exit();
     } else {
