@@ -1,20 +1,24 @@
 <?php
 session_start();
-include 'database/DatabaseCreat.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $idP_Patient = $_SESSION['idP_Patient'];
-    $idR_RendezVous = $_POST['idR_RendezVous'];
+include '../database/DatabaseCreat.php';
+if (isset($_POST['Annuler'])) {
+    $idM=$_SESSION['idM_Medecin'];
+    $idP = $_POST['idP'];
+    $dat = $_POST['dat'];
 
-    $query = "DELETE FROM rendezvous WHERE idR_RendezVous = $idR_RendezVous AND idP_Patient = $idP_Patient";
-    mysqli_query($connect, $query);
+    $query_patient = "SELECT nomP_Patient, prenomP, dat_naiss, emailP FROM patient WHERE idP_Patient = ?";
+    $stmt_patient = $connect->prepare($query_patient);
+    $stmt_patient->bind_param("i", $idP);
+    $stmt_patient->execute();
+    $result_patient = $stmt_patient->get_result();
+    $patient = $result_patient->fetch_assoc();
 
-    header("Location: profilPatient.php");
-    exit();
+    $query_rendez_vous0="DELETE FROM rendezvous WHERE dateR_RendezVous='$dat' and idP_Patient=$idP;";
+    if ($connect->query($query_rendez_vous0) === TRUE) {
+        echo "Record deleted successfully";
+        header("Location: Gest_RDV.php");
+        exit();
+    }
+
 }
-?>
-<?php
-include '../configuration/headPatient.php';
-
-include '../configuration/pied.php';
-
 ?>

@@ -41,7 +41,7 @@ $result2=$result;
 <?php if($result->num_rows > 0) { ?>
     <table class='table'>
         <thead class='table-dark'>
-        <tr><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th><th>Details</th></tr>
+        <tr><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th></tr>
         </thead>
         <?php ?>
         <?php $i=0; while ($row = $result2->fetch_assoc()) { $i++;
@@ -55,11 +55,7 @@ $result2=$result;
                         <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
                     </form>
                 </td>
-            <td><form action="voirPatient.php" method="post" style="display: inline;">
-                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
-                    <input type="submit" value="Details" class="btn btn-info" name="Detail">
-                </form>
-            </td>
+
             <?php echo "</tr>";?>
         <?php } ?>
     </table>

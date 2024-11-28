@@ -15,11 +15,15 @@ include '../configuration/headPatient.php';
 <h2>Prendre rendez-vous avec Mr/Mme <?= htmlspecialchars($patient['nomP_Patient']); ?></h2>
 <form action="enreg_rdv.php" method="post" >
     <input type="hidden" name="idP" value="<?= $idP; ?>">
-    <label for="date">Date et heure :</label>
-    <input type="datetime-local" id="date" name="date_rdv" required>
-    <label for="motif">Motif</label>
-    <input type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
-    <button type="submit" class="btn btn-primary">Confirmer</button>
+    <div class="mb-3">
+    <label class="form-label" for="date">Date et heure :</label>
+    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="motif">Motif</label>
+    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
+    </div>
+    <button type="submit" class="form-label btn btn-primary">Confirmer</button>
 </form>
 <?php
 include '../configuration/pied.php';

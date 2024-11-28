@@ -17,9 +17,10 @@ if (isset($_POST['Detail'])) {
    $query_rendez_vous0="DELETE FROM rendezvous WHERE dateR_RendezVous< LOCALTIME and idP_Patient = $idP;";
     if ($connect->query($query_rendez_vous0) === TRUE) {
         echo "Record deleted successfully";
+
     }
     // Récupérer les rendez-vous du patient
-    $query_rendez_vous = "SELECT dateR_RendezVous as date_rdv, type_RendezVous as motif FROM rendezvous WHERE idP_Patient = ?";
+    $query_rendez_vous = "SELECT dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ?";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("i", $idP);
     $stmt_rendez_vous->execute();
@@ -51,13 +52,39 @@ if (isset($_POST['Detail'])) {
             <table class="table">
                 <thead class="table-dark">
                 <tr>
-                    <th>Date</th><th>Motif</th>
+                    <th>Date</th><th>Motif</th><th>Action</th>
                 </tr>
                 </thead>
                 <?php while ($row = $result_rendez_vous->fetch_assoc()){ ?>
                         <tr>
                     <td><?= htmlspecialchars($row['date_rdv']); ?></td>
                     <td> <?= htmlspecialchars($row['motif']); ?></td>
+                            <td><form action="annulerRendezVous.php" method="post" style="display: inline;">
+                                    <input type="hidden" name="dat" value="<?= $row['date_rdv']; ?>">
+                                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        Annuler
+                                    </button>
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmation</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   <p>Veiller confirmer votre annulation du rendez-vous</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                    <input type="submit" value="Confirmer" class="btn btn-primary" name="Annuler">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
                         </tr>
                 <?php } ?>
             </table>
