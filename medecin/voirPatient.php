@@ -13,14 +13,8 @@ if (isset($_POST['Detail'])) {
     $stmt_patient->execute();
     $result_patient = $stmt_patient->get_result();
     $patient = $result_patient->fetch_assoc();
-//Mise ajour des rendez-vous qui depasse la date prevue
-   $query_rendez_vous0="DELETE FROM rendezvous WHERE dateR_RendezVous< LOCALTIME and idP_Patient = $idP;";
-    if ($connect->query($query_rendez_vous0) === TRUE) {
-        echo "Record deleted successfully";
-
-    }
     // Récupérer les rendez-vous du patient
-    $query_rendez_vous = "SELECT dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ?";
+    $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ?";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("i", $idP);
     $stmt_rendez_vous->execute();
@@ -59,7 +53,17 @@ if (isset($_POST['Detail'])) {
                         <tr>
                     <td><?= htmlspecialchars($row['date_rdv']); ?></td>
                     <td> <?= htmlspecialchars($row['motif']); ?></td>
-                            <td><form action="annulerRendezVous.php" method="post" style="display: inline;">
+                            <td>
+                                <form method="post" action="acceptP.php">
+                                    <input type="hidden" name="dat" value="<?= $row['date_rdv']; ?>">
+                                    <input type="hidden" name="idr" value="<?= $row['idr']; ?>">
+                                    <input type="hidden" name="typ" value="<?= $row['typ']; ?>">
+                                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+                                    <input type="submit" value="Accepter" class="btn btn-success" name="Accepter">
+                                </form>
+                                <form action="annulerRendezVous.php" method="post" style="display: inline;">
+                                    <input type="hidden" name="idr" value="<?= $row['idr']; ?>">
+                                    <input type="hidden" name="typ" value="<?= $row['typ']; ?>">
                                     <input type="hidden" name="dat" value="<?= $row['date_rdv']; ?>">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
 

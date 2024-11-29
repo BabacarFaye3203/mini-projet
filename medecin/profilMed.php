@@ -32,7 +32,6 @@ $result2=$result;
 <?php //include '../configuration/headPatient.php';
     include '../configuration/head.php';
 ;?>
-
 <h1>Bienvenue, <?php echo $_SESSION['nomM_Medecin'] ?></h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 <?php echo "<div style='padding:10% 200px 0% 200px ;
@@ -91,11 +90,6 @@ if($result1->num_rows > 0) { ?>
 <?php }
 }?>
 
-    <h1>Ajouter un nouveau patient</h1>
-    <form class="form-control" action="profilMed.php" method="post">
-        <label for="cin">Saisir son CIN</label>
-        <input type="search" id="cin" name="cin" placeholder="saisir son CIN">
-    </form>
 <!-- Modifier les informations personnelles du patient -->
 <h3>Modifier votre profil</h3>
 <form action="../Patient/modificationProfil.php" method="POST">
