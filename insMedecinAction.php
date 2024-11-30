@@ -3,19 +3,19 @@ include 'database/DatabaseCreat.php';
 $erreur="";
 if(isset($_POST["ok"])){
     if(empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])
-        ||empty($_POST["adresse"])||empty($_POST["pays"])||empty($_POST["ville"])
-        ||empty($_POST["age"])||empty($_POST["sexe"])
-        ||empty($_POST['specialite'])||empty($_POST["contact"])
-        ||empty($_POST["pwd"])||empty($_POST["cpwd"])|| empty($_POST["numservice"])){
+        ||empty($_POST["adr"])||empty($_POST["pays"])||empty($_POST["ville"])
+        ||empty($_POST["age"])||empty($_POST["sex"])
+        ||empty($_POST['spe'])||empty($_POST["tel"])
+        ||empty($_POST["pwd"])||empty($_POST["cpwd"])|| empty($_POST["cod"])){
         header("location:inscMedecin.php");
         $erreur="tous les champs doivent être remplis";
     }else{
         @$nom=$_POST["nom"];
         @$prenom=$_POST["prenom"];
-        @$code=$_POST["numservice"];
-        @$pays=$_POST["pays"]; @$adresse=$_POST["adresse"]; @$ville=$_POST["ville"];
-        @$age=$_POST["age"]; @$sexe=$_POST["sexe"];  @$contact=$_POST["contact"];
-        @$specialite=$_POST['specialite'];
+        @$code=$_POST["cod"];
+        @$pays=$_POST["pays"]; @$adresse=$_POST["adr"]; @$ville=$_POST["ville"];
+        @$age=$_POST["age"]; @$sexe=$_POST["sex"];  @$contact=$_POST["tel"];
+        @$specialite=$_POST['spe'];
         if($_POST["pwd"]==$_POST["cpwd"]){
             $pwd=$_POST["pwd"];
         }else{
@@ -33,7 +33,8 @@ if(isset($_POST["ok"])){
         $stm=$connect->prepare($req1);
         $stm->bind_param("sssssssssiss",$nom,$prenom,$code,$email,$adresse,
             $pays,$ville,$specialite,$contact,$age,$sexe,$pwd);
-        if($stm->execute()){echo "Inscription avec succès";
+        if($stm->execute()){
+            echo "<script>alert('Inscription avec succès')</script>";
             header("Location:connMed.php");}
         else{echo "Désolé";}
 

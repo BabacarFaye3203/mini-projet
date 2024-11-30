@@ -19,18 +19,18 @@ if (isset($_POST["ok"])) {
     } else {
         echo "Identifiants incorrects.";
     }*/
-    $req="SELECT idM_Medecin,nomM_Medecin FROM `medecin` WHERE `emailM_Medecin`= ? AND `password`= ?";
+    $req="SELECT idM_Medecin,nomM_Medecin,prenomM_Medecin FROM `medecin` WHERE `emailM_Medecin`= ? AND `password`= ?";
     $stmt = $connect->prepare($req);
     $stmt->bind_param("ss", $email, $pwd);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id,$nom);
+        $stmt->bind_result($id,$nom,$pren);
         $stmt->fetch();
         @$_SESSION['idM_Medecin'] = $id;
         @$_SESSION['nomM_Medecin'] = $nom;
-        //@$_SESSION['prenomM_Medecin']=$pren;
+        @$_SESSION['prenomM_Medecin']=$pren;
         header("Location:medecin/profilMed.php"); // Redirection vers le profil du patient
         exit();
     } else {

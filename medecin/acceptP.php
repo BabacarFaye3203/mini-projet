@@ -36,4 +36,4 @@ VALUES ($idr,'$typ','$dat',$idP,$idM)
         }
     }
 }
-?>
+

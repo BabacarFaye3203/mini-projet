@@ -7,10 +7,16 @@
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/connMed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DatabaseCreat.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DatabaseCreat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/connexion_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/connexion_db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insMedecinAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/insMedecinAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/insPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inscMedecin.php" beforeDir="false" afterPath="$PROJECT_DIR$/inscMedecin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/Gest_RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/Gest_RDV.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/annulerRendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/annulerRendezVous.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/acceptP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/acceptP.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/profilMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/profilMed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/voirPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/voirPatient.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +57,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;emmanuel&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/RAMADJI CYRUS/Documents/GitHub/mini-projet/Patient&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/RAMADJI CYRUS/Documents/GitHub/mini-projet/medecin&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -71,13 +77,108 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\Patient" />
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\medecin" />
+      <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\Patient" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet" />
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\medecin" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DjangoTestsConfigurationType">
+      <module name="mini-projet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="mini-projet" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="mini-projet" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <module name="mini-projet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="mini-projet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <module name="mini-projet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="mini-projet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,7 +199,8 @@
       <workItem from="1732665785273" duration="5930000" />
       <workItem from="1732795488988" duration="28992000" />
       <workItem from="1732881943812" duration="12649000" />
-      <workItem from="1732895607352" duration="7869000" />
+      <workItem from="1732895607352" duration="12539000" />
+      <workItem from="1732919984111" duration="9846000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -164,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732818888964</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1732903564377</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732903564377</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

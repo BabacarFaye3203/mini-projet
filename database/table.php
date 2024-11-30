@@ -26,7 +26,8 @@ try{
     $connect->query($rq1);
     //echo"créer avec succes";
 }catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
+    //echo"erreur lors de la création de la base".$e->getMessage();
+    exit();
 }
 try{
     $rq1="
@@ -42,7 +43,8 @@ try{
     $connect->query($rq1);
    // echo"créer avec succes";
 }catch(Exception $e){
-    echo"<br>erreur lors de la création de la base ".$e->getMessage();
+    //echo"<br>erreur lors de la création de la base ".$e->getMessage();
+    exit();
 }
 try{
     $rq1="
@@ -64,7 +66,8 @@ try{
     $connect->query($rq1);
    // echo"créer avec succes";
 }catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
+    //echo"erreur lors de la création de la base".$e->getMessage();
+    exit();
 }
 try {
     $req1="
@@ -81,7 +84,8 @@ try {
     //echo "<br>Table creer";
 }
 catch (Exception $ex){
-    echo"erreur lors de la création de la base".$e->getMessage();
+    //echo"erreur lors de la création de la base".$e->getMessage();
+    exit();
 }
 try{
     $rq1="
@@ -91,7 +95,8 @@ try{
     $connect->query($rq1);
     //echo"créer avec succes";
 }catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
+    //echo"erreur lors de la création de la base".$e->getMessage();
+    exit();
 }
 try{
     $rq1="
@@ -105,7 +110,8 @@ try{
     $connect->query($rq1);
     //echo"créer avec succes";
 }catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
+    //echo"erreur lors de la création de la base".$e->getMessage();
+    exit();
 }
 
 

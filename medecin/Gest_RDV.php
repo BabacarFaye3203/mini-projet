@@ -73,6 +73,30 @@ include '../configuration/head.php';
     <div class="col">
         <div class="collapse multi-collapse" id="multiCollapseExample2">
             <div class="card card-body">
+                <?php echo "<div style='padding:10% 200px 0% 200px ;
+                margin:8% 23px 10% auto ;'>";?>
+                <?php if($result->num_rows > 0) { ?>
+                    <table class='table'>
+                        <thead class='table-dark'>
+                        <tr><th></th><th>Nom</th><th>Prénom</th><th>Details</th></tr>
+                        </thead>
+                        <?php ?>
+                        <?php $i=0; while ($row = $result->fetch_assoc()) { $i++;
+                            echo "<tr>
+            <td> $i</td>";?>
+                            <td><?= htmlspecialchars($row['nomPatient']); ?></td>
+                            <td><?= htmlspecialchars($row['pren']); ?></td>
+                            <td><form action="voirPatient.php" method="post" style="display: inline;">
+                                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+                                    <input type="submit" value="Details" class="btn btn-info" name="Detail">
+                                </form>
+                            </td>
+                            <?php echo "</tr>";?>
+                        <?php } ?>
+                    </table>
+                <?php }?>
+
+                <?php echo "</div>"?>
                 Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
             </div>
         </div>

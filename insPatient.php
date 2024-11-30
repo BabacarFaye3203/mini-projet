@@ -20,25 +20,25 @@ include 'configuration/head.php';
     <div class="container">
       <form action="" method="POST">
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control" name="cin" id="ecin" required><label for="ecin" class="form-label">cin</label>
+          <input type="text" class="form-control" name="cin" id="ecin" required><label for="ecin" class="form-label"><b>CIN</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control" name="nom" id="nom" required><label for="nom" class="form-label">nom</label>
+          <input type="text" class="form-control" name="nom" id="nom" required><label for="nom" class="form-label">Nom</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control"  name="prenom" id="prenom" required><label for="prenom" class="form-label">prenom</label>
+          <input type="text" class="form-control"  name="prenom" id="prenom" required><label for="prenom" class="form-label">Prénom</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control"  name="adresse" id="adresse" required><label for="adresse" class="form-label">adresse</label>
+          <input type="text" class="form-control"  name="adresse" id="adresse" required><label for="adresse" class="form-label">Adresse</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="email" class="form-control" id="exampleInputEmail1" name="email" required><label for="exampleInputEmail1" class="form-label">email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" required><label for="exampleInputEmail1" class="form-label">Email</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control" name="pays" id="pays" required><label for="pays" class="form-label">pays</label>
+          <input type="text" class="form-control" name="pays" id="pays" required><label for="pays" class="form-label">Pays</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control" name="ville" id="ville" required><label for="ville" class="form-label">ville</label>
+          <input type="text" class="form-control" name="ville" id="ville" required><label for="ville" class="form-label">Ville</label>
         </div>
           <div class="form-floating mb-3">
               <select name="gsang" class="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -76,8 +76,7 @@ include 'configuration/head.php';
               <label for="floatingSelect">Situation matrimoniale</label>
           </div>
         <div class="form-floating mb-3 mt-3">
-          <label for="profession" class="form-label">profession</label>
-          <input type="text" class="form-control"  name="profession" id="profession" required>
+          <input type="text" class="form-control"  name="profession" id="profession" required><label for="profession" class="form-label">profession</label>
         </div>
           <div class="form-floating mb-3">
               <select name="statut" class="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -91,22 +90,22 @@ include 'configuration/head.php';
               <label for="floatingSelect">Statut</label>
           </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="number" class="form-control"  name="age" id="age" required><label for="age" class="form-label">age</label>
+          <input type="number" class="form-control"  name="age" id="age" required><label for="age" class="form-label">Âge</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control" name="poids" id="poids" required><label for="poids" class="form-label">poids</label>
+          <input type="text" class="form-control" name="poids" id="poids" required><label for="poids" class="form-label">Poids</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="text" class="form-control"  name="taille" id="taille" required><label for="taille" class="form-label">taille</label>
+          <input type="text" class="form-control"  name="taille" id="taille" required><label for="taille" class="form-label">Taille</label>
         </div>
         <div class="form-floating mb-3 mt-3">
-          <input type="tel" class="form-control"  name="contact" id="contact" required><label for="contact" class="form-label">contact</label>
+          <input type="tel" class="form-control"  name="contact" id="contact" required><label for="contact" class="form-label">Contact</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" required><label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" required><label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="exampleInputPassword1" name="cpwd" required><label for="password" class="form-label">Confirmez votre Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="cpwd" required><label for="password" class="form-label">Confirmez votre Mot de Passe</label>
         </div>
         <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">
         <?php if(!empty($erreur)){ echo $erreur;}?>
