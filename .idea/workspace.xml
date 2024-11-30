@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/connMed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/DatabaseCreat.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/DatabaseCreat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/connexion_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/connexion_db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insMedecinAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/insMedecinAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/insPatient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inscMedecin.php" beforeDir="false" afterPath="$PROJECT_DIR$/inscMedecin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/Gest_RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/Gest_RDV.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/acceptP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/acceptP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/profilMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/profilMed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +190,7 @@
       <workItem from="1732795488988" duration="28992000" />
       <workItem from="1732881943812" duration="12649000" />
       <workItem from="1732895607352" duration="12539000" />
-      <workItem from="1732919984111" duration="9846000" />
+      <workItem from="1732919984111" duration="15812000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -274,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732903564377</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1732929929358</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732929929358</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
