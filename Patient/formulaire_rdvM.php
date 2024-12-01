@@ -9,7 +9,9 @@ $stmt->execute();
 $result0 = $stmt->get_result();
 $med= $result0->fetch_assoc();
 ?>
-
+<?php include '../configuration/headPatient.php';
+;?>
+<div style='padding:0 0 0 15% ;margin:8% 23px 10% auto ;'>
 <h2>Prendre rendez-vous avec Dr. <?= htmlspecialchars($med['n']); ?></h2>
 <h2>Informations sur le medecin</h2>
 <?php if ($med){ ?>
@@ -20,12 +22,16 @@ $med= $result0->fetch_assoc();
 <p><strong>Contact :</strong> <?= htmlspecialchars($med['c']); ?></p>
 <p><strong>Sexe :</strong> <?= htmlspecialchars($med['s']); ?></p>
 <p><strong>Age :</strong> <?= htmlspecialchars($med['age']); ?></p><br>
-<form action="enreg_rdvM.php" method="post" >
+<form action="enreg_rdvM.php" method="post" style="padding: 0 85% 0 0">
     <input type="hidden" name="idM" value="<?= $idM; ?>">
-    <label for="date">Date et heure :</label>
-    <input type="datetime-local" id="date" name="date_rdv" required>
+    <label  for="date">Date et heure :</label>
+    <input class="form-control" type="datetime-local" id="date" name="date_rdv"  required>
     <label for="motif">Motif</label>
-    <input type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
+    <input class="form-control" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
     <button type="submit" class="btn btn-primary">Confirmer</button>
 </form>
+</div>
 <?php }?>
+<?php
+include '../configuration/pied.php';
+?>

@@ -7,14 +7,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idP = $_SESSION['idP_Patient']; // ID du patient connecté
     $idM = $_POST['idM']; // ID du medecin sélectionné
     $date_rdv = $_POST['date_rdv']; // Date et heure du rdv
-    $motif=$_POST['motif'];//moitif du rdv
+    $motif=strip_tags(trim($_POST['motif']));//moitif du rdv
     if (!empty($idM) && !empty($date_rdv) && !empty($motif)) {
         // Insertion dans la table des rendez-vous
         $query = "INSERT INTO rendezvous (dateR_RendezVous, type_RendezVous, idP_Patient,idM_Medecin) VALUES (?, ?, ?,?)";
         $stmt = $connect->prepare($query);
-        $stmt->bind_param("ssii", $date_rdv,strip_tags($motif),$idP,$idM);
+        $stmt->bind_param("ssii",$date_rdv,$motif,$idP,$idM);
+        //Insertion pour pouvoir afficher les patients de chaque medecin
+        $query_insert = "INSERT INTO rdv_commun (idP,idM)
+        SELECT ?, ? from dual
+        WHERE NOT EXISTS (
+            SELECT 1 FROM rdv_commun WHERE idP = ? and idM = ?
+        )";
+        $stmt_insert = $connect->prepare($query_insert);
+        $stmt_insert->bind_param("iiii",$idP,$idM,$idP,$idM);
 
-        if ($stmt->execute()) {
+        if ($stmt->execute() && $stmt_insert->execute()) {
             // Redirige avec un message de succès
             header("Location: profilPatient.php?success=Rendez-vous ajouté avec succès");
             exit();

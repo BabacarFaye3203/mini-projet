@@ -11,22 +11,23 @@ if (!isset($_SESSION['idP_Patient'])) {
 
 $idP_Patient = $_SESSION['idP_Patient'];
 
-$req="SELECT idM_Medecin,nomM_Medecin as n,prenomM_Medecin as p,emailM_Medecin as e,
-       specialite_Medecin as sp,contactM_Medecin as c,sexe_Medecin as s FROM `medecin` ";
+$req="SELECT idM_Medecin,nomM_Medecin as n,prenomM_Medecin as p,
+       specialite_Medecin as sp FROM `medecin` ";
 $stmt = $connect->prepare($req);
 $stmt->execute();
 $result0 = $stmt->get_result();
-
+//***********************************************************************************
 $query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.specialite_Medecin as spe,
-       m.emailM_Medecin as mail,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM
-          FROM rendezvous rdv
-          JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
-          WHERE rdv.idP_Patient = ?
+       m.emailM_Medecin as mail,m.prenomM_Medecin as pren,rdv.idM as idM
+          FROM rdv_commun rdv
+          JOIN medecin m ON rdv.idM = m.idM_Medecin
+          WHERE rdv.idP = ?
           GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idP_Patient);
 $stmt->execute();
 $result = $stmt->get_result();
+//***********************************************************************************
 ?>
 <?php //include '../configuration/headPatient.php';
 include '../configuration/head.php';
@@ -51,10 +52,10 @@ include '../configuration/head.php';
             <td><?= htmlspecialchars($row['sp']); ?></td>
             <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
                     <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                    <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
+                    <input type="submit" class="btn btn-info" name="RDV" value="Voir profiles">
                 </form>
             </td>
-            </tr>
+           <?php echo "</tr>"?>
         <?php } ?>
     </table>
 <?php }?>
@@ -74,26 +75,38 @@ include '../configuration/head.php';
             <td><?= htmlspecialchars($row['mail']); ?></td>
             <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
                     <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                    <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
+                    <input type="submit" class="btn btn-info" name="RDV" value="Voir profile">
                 </form>
             </td>
-            </tr>
+            <?php echo "</tr>"?>
         <?php } ?>
     </table>
-<?php }?>
+<?php } else { ?>
+    <p class="text-center text-muted " style="background-color: red; font-size: x-large" >VOUS N'AVEZ AUCUN MEDECINT</p>
+<?php } ?>
 
 <!-- Modifier les informations personnelles du patient -->
-<h3>Modifier votre profil</h3>
+<h1>Modifier votre profil</h1>
 <form action="../Patient/modificationProfil.php" method="POST">
     <input type="text" name="nom" value="<?php echo $_SESSION['nomM_Medecin']; ?>" required>
     <input type="email" name="email" value="<?php echo $med['emailM_Medecin']; ?>" required>
     <button type="submit">Mettre à jour</button>
 </form>
-<h4>Documents</h4>
+<h1>Documents</h1>
+<h2>Historique medical</h2>
 <form action="/Patient/ajouter_document.php" method="POST" enctype="multipart/form-data">
-    <div class="mb-3">
+    <div class="mb-3 container">
+        <div class="form-floating mb-3">
+            <select name="type" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <option selected>Choisir</option>
+                <option value="Consultation">Consultation</option>
+                <option value="Résultats d'examen">Résultats d'examen</option>
+                <option value="Autre">Autre</option>
+            </select>
+            <label for="floatingSelect">Type de document</label>
+        </div>
         <input type="file" class="form-control"  name="document" required>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
     </div>
 </form>
 <?php echo "</div>"?>

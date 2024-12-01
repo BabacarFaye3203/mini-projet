@@ -1,7 +1,10 @@
 <?php
 session_start();
 include "../database/DatabaseCreat.php"; // Connexion à la base de données
-
+$result_rendez_vous=0;
+$result_rendez_vous1=0;
+$patient=false;
+$idM=$_SESSION['idM_Medecin'];
 // Vérifier si un patient est spécifié
 if (isset($_POST['Detail'])) {
     $idP = $_POST['idP'];
@@ -14,14 +17,31 @@ if (isset($_POST['Detail'])) {
     $result_patient = $stmt_patient->get_result();
     $patient = $result_patient->fetch_assoc();
     // Récupérer les rendez-vous du patient
-    $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ?";
+    $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,
+       dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=?";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
-    $stmt_rendez_vous->bind_param("i", $idP);
+    $stmt_rendez_vous->bind_param("ii", $idP,$idM);
     $stmt_rendez_vous->execute();
     $result_rendez_vous = $stmt_rendez_vous->get_result();
-} else {
-    echo "Aucun patient sélectionné.";
-    exit();
+}
+else if(isset($_POST['DetailRDVA'])){
+    $idP = $_POST['idP'];
+
+    // Récupérer les informations du patient
+    $query_patient = "SELECT nomP_Patient, prenomP, dat_naiss, emailP FROM patient WHERE idP_Patient = ?";
+    $stmt_patient = $connect->prepare($query_patient);
+    $stmt_patient->bind_param("i", $idP);
+    $stmt_patient->execute();
+    $result_patient = $stmt_patient->get_result();
+    $patient = $result_patient->fetch_assoc();
+    // Récupérer les rendez-vous du patient
+    $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,dateR_RendezVous as date_rdv,
+    idP_Patient ,type_RendezVous  as motif 
+    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=?";
+    $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
+    $stmt_rendez_vous->bind_param("ii", $idP,$idM);
+    $stmt_rendez_vous->execute();
+    $result_rendez_vous1 = $stmt_rendez_vous->get_result();
 }
 ?>
 <!DOCTYPE html>
@@ -30,10 +50,20 @@ if (isset($_POST['Detail'])) {
     <meta charset="UTF-8">
     <title>Détails du patient</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table{
+            margin-right: 5px;
+            text-align: center;
+
+        }
+    </style>
 </head>
-<body>
 <?php include '../configuration/headPatient.php';?>
-    <h2>Détails du patient</h2>
+<body>
+<div style='padding:10% 200px 0% 200px ;
+                margin:0% 23px 0% auto ;'>
+
+    <h2>Informations sur le patient</h2>
     <?php if ($patient){ ?>
         <p><strong>Nom :</strong> <?= htmlspecialchars($patient['nomP_Patient']); ?></p>
         <p><strong>Prénom :</strong> <?= htmlspecialchars($patient['prenomP']); ?></p>
@@ -42,7 +72,7 @@ if (isset($_POST['Detail'])) {
 
         <h3>Rendez-vous</h3>
 
-        <?php if ($result_rendez_vous->num_rows > 0){ ?>
+        <?php if (@$result_rendez_vous->num_rows > 0){ ?>
             <table class="table">
                 <thead class="table-dark">
                 <tr>
@@ -92,12 +122,27 @@ if (isset($_POST['Detail'])) {
                         </tr>
                 <?php } ?>
             </table>
-        <?php }else{ ?>
+            <?php } else if (@$result_rendez_vous1->num_rows > 0){ ?>
+                <table class="table">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Date</th><th>Motif</th>
+                    </tr>
+                    </thead>
+                    <?php while ($row = $result_rendez_vous1->fetch_assoc()){ ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['date_rdv']); ?></td>
+                            <td> <?= htmlspecialchars($row['motif']); ?></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            <?php }else{ ?>
             <p><script>window.alert("Aucun rendez-vous pour ce patient !!")</script></p>
         <?php } ?>
     <?php }else{ ?>
         <p><script>window.alert("Patient non trouvé !!")</script></p>
     <?php } ?>
+</div>
 </body>
 <?php
 include '../configuration/pied.php';

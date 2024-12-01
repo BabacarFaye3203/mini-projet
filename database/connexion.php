@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 if($_SESSION["autoriser"]="faux"){
     echo"veuillez d abord vous inscrire";
     header("location:insPatient.php");
@@ -7,6 +7,7 @@ if($_SESSION["autoriser"]="faux"){
 }else{
     header("profilpatient.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,5 +70,63 @@ if($_SESSION["autoriser"]="faux"){
       </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>*/
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Médecin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Profile Section -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-circle me-3" style="width: 100px; height: 100px;">
+                <div>
+                    <h2 class="h5 mb-0">Dr. Nom Prénom</h2>
+                    <p class="text-muted mb-0">Spécialité Médicale</p>
+                </div>
+            </div>
+            <button class="btn btn-primary">Déconnexion</button>
+        </div>
+
+        <!-- Dashboard Options -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Mes RDV</h5>
+                        <p class="card-text text-muted">Consultez et gérez vos rendez-vous.</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Mes Patients</h5>
+                        <p class="card-text text-muted">Visualisez la liste de vos patients.</p>
+                        <a href="#" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Mon Profil</h5>
+                        <p class="card-text text-muted">Mettez à jour vos informations personnelles.</p>
+                        <a href="#" class="btn btn-primary">Modifier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

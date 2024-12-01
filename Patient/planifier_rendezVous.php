@@ -4,7 +4,7 @@ session_start();
 
 include '../configuration/headPatient.php';
 if (isset($_POST['RDV'])) {
-    $idM = $_SESSION['idP_Patient'];
+    $idP = $_SESSION['idP_Patient'];
     $idM=$_POST["idM"];
     header("Location: formulaire_rdvM.php?idM=".$idM);
     exit();
