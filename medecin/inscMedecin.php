@@ -3,7 +3,7 @@ session_start();
 include ("insMedecinAction.php")
 ?>
 <?php
-include 'configuration/head.php'; 
+include '../configuration/docteur/headPatient.php';
 ?>
 <h3>Inscription</h3>
 
@@ -105,14 +105,14 @@ include 'configuration/head.php';
             <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" required><label for="exampleInputPassword1" class="form-label">Password</label>
         </div>
         <div class="form-floating mb-3">
-            <label for="exampleInputPassword1" class="form-label">Confirmez votre Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="cpwd" required>
+
+            <input type="password" class="form-control" id="exampleInputPassword1" name="cpwd" required><label for="exampleInputPassword1" class="form-label">Confirmez votre Password</label>
         </div>
         <input type="submit" class="btn btn-primary" value="S'inscrire" name="ok">
         <?php if(!empty($erreur)){ echo $erreur;}?>
     </form>
 </div>
 <?php
-include 'configuration/pied.php';
+include '../configuration/patient/piedPatient.php';
 ?>
 

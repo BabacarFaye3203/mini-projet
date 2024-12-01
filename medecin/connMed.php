@@ -1,7 +1,7 @@
 <?php
 session_start();
-//include 'database/DatabaseCreat.php'; //connexion à la base
-$connect = new mysqli('localhost', 'root', '', 'carnet');
+include '../database/DatabaseCreat.php'; //connexion à la base
+//$connect = new mysqli('localhost', 'root', '', 'carnet');
 if (isset($_POST["ok"])) {
     $email = strip_tags($_POST['email']);
     $pwd= strip_tags($_POST['pwd']);
@@ -40,7 +40,8 @@ if (isset($_POST["ok"])) {
 
 ?>
 <?php
-include 'configuration/head.php';?>
+include '../configuration/docteur/headPatient.php';
+?>
 <h3>Connexion en tant que medecin</h3><br>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,4 +68,6 @@ include 'configuration/head.php';?>
         <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">
       </form>
     </div>
-<?php include 'configuration/pied.php';?>
+<?php
+include '../configuration/patient/piedPatient.php';
+?>

@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php
-include '../configuration/headPatient.php';
+include '../configuration/patient/headPatient.php';
 
-include '../configuration/pied.php';
+include '../configuration/patient/piedPatient.php';
 ?>
 

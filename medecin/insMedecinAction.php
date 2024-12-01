@@ -1,5 +1,5 @@
 <?php
-include 'database/DatabaseCreat.php';
+include '../database/DatabaseCreat.php';
 $erreur="";
 if(isset($_POST["ok"])){
     if(empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])

@@ -58,7 +58,7 @@ $result = $stmt->get_result();
             <td><?= htmlspecialchars($row['p']); ?></td>
             <td><?= htmlspecialchars($row['e']); ?></td>
             <td><?= htmlspecialchars($row['ageP']); ?></td>
-            <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
+            <td><form action="rdv/planifier_rendezVous.php" method="post" style="display: inline;">
                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                     <input type="submit" class="btn btn-info" name="RDV" value="Voir le profile">
                 </form>
@@ -80,7 +80,7 @@ $result = $stmt->get_result();
                 <td><?= htmlspecialchars($row['nomPatient']); ?></td>
                 <td><?= htmlspecialchars($row['pren']); ?></td>
                 <td><?= htmlspecialchars($row['mail']); ?></td>
-                <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
+                <td><form action="rdv/planifier_rendezVous.php" method="post" style="display: inline;">
                         <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                         <input type="submit" class="btn btn-info" name="RDV" value="Voir le profile">
                     </form>
