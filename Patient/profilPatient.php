@@ -29,21 +29,21 @@ $stmt->execute();
 $result = $stmt->get_result();
 //***********************************************************************************
 ?>
-<?php //include '../configuration/headPatient.php';
-include '../configuration/head.php';
+<?php include '../configuration/patient/headPatient.php';
+//include '../configuration/head.php';
 ?>
 
 <h1>Bienvenue, <?php echo $_SESSION['nomP_Patient']; ?></h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 <?php echo "<div style='padding:10% 200px 0 200px ;
                 margin:8% 23px 10% auto ;'>";?>
-<a href="Medecins.php" style="text-underline: none"><h1>MEDECINS</h1></a>
+<a href="docteur/Medecins.php" style="text-underline: none"><h1>MEDECINS</h1></a>
 <!-- Modifier les informations personnelles du patient -->
 <a href="profile.php" style="text-underline: none"><h1 style="text-underline: none">PROFILE</h1></a>
-<a href="../doc/documents.php" style="text-underline: none"><h1 style="text-underline: none">DOCUMENTS</h1></a>
+<a href="doc/documents.php" style="text-underline: none"><h1 style="text-underline: none">DOCUMENTS</h1></a>
 <?php echo "</div>"?>
 <?php
-include '../configuration/pied.php';
+include '../configuration/patient/piedPatient.php';
 ?>
 
 

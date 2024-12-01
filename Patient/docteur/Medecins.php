@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-@include '../database/DatabaseCreat.php';
+include '../../database/DatabaseCreat.php';
 
 // Vérifier si le patient est connecté
 if (!isset($_SESSION['idP_Patient'])) {
@@ -29,13 +29,13 @@ $stmt->execute();
 $result = $stmt->get_result();
 //***********************************************************************************
 ?>
-<?php //include '../configuration/headPatient.php';
-include '../configuration/head.php';
-;?>
+<?php include '../../configuration/patient/headPatient.php';
+//include '../Patient/docteur/configuration/headPatient.php';
+?>
 
 <h1>Ici vous consultez tous les medecins ou vos medecins et pourrez prendre des rendez-vous</h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
-<?php echo "<div style='padding:10% 200px 0% 200px ;
+<?php echo "<div style='padding:10% 200px 0 200px ;
                 margin:8% 23px 10% auto ;'>";?>
 <h2>Liste des medecins</h2>
 <?php if($result0->num_rows > 0) { ?>
@@ -50,7 +50,7 @@ include '../configuration/head.php';
             <td><?= htmlspecialchars($row['n']); ?></td>
             <td><?= htmlspecialchars($row['p']); ?></td>
             <td><?= htmlspecialchars($row['sp']); ?></td>
-            <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
+            <td><form action="../rdv/planifier_rendezVous.php" method="post" style="display: inline;">
                     <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
                     <input type="submit" class="btn btn-info" name="RDV" value="Voir profiles">
                 </form>
@@ -73,7 +73,7 @@ include '../configuration/head.php';
             <td><?= htmlspecialchars($row['pren']); ?></td>
             <td><?= htmlspecialchars($row['spe']); ?></td>
             <td><?= htmlspecialchars($row['mail']); ?></td>
-            <td><form action="planifier_rendezVous.php" method="post" style="display: inline;">
+            <td><form action="../rdv/planifier_rendezVous.php" method="post" style="display: inline;">
                     <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
                     <input type="submit" class="btn btn-info" name="RDV" value="Voir profile">
                 </form>
@@ -88,7 +88,7 @@ include '../configuration/head.php';
 <!-- Modifier les informations personnelles du patient -->
 <?php echo "</div>"?>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/patient/piedPatient.php';
 ?>
 
 

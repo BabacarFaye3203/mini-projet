@@ -1,5 +1,5 @@
 <?php
-@include '../database/DatabaseCreat.php';
+@include '../../database/DatabaseCreat.php';
 $idM = $_GET['idM'];
 $req="SELECT idM_Medecin,nomM_Medecin as n,prenomM_Medecin as p,emailM_Medecin as e,
        specialite_Medecin as sp,contactM_Medecin as c,sexe_Medecin as s, age FROM `medecin` where idM_Medecin=?";
@@ -9,7 +9,7 @@ $stmt->execute();
 $result0 = $stmt->get_result();
 $med= $result0->fetch_assoc();
 ?>
-<?php include '../configuration/headPatient.php';
+<?php include '../../configuration/patient/headPatient.php';
 ;?>
 <div style='padding:0 0 0 15% ;margin:8% 23px 10% auto ;'>
 <h2>Prendre rendez-vous avec Dr. <?= htmlspecialchars($med['n']); ?></h2>
@@ -24,7 +24,7 @@ $med= $result0->fetch_assoc();
             <p><strong>Email :</strong> <?= htmlspecialchars($med['e']); ?></p></p>
         </div>
     </div>
-    <p><strong>Specialite :</strong> <?= htmlspecialchars($med['sp']); ?></p>
+    <p><strong>Spécialité :</strong> <?= htmlspecialchars($med['sp']); ?></p>
     <p><strong>Contact :</strong> <?= htmlspecialchars($med['c']); ?></p>
     <p><strong>Sexe :</strong> <?= htmlspecialchars($med['s']); ?></p>
     <p><strong>Age :</strong> <?= htmlspecialchars($med['age']); ?></p><br>
@@ -39,5 +39,5 @@ $med= $result0->fetch_assoc();
 </div>
 <?php }?>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/patient/piedPatient.php';
 ?>

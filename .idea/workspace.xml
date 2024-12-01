@@ -5,30 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patient/insPatientO.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/ajouter_document.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/annulerRendezVous.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/enreg_rdvM.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/formulaire_rdvM.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/planifier_rendezVous.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/connPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/connPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/doc/ajouter_document.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/doc/ajouter_document.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/doc/documents.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/doc/documents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/docteur/Medecins.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/docteur/Medecins.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/insPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/insPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/insPatientAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/insPatientAction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patient/profilPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/profilPatient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/supprimer_document.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/voirMed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/headPatient.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/piedPatient.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/connMed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/connPatient.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/insMedecinAction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/insPatientAction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inscMedecin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/Gest_RDV.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/acceptP.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/annulerRendezVous.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/enreg_rdv.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/formulaire_rdvP.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/planifier_rendezVous.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/voirPatient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/acceptM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/acceptM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/annulerRendezVousM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/annulerRendezVousM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/formulaire_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/formulaire_rdvM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/planifier_rendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/planifier_rendezVous.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insPatient.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +85,7 @@
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\medecin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\Patient" />
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet" />
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\medecin" />
     </key>
@@ -216,6 +209,7 @@
       <workItem from="1732995741952" duration="26760000" />
       <workItem from="1733052733462" duration="8219000" />
       <workItem from="1733061819876" duration="267000" />
+      <workItem from="1733062427037" duration="9743000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />

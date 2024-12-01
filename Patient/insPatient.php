@@ -1,111 +1,116 @@
 <?php
 session_start();
-if(isset($_POST["ok"])){
-  if(!empty($_POST)){
-    @$nom=$_POST["nom"];
-    if($_POST["pwd"]==$_POST["cpwd"]){
-      $pwd=$_POST["pwd"];
-    }else{
-      echo"les deux mdp doivent etre identiques";
-      exit;
-    }
-    if(!preg_match("#^[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.{1}[a-ZA-Z]{2,3}#",$_POST["email"])){
-      echo"email invalide";
-    }else{
-      $email=$_POST["email"];
-    }
-    $_SESSION["autoriser"]="faux";
-    header("location:connexion.php");
-
-  }else{
-    echo"toutes les pages doivent etre remplies";
-    exit;
-  }
-}
+  include 'insPatientAction.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
-    <style>
-      
-    nav{
-            background:rgb(0,100,0);
-            text-align: center;
-        }
-                {
-                    background:rgb(0,100,0);
-                    text-align: center;
-                }
 
-    </style>
-</head>
-<body>
-  <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ins</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-  </header>
+<?php
+include '../configuration/docteur/headPatient.php';
+?>
+<h3>Inscription du patient</h3>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    connexion
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li><a class="dropdown-item" href="connPatient.php">Me Connecter</a></li>
+  </ul>
+</div>
     <br><br>
     <div class="container">
-      <form method="post">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">cin</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="cin">
+      <form action="" method="POST">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" name="cin" id="ecin" required><label for="ecin" class="form-label"><b>CIN</label>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">nom</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="idp">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" name="nom" id="nom" required><label for="nom" class="form-label">Nom</label>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">prenom</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="prenom">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control"  name="prenom" id="prenom" required><label for="prenom" class="form-label">Prénom</label>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">adresse</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="adr">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control"  name="adresse" id="adresse" required><label for="adresse" class="form-label">Adresse</label>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+        <div class="form-floating mb-3 mt-3">
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" required><label for="exampleInputEmail1" class="form-label">Email</label>
         </div>
-
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" name="pwd">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" name="pays" id="pays" required><label for="pays" class="form-label">Pays</label>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Confirmez votre Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" name="cpwd">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" name="ville" id="ville" required><label for="ville" class="form-label">Ville</label>
+        </div>
+          <div class="form-floating mb-3">
+              <select name="gsang" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected>Choisir</option>
+                  <option value="A+">A+</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O-">O-</option>
+                  <option value="O+">O+</option>
+                  <option value="A">A</option>
+                  <option value="AB">AB</option>
+                  <option value="O">O</option>
+                  <option value="B">B</option>
+              </select>
+              <label for="floatingSelect">Groupe sanguin</label>
+          </div>
+          <div class="form-floating mb-3">
+              <select name="sexe" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected>Choisir</option>
+                  <option value="Homme">Homme</option>
+                  <option value="Femme">Femme</option>
+              </select>
+              <label for="floatingSelect">Sexe</label>
+          </div>
+          <div class="form-floating mb-3">
+              <select name="matri" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected>Choisir</option>
+                  <option value="Célibataire">Célibataire</option>
+                  <option value="Mariée">Mariée</option>
+                  <option value="Veuve">Veuve</option>
+                  <option value="Divorcée">Divorcée</option>
+              </select>
+              <label for="floatingSelect">Situation matrimoniale</label>
+          </div>
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control"  name="profession" id="profession" required><label for="profession" class="form-label">profession</label>
+        </div>
+          <div class="form-floating mb-3">
+              <select name="statut" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected>Choisir</option>
+                  <option value="Employé">Employé</option>
+                  <option value="Cadre">Cadre</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Chômeur">Chômeur</option>
+                  <option value="Étudiant(e)">Étudiant(e)</option>
+              </select>
+              <label for="floatingSelect">Statut</label>
+          </div>
+        <div class="form-floating mb-3 mt-3">
+          <input type="number" class="form-control"  name="age" id="age" required><label for="age" class="form-label">Âge</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" name="poids" id="poids" required><label for="poids" class="form-label">Poids</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control"  name="taille" id="taille" required><label for="taille" class="form-label">Taille</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+          <input type="tel" class="form-control"  name="contact" id="contact" required><label for="contact" class="form-label">Contact</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="exampleInputPassword1" name="pwd" required><label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="exampleInputPassword1" name="cpwd" required><label for="password" class="form-label">Confirmez votre Mot de Passe</label>
         </div>
         <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">
+        <?php if(!empty($erreur)){ echo $erreur;}?>
       </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+<?php
+include '../configuration/patient/piedPatient.php';
+?>

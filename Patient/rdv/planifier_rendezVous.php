@@ -1,8 +1,8 @@
 <?php
 session_start();
-@include '../database/DatabaseCreat.php';
+@include '../../database/DatabaseCreat.php';
 
-include '../configuration/headPatient.php';
+include '../../configuration/patient/headPatient.php';
 if (isset($_POST['RDV'])) {
     $idP = $_SESSION['idP_Patient'];
     $idM=$_POST["idM"];
@@ -11,5 +11,5 @@ if (isset($_POST['RDV'])) {
 }
 ?>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/patient/piedPatient.php';
 ?>

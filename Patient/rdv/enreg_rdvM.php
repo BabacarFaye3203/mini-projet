@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database/DatabaseCreat.php'; // Connexion à la base de données
+include '../../database/DatabaseCreat.php'; // Connexion à la base de données
 
 // Vérifie si les données ont été soumises
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute() && $stmt_insert->execute()) {
             // Redirige avec un message de succès
-            header("Location: profilPatient.php?success=Rendez-vous ajouté avec succès");
+            header("Location: ../rdv/profilPatient.php?success=Rendez-vous ajouté avec succès");
             exit();
         } else {
             echo "<script>window.alert('Erreur : Impossible de sauvegarder le rendez-vous.')</script>";

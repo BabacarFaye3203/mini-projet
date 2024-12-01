@@ -1,7 +1,7 @@
 <?php
 session_start();
-//include 'database/DatabaseCreat.php'; //connexion à la base
-$connect = new mysqli('localhost', 'root', '', 'carnet');
+include '../database/DatabaseCreat.php'; //connexion à la base
+//$connect = new mysqli('localhost', 'root', '', 'carnet');
   if (isset($_POST["ok"])){
     $email = $_POST['email'];
     $pwd= $_POST['pwd'];
@@ -29,7 +29,7 @@ $connect = new mysqli('localhost', 'root', '', 'carnet');
           $stmt->fetch();
           @$_SESSION['idP_Patient'] = $id;
           @$_SESSION['nomP_Patient'] = $nom;
-          header("Location:Patient/profilPatient.php"); // Redirection vers le profil du patient
+          header("Location:profilPatient.php"); // Redirection vers le profil du patient
           exit();
       } else {
           echo "Utilisateur non trouvé !";
@@ -38,14 +38,15 @@ $connect = new mysqli('localhost', 'root', '', 'carnet');
 }
 ?>
 <?php
-include 'configuration/head.php';?>
+include '../configuration/docteur/headPatient.php';
+?>
 <h3>Connexion en tant que patient</h3><br>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="/insPatient.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="insPatient.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
 
@@ -62,7 +63,9 @@ include 'configuration/head.php';?>
           <input type="password" class="form-control" name="pwd" id="exampleInputPassword1" required>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="je me connecte" name="ok">
+        <input type="submit" class="btn btn-success" value="Connexion" name="ok">
       </form>
     </div>
-<?php include 'configuration/pied.php';?>
+<?php
+include '../configuration/patient/piedPatient.php';
+?>

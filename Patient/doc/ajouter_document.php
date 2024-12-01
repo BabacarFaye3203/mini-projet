@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database/DatabaseCreat.php';
+include '../../database/DatabaseCreat.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $idP_Patient = $_SESSION['idP_Patient'];
@@ -35,7 +35,7 @@ VALUES (?,?,?)";
 ?>
 
 <?php
-include '../configuration/headPatient.php';
+include '../../configuration/patient/headPatient.php';
 ?>
 <form action="" method="post" enctype="multipart/form-data">
   <div class="mb-3">
@@ -44,4 +44,4 @@ include '../configuration/headPatient.php';
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<?php include '../configuration/pied.php';?>
+<?php include '../../configuration/patient/piedPatient.php';?>

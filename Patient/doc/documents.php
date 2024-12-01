@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-@include '../database/DatabaseCreat.php';
+@include '../../database/DatabaseCreat.php';
 
 // Vérifier si le patient est connecté
 if (!isset($_SESSION['idP_Patient'])) {
@@ -30,7 +30,7 @@ $result = $stmt->get_result();
 //***********************************************************************************
 ?>
 <?php //include '../configuration/headPatient.php';
-include '../configuration/head.php';
+include '../../configuration/patient/headPatient.php';
 ;?>
 
 <h1>Ici vous pouvez consultez vos documents ou les ajouter </h1>
@@ -38,7 +38,7 @@ include '../configuration/head.php';
 <?php echo "<div style='padding:10% 200px 0% 200px ;
                 margin:8% 23px 10% auto ;'>";?>
 <h2>Historique medical</h2>
-<form action="/Patient/ajouter_document.php" method="POST" enctype="multipart/form-data">
+<form action="ajouter_document.php" method="POST" enctype="multipart/form-data">
     <div class="mb-3 container">
         <div class="form-floating mb-3">
             <select name="type" class="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -55,7 +55,7 @@ include '../configuration/head.php';
 </form>
 <?php echo "</div>"?>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/patient/piedPatient.php';
 ?>
 
 
