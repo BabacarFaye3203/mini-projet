@@ -3,12 +3,12 @@ session_start();
 @include '../database/DatabaseCreat.php';
 
 // Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['idM_Medecin'])) {
-    header("Location: ../connMed.php");
+if (!isset($_SESSION['idP_Medecin'])) {
+    header("Location: ../conPatient.php");
     exit();
 }
 
-$idM_Med = $_SESSION['idM_Medecin'];
+$idP = $_SESSION['idP_Patient'];
 /*
 $req="SELECT * FROM `medecin` WHERE `idM_Medecin`= ? ";
 $stmt = $connect->prepare($req);
@@ -19,39 +19,39 @@ if ($stmt->num_rows > 0) {
     $med=  $stmt->fetch();
 }*/
 //****************--Selection des rendez-vous --******************************
-$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.emailP as mail,p.prenomP as pren,rdv.idP_Patient as idP,rdv.dateR_RendezVous as date_rdv
+$query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomM,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM,rdv.dateR_RendezVous as date_rdv
           FROM rendezvous rdv
-          JOIN patient p ON rdv.idP_Patient = p.idP_Patient
-          WHERE rdv.idM_Medecin = ?
-          GROUP BY p.idP_Patient";
+          JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
+          WHERE rdv.idP_Patient = ?
+          GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
-$stmt->bind_param("i", $idM_Med);
+$stmt->bind_param("i", $idP);
 $stmt->execute();
 $result = $stmt->get_result();
 //****************--Selection des rendez-vous acceptés--***********************
-$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.emailP as mail,p.prenomP as pren,rdv.idP as idP,rdv.dat as date_rdv
+$query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomM,m.prenomM_Medecin as pren,rdv.idM as idM,rdv.dat as date_rdv
           FROM rdva rdv
-          JOIN patient p ON rdv.idP = p.idP_Patient
-          WHERE rdv.idM = ?
-          GROUP BY p.idP_Patient";
+          JOIN medecin m ON rdv.idM = m.idM_Medecin
+          WHERE rdv.idP = ?
+          GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
-$stmt->bind_param("i", $idM_Med);
+$stmt->bind_param("i", $idP);
 $stmt->execute();
 $result2 = $stmt->get_result();
 //****************--Selection des rendez-vous annulés--************************
-$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.emailP as mail,p.prenomP as pren,rdv.idP as idP,rdv.dat as date_rdv
+$query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomM,m.prenomM_Medecin as pren,rdv.idM as idM,rdv.dat as date_rdv
           FROM rdvn rdv
-          JOIN patient p ON rdv.idP = p.idP_Patient
+          JOIN medecin m ON rdv.idM = m.idM_Medecin
           WHERE rdv.idM = ?
-          GROUP BY p.idP_Patient";
+          GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
-$stmt->bind_param("i", $idM_Med);
+$stmt->bind_param("i", $idP);
 $stmt->execute();
 $result3 = $stmt->get_result();
 ?>
 <?php //include '../configuration/headPatient.php';
 include '../configuration/head.php';
-;?>
+?>
 <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
@@ -93,11 +93,11 @@ include '../configuration/head.php';
                     <?php $i = 0; while ($row = $result->fetch_assoc()) { $i++; ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= htmlspecialchars($row['nomPatient']); ?></td>
+                            <td><?= htmlspecialchars($row['nomM']); ?></td>
                             <td><?= htmlspecialchars($row['pren']); ?></td>
                             <td>
-                                <form action="voirPatient.php" method="post" class="d-inline">
-                                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+                                <form action="voirMed.php" method="post" class="d-inline">
+                                    <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
                                     <button type="submit" class="btn btn-info btn-sm" name="Detail">Details</button>
                                 </form>
                             </td>
@@ -135,11 +135,11 @@ include '../configuration/head.php';
                     <?php $i = 0; while ($row = $result2->fetch_assoc()) { $i++; ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= htmlspecialchars($row['nomPatient']); ?></td>
+                            <td><?= htmlspecialchars($row['nomM']); ?></td>
                             <td><?= htmlspecialchars($row['pren']); ?></td>
                             <td>
-                                <form action="voirPatient.php" method="post" class="d-inline">
-                                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+                                <form action="voirMed.php" method="post" class="d-inline">
+                                    <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
                                     <button type="submit" class="btn btn-info btn-sm" name="DetailRDVA">Details</button>
                                 </form>
                             </td>
@@ -177,11 +177,11 @@ include '../configuration/head.php';
                     <?php $i = 0; while ($row = $result3->fetch_assoc()) { $i++; ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= htmlspecialchars($row['nomPatient']); ?></td>
+                            <td><?= htmlspecialchars($row['nomM']); ?></td>
                             <td><?= htmlspecialchars($row['pren']); ?></td>
                             <td>
-                                <form action="voirPatient.php" method="post" class="d-inline">
-                                    <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
+                                <form action="voirMed.php" method="post" class="d-inline">
+                                    <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
                                     <button type="submit" class="btn btn-info btn-sm" name="DetailRDVA">Details</button>
                                 </form>
                             </td>

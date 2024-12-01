@@ -31,16 +31,28 @@ $result = $stmt->get_result();
 ?>
 <?php //include '../configuration/headPatient.php';
 include '../configuration/head.php';
-?>
+;?>
 
-<h1>Bienvenue, <?php echo $_SESSION['nomP_Patient']; ?></h1>
+<h1>Ici vous pouvez consultez vos documents ou les ajouter </h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
-<?php echo "<div style='padding:10% 200px 0 200px ;
+<?php echo "<div style='padding:10% 200px 0% 200px ;
                 margin:8% 23px 10% auto ;'>";?>
-<a href="Medecins.php" style="text-underline: none"><h1>MEDECINS</h1></a>
-<!-- Modifier les informations personnelles du patient -->
-<a href="profile.php" style="text-underline: none"><h1 style="text-underline: none">PROFILE</h1></a>
-<a href="../doc/documents.php" style="text-underline: none"><h1 style="text-underline: none">DOCUMENTS</h1></a>
+<h2>Historique medical</h2>
+<form action="/Patient/ajouter_document.php" method="POST" enctype="multipart/form-data">
+    <div class="mb-3 container">
+        <div class="form-floating mb-3">
+            <select name="type" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <option selected>Choisir</option>
+                <option value="Consultation">Consultation</option>
+                <option value="Résultats d'examen">Résultats d'examen</option>
+                <option value="Autre">Autre</option>
+            </select>
+            <label for="floatingSelect">Type de document</label>
+        </div>
+        <input type="file" class="form-control"  name="document" required>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+</form>
 <?php echo "</div>"?>
 <?php
 include '../configuration/pied.php';

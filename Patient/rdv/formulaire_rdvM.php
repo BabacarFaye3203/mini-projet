@@ -15,13 +15,19 @@ $med= $result0->fetch_assoc();
 <h2>Prendre rendez-vous avec Dr. <?= htmlspecialchars($med['n']); ?></h2>
 <h2>Informations sur le medecin</h2>
 <?php if ($med){ ?>
-<p><strong>Nom :</strong> <?= htmlspecialchars($med['n']); ?></p>
-<p><strong>Prénom :</strong> <?= htmlspecialchars($med['p']); ?></p>
-<p><strong>Email :</strong> <?= htmlspecialchars($med['e']); ?></p>
-<p><strong>Specialite :</strong> <?= htmlspecialchars($med['sp']); ?></p>
-<p><strong>Contact :</strong> <?= htmlspecialchars($med['c']); ?></p>
-<p><strong>Sexe :</strong> <?= htmlspecialchars($med['s']); ?></p>
-<p><strong>Age :</strong> <?= htmlspecialchars($med['age']); ?></p><br>
+
+    <div class="card" style="width: 20rem;margin:8% 500px 1% auto ; ">
+        <img src="img.jpg" class="card-img-top"  >
+        <div class="card-body">
+            <h6 class="card-title"><?= htmlspecialchars($med['n']); ?> <?= htmlspecialchars($med['p']); ?> </h6>
+            <p class="card-text"><p><strong>Âge :</strong> <?= htmlspecialchars($med['age']); ?></p>
+            <p><strong>Email :</strong> <?= htmlspecialchars($med['e']); ?></p></p>
+        </div>
+    </div>
+    <p><strong>Specialite :</strong> <?= htmlspecialchars($med['sp']); ?></p>
+    <p><strong>Contact :</strong> <?= htmlspecialchars($med['c']); ?></p>
+    <p><strong>Sexe :</strong> <?= htmlspecialchars($med['s']); ?></p>
+    <p><strong>Age :</strong> <?= htmlspecialchars($med['age']); ?></p><br>
 <form action="enreg_rdvM.php" method="post" style="padding: 0 85% 0 0">
     <input type="hidden" name="idM" value="<?= $idM; ?>">
     <label  for="date">Date et heure :</label>

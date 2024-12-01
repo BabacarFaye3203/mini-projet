@@ -13,9 +13,9 @@ if (isset($_POST['Accepter'])) {
 VALUES ($idr,'$typ','$dat',$idP,$idM)
 ";
     //mises a jours
-    $query_rendez_vous0 = "DELETE FROM rendezvous WHERE dateR_RendezVous=? and idP_Patient=?;";
+    $query_rendez_vous0 = "DELETE FROM rendezvous WHERE idR_RendezVous=? and  dateR_RendezVous=? and idP_Patient=?;";
     $stmt_supp = $connect->prepare($query_rendez_vous0);
-    $stmt_supp->bind_param("si", $dat, $idP);
+    $stmt_supp->bind_param("isi",$idr, $dat, $idP);
 //mise a jours
     $query_rendez_vous0 = "DELETE FROM rdva WHERE dat< LOCALTIME and idP = ?;";
     //$connect->query($query_rendez_vous0);
