@@ -31,7 +31,7 @@ if (isset($_POST["ok"])) {
         @$_SESSION['idM_Medecin'] = $id;
         @$_SESSION['nomM_Medecin'] = $nom;
         @$_SESSION['prenomM_Medecin']=$pren;
-        header("Location:medecin/profilMed.php"); // Redirection vers le profil du patient
+        header("Location:profilMed.php"); // Redirection vers le profil du medecin
         exit();
     } else {
         echo "Identifiants incorrects !";

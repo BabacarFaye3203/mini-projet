@@ -46,7 +46,7 @@ $result = $stmt->get_result();
                 margin:8% 23px 10% auto ;'>";?>
 <h1>Liste des patients</h1>
 <?php if($result0->num_rows > 0) { ?>
-    <table class='table'>
+    <table class='table' style="margin: 0 15px 0 0 ;">
         <thead class='table-dark'>
         <tr><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Âge</th><th>Action</th></tr>
         </thead>
@@ -69,7 +69,7 @@ $result = $stmt->get_result();
 <?php }?>
 <h1>Mes patients</h1>
 <?php if($result->num_rows > 0) { ?>
-    <table class='table'>
+    <table class='table' style="margin: 0 15px 0 0 ;">
         <thead class='table-dark'>
         <tr><th></th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th></tr>
         </thead>
@@ -93,52 +93,8 @@ $result = $stmt->get_result();
     <p class="text-center text-muted " style="background-color: red; font-size: x-large" >VOUS N'AVEZ AUCUN PATIENT</p>
 <?php } ?>
 <!-- Modifier les informations personnelles du patient -->
-<h3>Modifier votre profil</h3>
-<?php if ($res->num_rows > 0) {?>
-<?php if($med=  $res->fetch_assoc()){?>
-        <div class="container">
-            <form action="../medecin/modifProfilMed.php" method="POST">
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" name="cod" id="cod" value="<?php echo $med['code']; ?>" required><label for="cod" class="form-label">Matricule</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" name="nom" id="nom" value="<?php echo $_SESSION['nomM_Medecin']; ?>" disabled><label for="nom" class="form-label">Nom</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control"  name="prenom" id="prenom" value="<?php echo $med['pre']; ?>" disabled><label for="prenom" class="form-label">Prénom</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="<?php echo $med['email']; ?>" required><label for="exampleInputEmail1" class="form-label">Email</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control"  name="adr" id="adresse" value="<?php echo $med['addr']; ?>" required><label for="adresse" class="form-label">adresse</label>
-                </div>
-
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" name="pays" id="pays" value="<?php echo $med['pays']; ?>" required><label for="pays" class="form-label">Pays</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" name="ville" id="ville" value="<?php echo $med['ville']; ?>" required><label for="ville" class="form-label">Ville</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control"  name="spe" id="spe" value="<?php echo $med['spe']; ?>" disabled><label for="spe" class="form-label">Spécialité</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control"  name="age" id="age" value="<?php echo $med['age']; ?>" required><label for="age" class="form-label">Âge</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control"  name="sex" id="sex" value="<?php echo $med['sex']; ?>" disabled><label for="sex" class="form-label">Sexe</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control"  name="tel" id="contact" value="<?php echo $med['tel']; ?>" required><label for="contact" class="form-label">contact</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="exampleInputPassword1" name="pwd" value="<?php echo $med['pwd']; ?>" required><label for="exampleInputPassword1" class="form-label">Password</label>
-                </div>
-                <button type="submit" class="btn btn-info">Mettre à jour</button>
-            </form>
-        </div>
-<h4>Documents</h4>
+<a href="profile.php"><h3>PROFILE</h3></a>
+<a href="#"><h4>Documents</h4></a>
 <form action="/Patient/ajouter_document.php" method="POST" enctype="multipart/form-data">
     <div class="mb-3 container">
         <div class="form-floating mb-3">
@@ -154,11 +110,9 @@ $result = $stmt->get_result();
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </div>
 </form>
-<?php }
-}?>
 <!-- Gestion des rendez-vous -->
 
-<a href="Gest_RDV.php"><h3>Mes rendez-vous</h3></a>
+<a href="rdv/Gest_RDV.php"><h3>Mes rendez-vous</h3></a>
 
 <?php echo "</div>"?>
 <?php

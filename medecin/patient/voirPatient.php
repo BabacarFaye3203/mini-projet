@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../database/DatabaseCreat.php"; // Connexion à la base de données
+include "../../database/DatabaseCreat.php"; // Connexion à la base de données
 $result_rendez_vous=0;
 $result_rendez_vous1=0;
 $patient=false;
@@ -54,11 +54,10 @@ else if(isset($_POST['DetailRDVA'])){
         table{
             margin-right: 5px;
             text-align: center;
-
         }
     </style>
 </head>
-<?php include '../configuration/headPatient.php';?>
+<?php include '../../configuration/patient/headPatient.php';?>
 <body>
 <div style='padding:10% 200px 0% 200px ;
                 margin:0% 23px 0% auto ;'>
@@ -84,14 +83,14 @@ else if(isset($_POST['DetailRDVA'])){
                     <td><?= htmlspecialchars($row['date_rdv']); ?></td>
                     <td> <?= htmlspecialchars($row['motif']); ?></td>
                             <td>
-                                <form method="post" action="acceptP.php">
+                                <form method="post" action="../rdv/acceptP.php">
                                     <input type="hidden" name="dat" value="<?= $row['date_rdv']; ?>">
                                     <input type="hidden" name="idr" value="<?= $row['idr']; ?>">
                                     <input type="hidden" name="typ" value="<?= $row['typ']; ?>">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                                     <input type="submit" value="Accepter" class="btn btn-success" name="Accepter">
                                 </form>
-                                <form action="annulerRendezVous.php" method="post" style="display: inline;">
+                                <form action="../rdv/annulerRendezVous.php" method="post" style="display: inline;">
                                     <input type="hidden" name="idr" value="<?= $row['idr']; ?>">
                                     <input type="hidden" name="typ" value="<?= $row['typ']; ?>">
                                     <input type="hidden" name="dat" value="<?= $row['date_rdv']; ?>">
@@ -145,6 +144,6 @@ else if(isset($_POST['DetailRDVA'])){
 </div>
 </body>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/pied.php';
 ?>
 </html>

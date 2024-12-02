@@ -1,6 +1,6 @@
 <?php
 session_start();
-@include '../database/DatabaseCreat.php';
+@include '../../database/DatabaseCreat.php';
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['idM_Medecin'])) {
@@ -50,7 +50,7 @@ $stmt->execute();
 $result3 = $stmt->get_result();
 ?>
 <?php //include '../configuration/headPatient.php';
-include '../configuration/head.php';
+include '../../configuration/head.php';
 ?>
 <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -96,7 +96,7 @@ include '../configuration/head.php';
                             <td><?= htmlspecialchars($row['nomPatient']); ?></td>
                             <td><?= htmlspecialchars($row['pren']); ?></td>
                             <td>
-                                <form action="voirPatient.php" method="post" class="d-inline">
+                                <form action="../patient/voirPatient.php" method="post" class="d-inline">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                                     <button type="submit" class="btn btn-info btn-sm" name="Detail">Details</button>
                                 </form>
@@ -138,7 +138,7 @@ include '../configuration/head.php';
                             <td><?= htmlspecialchars($row['nomPatient']); ?></td>
                             <td><?= htmlspecialchars($row['pren']); ?></td>
                             <td>
-                                <form action="voirPatient.php" method="post" class="d-inline">
+                                <form action="../patient/voirPatient.php" method="post" class="d-inline">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                                     <button type="submit" class="btn btn-info btn-sm" name="DetailRDVA">Details</button>
                                 </form>
@@ -180,7 +180,7 @@ include '../configuration/head.php';
                             <td><?= htmlspecialchars($row['nomPatient']); ?></td>
                             <td><?= htmlspecialchars($row['pren']); ?></td>
                             <td>
-                                <form action="voirPatient.php" method="post" class="d-inline">
+                                <form action="../patient/voirPatient.php" method="post" class="d-inline">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                                     <button type="submit" class="btn btn-info btn-sm" name="DetailRDVA">Details</button>
                                 </form>
@@ -199,7 +199,7 @@ include '../configuration/head.php';
 <?php
 ?>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/pied.php';
 ?>
 
 

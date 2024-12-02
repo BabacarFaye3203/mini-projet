@@ -1,6 +1,6 @@
 <?php
 session_start();
-@include '../database/DatabaseCreat.php';
+@include '../../database/DatabaseCreat.php';
 $idP = $_GET['idP'];
 $query_patient = "SELECT nomP_Patient, prenomP, ageP, emailP,sexeP FROM patient WHERE idP_Patient = ?";
 $stmt_patient = $connect->prepare($query_patient);
@@ -10,7 +10,7 @@ $result_patient = $stmt_patient->get_result();
 $patient = $result_patient->fetch_assoc();
 ?>
 <?php
-include '../configuration/headPatient.php';
+include '../../configuration/patient/headPatient.php';
 ?>
 <div style='padding:0 0 0 15% ;margin:8% 23px 10% auto ;'>
 
@@ -41,6 +41,6 @@ include '../configuration/headPatient.php';
 </div>
 <?php }?>
 <?php
-include '../configuration/pied.php';
+include '../../configuration/pied.php';
 ?>
 
