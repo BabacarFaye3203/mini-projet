@@ -178,27 +178,3 @@ create index idP_Patient
     exit();
 }
 
-/*
-try{
-    $rq1="INSERT INTO `patient` (`idP_Patient`,
-    `nomP_Patient`,
-    `prenomP`,
-    `adresseP`,
-    `emailP`,
-    `paysP`,
-    `villeP`,
-    `groupe_sanguin_Patient`,
-    `situation_matri_Patient`,
-    `profession_Patient`,
-    `statut_Patient`,
-    `ageP`,
-    `sexeP`,
-    `poids_Patient`,
-    `taille_Patient`,
-    `contactP`,
-    `CIN_Patient`) VALUES ('1', 'faye', 'babacar', 'doha', 'bf322003@gmail.com', 'maroc', 'beni mellal', 'A+', 'celibataire', 'etudiant', 'etudiant', '21', 'Masculin', '81', '189', '06193364', '147');";
-    mysqli_query($connect,$rq1);
-    //echo"créer avec succes";
-}catch(Exception $e){
-    echo"erreur lors de la création de la base".$e->getMessage();
-}*/
