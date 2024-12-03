@@ -153,25 +153,13 @@ try {
     exit();
 }
 try {
-    $req1="create table rendezvous
+    $req1="create table rdv_commun
 (
-    idR_RendezVous   int auto_increment
+    id  int auto_increment
         primary key,
-    dateR_RendezVous datetime    null,
-    type_RendezVous  varchar(20) null,
-    idP_Patient      int         null,
-    idM_Medecin      int         null,
-    constraint rendezvous_ibfk_1
-        foreign key (idP_Patient) references patient (idP_Patient),
-    constraint rendezvous_ibfk_2
-        foreign key (idM_Medecin) references medecin (idM_Medecin)
+    idP int not null,
+    idM int not null
 );
-
-create index idM_Medecin
-    on rendezvous (idM_Medecin);
-
-create index idP_Patient
-    on rendezvous (idP_Patient);
 ";
     $connect->query($rq1);
 }catch (Exception $e){
