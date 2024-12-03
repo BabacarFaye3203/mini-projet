@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../../database/DatabaseCreat.php';
-if (isset($_POST['Annuler'])) {
+if (isset($_POST['Annuler'])) {k
     $idM=$_SESSION['idM_Medecin'];
     $idP = $_POST['idP'];
     $dat = $_POST['dat'];

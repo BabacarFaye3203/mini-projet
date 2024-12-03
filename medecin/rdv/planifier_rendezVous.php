@@ -12,7 +12,7 @@ if (isset($_POST['RDV'])) {
     exit();
 
 }
-?>
+?>,
 <?php
 include '../../configuration/patient/pied.php';
 ?>

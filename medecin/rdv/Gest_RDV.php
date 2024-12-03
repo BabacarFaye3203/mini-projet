@@ -191,7 +191,7 @@ include '../../configuration/head.php';
                 </table>
             </div>
         <?php } else { ?>
-            <p class="text-center text-muted">Aucun rendez-vous annulé trouvé.</p>
+            <p class="text-center text-muted">Aucun rendez-vous annulé trouvé.</p>l
         <?php } ?>
     </div>
 </div>

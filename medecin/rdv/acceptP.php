@@ -5,7 +5,7 @@ if (isset($_POST['Accepter'])) {
     $idM = $_SESSION['idM_Medecin'];
     $idP = $_POST['idP'];
     $dat = $_POST['dat'];
-    $idr = $_POST['idr'];
+    $idr = $_POST['idr'];o
     $typ = $_POST['typ'];
 
     //Insertion des RDV acceptés

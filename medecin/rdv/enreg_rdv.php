@@ -5,7 +5,7 @@ include '../database/DatabaseCreat.php'; // Connexion à la base de données
 // Vérifie si les données ont été soumises
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idM = $_SESSION['idM_Medecin']; // ID du medecin connecté
-    $idP = $_POST['idP']; // ID du patient sélectionné
+    $idP = $_POST['idP']; // ID du patient sélectionnék
     $date_rdv = $_POST['date_rdv']; // Date et heure du rdv
     $motif=$_POST['motif'];//moitif du rdv
     if (!empty($idP) && !empty($date_rdv) && !empty($motif)) {
