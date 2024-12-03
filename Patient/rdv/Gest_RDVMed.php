@@ -48,6 +48,17 @@ $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idP);
 $stmt->execute();
 $result3 = $stmt->get_result();
+//
+$query_rendez_vous0 = "DELETE FROM rdva WHERE dat< LOCALTIME and idP = ?;";
+//$connect->query($query_rendez_vous0);
+$stmt_a = $connect->prepare($query_rendez_vous0);
+$stmt_a->bind_param("i", $idP);
+$stmt_a->execute();
+try {
+    $connect->query($query);
+}catch (Exception $e){
+    exit();
+}
 ?>
 <?php //include '../configuration/headPatient.php';
 include '../../configuration/patient/headPatient.php';
