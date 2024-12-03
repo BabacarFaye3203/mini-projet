@@ -13,9 +13,25 @@ if (isset($_SESSION['idP_Patient'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idP_Patient = $_SESSION['idP_Patient'];
+    @$cin = htmlspecialchars($_POST["cin"]);
+    @$nom = htmlspecialchars($_POST["nom"]);
+    @$prenom = htmlspecialchars($_POST["prenom"]);
+    @$email = htmlspecialchars($_POST["email"]);
+    @$contact = htmlspecialchars($_POST["contact"]);
+    @$sexe = htmlspecialchars($_POST["sexe"]);
+    @$taille = htmlspecialchars($_POST["taille"]);
+    @$pays = htmlspecialchars($_POST["pays"]);
+    @$profession = htmlspecialchars($_POST["profession"]);
+    @$adresse = htmlspecialchars($_POST["adresse"]);
+    @$ville = htmlspecialchars($_POST["ville"]);
+    @$matrimo = htmlspecialchars($_POST["matrimo"]);
+    @$gsg = htmlspecialchars($_POST["gsg"]);
+    @$age = htmlspecialchars($_POST["age"]);
+    @$statut = htmlspecialchars($_POST["statut"]);
+    @$poids = htmlspecialchars($_POST["poids"]);
     // Préparer la requête
     $stmt = $connect->prepare("SELECT * FROM patient WHERE idP_Patient = ?");
-    $stmt->bind_param("i", $idP_Patient); 
+    $stmt->bind_param("i", $idP_Patient);
 
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -30,8 +46,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Préparer la requête
-    $stmt = $connect->prepare("UPDATE patient SET nomP_Patient = ?, emailP = ?  WHERE idP_Patient = ?");
-    $stmt->bind_param("sss", $nom,$email, $idP_Patient);
+    $stmt = $connect->prepare(" UPDATE patient 
+    SET 
+        CIN_Patient = ?,
+        nomP_Patient = ?,
+        prenomP = ?, 
+        emailP = ?, 
+        contactP = ?, 
+        sexeP = ?, 
+        taille_Patient = ?, 
+        paysP = ?, 
+        profession_Patient = ?, 
+        adresseP = ?, 
+        villeP = ?, 
+        situation_matri_patient = ?, 
+        groupe_sanguin_Patient = ?, 
+        ageP = ?, 
+        statut_Patient = ?, 
+        poids_Patient = ?
+    WHERE idP_Patient = ?
+");
+$stmt->bind_param(
+    "ssssssssssssssssi",
+
+    $cin,
+$nom,
+$prenom,
+    $email,
+    $contact,
+    $sexe,
+    $taille,
+    $pays,
+    $profession,
+    $adresse,
+    $ville,
+    $matrimo,
+    $gsg,
+    $age,
+    $statut,
+    $poids,
+    $idP_Patient
+);
 
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -71,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.php">
             <img src="../images/CSN Contact.webp" alt="Logo CSN" class="logo-navbar">
         </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,10 +135,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../index.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="accueilPatient.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ProfilPatient">Profil</a>
+          <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="planifier_rendezVous.php">Mes Rendez-vous</a>
@@ -91,17 +146,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li class="nav-item">
           <a class="nav-link" href="mesDocuments.php">Mes documents</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="listeMed.php">La liste des medecins</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-<h1>Bienvenue, <?php echo $patient['nomP_Patient'].". Ici, vous pouvez planifiez des rendez-vous avec vos medecins préférés !"; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Déconnexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="deconnexion.php" id="connbutton">Patient</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Se Déconnecter</a></li>
   </ul>
 </div>
 
@@ -117,18 +174,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 
-
+  <div class="text-center">
+            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
+            <p> Ici, vous pouvez mettre a jour vos informations personnelles !</p>
+  </div>
 
 
  </section>
 <form action="modificationProfil.php" method="POST" class="container mt-4">
     <div class="mb-3">
         <label for="cin" class="form-label">ID:</label>
-        <input type="tel" class="form-control" id="cin" value="<?php echo $patient["idP_Patient"]; ?>" disabled>
+        <input type="tel" class="form-control"  id="cin" value="<?php echo $patient["idP_Patient"]; ?>" disabled>
     </div>
     <div class="mb-3">
         <label for="cin" class="form-label">CIN:</label>
-        <input type="tel" class="form-control" id="cin" value="<?php echo $patient["CIN_Patient"]; ?>" >
+        <input type="tel" class="form-control" id="cin" name="cin" value="<?php echo $patient["CIN_Patient"]; ?>" >
     </div>
     <div class="mb-3">
         <label for="nom" class="form-label">NOM:</label>
@@ -140,55 +200,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="mb-3">
         <label for="prenom" class="form-label">Prénom:</label>
-        <input type="text" class="form-control" id="prenom" value="<?php echo $patient["prenomP"]; ?>">
+        <input type="text" class="form-control" name="prenom" id="prenom"  value="<?php echo $patient["prenomP"]; ?>">
     </div>
     <div class="mb-3">
         <label for="adresse" class="form-label">Adresse:</label>
-        <input type="text" class="form-control" id="adresse" value="<?php echo $patient["adresseP"]; ?>">
+        <input type="text" class="form-control" name="adresse" id="adresse" value="<?php echo $patient["adresseP"]; ?>">
     </div>
     <div class="mb-3">
         <label for="pays" class="form-label">Pays:</label>
-        <input type="text" class="form-control" id="pays" value="<?php echo $patient["paysP"]; ?>">
+        <input type="text" class="form-control" name="pays" id="pays" value="<?php echo $patient["paysP"]; ?>">
     </div>
     <div class="mb-3">
         <label for="ville" class="form-label">Ville:</label>
-        <input type="text" class="form-control" id="ville" value="<?php echo $patient["villeP"]; ?>">
+        <input type="text" class="form-control" name="ville" id="ville" value="<?php echo $patient["villeP"]; ?>">
     </div>
     <div class="mb-3">
         <label for="gsang" class="form-label">Groupe sanguin:</label>
-        <input type="text" class="form-control" id="gsang" value="<?php echo $patient["groupe_sanguin_Patient"]; ?>">
+        <input type="text" class="form-control" name="gsg" id="gsang" value="<?php echo $patient["groupe_sanguin_Patient"]; ?>">
     </div>
     <div class="mb-3">
         <label for="matrimonialle" class="form-label">Situation matrimoniale:</label>
-        <input type="text" class="form-control" id="matrimonialle" value="<?php echo $patient["situation_matri_Patient"]; ?>">
+        <input type="text" class="form-control" name="matrimo" id="matrimonialle" value="<?php echo $patient["situation_matri_Patient"]; ?>">
     </div>
     <div class="mb-3">
         <label for="profession" class="form-label">Profession:</label>
-        <input type="text" class="form-control" id="profession" value="<?php echo $patient["profession_Patient"]; ?>">
+        <input type="text" class="form-control" name="profession" id="profession" value="<?php echo $patient["profession_Patient"]; ?>">
     </div>
     <div class="mb-3">
         <label for="statut" class="form-label">Statut:</label>
-        <input type="text" class="form-control" id="statut" value="<?php echo $patient["statut_Patient"]; ?>">
+        <input type="text" class="form-control" name="statut" id="statut" value="<?php echo $patient["statut_Patient"]; ?>">
     </div>
     <div class="mb-3">
         <label for="age" class="form-label">Âge:</label>
-        <input type="number" class="form-control" id="age" value="<?php echo $patient["ageP"]; ?>">
+        <input type="number" class="form-control" name="age" id="age" value="<?php echo $patient["ageP"]; ?>">
     </div>
     <div class="mb-3">
         <label for="sexe" class="form-label">Sexe:</label>
-        <input type="text" class="form-control" id="sexe" value="<?php echo $patient["sexeP"]; ?>">
+        <input type="text" class="form-control" name="sexe" id="sexe" value="<?php echo $patient["sexeP"]; ?>">
     </div>
     <div class="mb-3">
         <label for="poids" class="form-label">Poids:</label>
-        <input type="text" class="form-control" id="poids" value="<?php echo $patient["poids_Patient"]; ?>">
+        <input type="text" class="form-control" name="poids" id="poids" value="<?php echo $patient["poids_Patient"]; ?>">
     </div>
     <div class="mb-3">
         <label for="taille" class="form-label">Taille:</label>
-        <input type="text" class="form-control" id="taille" value="<?php echo $patient["taille_Patient"]; ?>">
+        <input type="text" class="form-control" name="taille" id="taille" value="<?php echo $patient["taille_Patient"]; ?>">
     </div>
     <div class="mb-3">
         <label for="contact" class="form-label">Contact:</label>
-        <input type="tel" class="form-control" id="contact" value="<?php echo $patient["contactP"]; ?>">
+        <input type="tel" class="form-control" name="contact" id="contact" value="<?php echo $patient["contactP"]; ?>">
     </div>
     <button type="submit" id="btn">Mettre à jour</button>
 </form>

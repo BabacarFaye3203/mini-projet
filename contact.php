@@ -4,21 +4,21 @@
 if($_SERVER['REQUEST_METHOD']="POST" and isset($_POST["okContact"])){
     if(empty($_POST["nom"]) || empty($_POST["email"]) || empty($_POST["message"]) ){
         echo"tous les champs doivent etre remplis";
+        exit();
     }
     $nom=$_POST["nom"];
+    $message=$_POST["message"];
     if(!preg_match("#^[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.[a-zA-Z]{3}$#",$_POST["email"])){
         die("email invalide");
     }else{
         $email=$_POST["email"];
     }
-    $message=$_POST["message"];
-
-    
     $stm=$connect->prepare("INSERT INTO contact nom=?, email=?, message=?");
     $stm>bind_param("sss",$nom,$email,$message);
     $res=$stm->execute();
     if($res){
         header("location:" .$_SERVER['PHP_SELF']);
+        exit();
         echo"votre message a été bien envoyé. Nous vous repondrons tres prochainement";
     }
     else{
@@ -49,8 +49,6 @@ if($_SERVER['REQUEST_METHOD']="POST" and isset($_POST["okContact"])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
 <link href="dart-sass/bootstrap/bootstrap.scss" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -60,10 +58,7 @@ if($_SERVER['REQUEST_METHOD']="POST" and isset($_POST["okContact"])){
 <meta name="theme-color" content="#712cf9">
 
 
-
-    
-    <!-- Custom styles -->
-    <link href="carousel.css" rel="stylesheet">
+  <link href="carousel.css" rel="stylesheet">
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -149,7 +144,7 @@ if($_SERVER['REQUEST_METHOD']="POST" and isset($_POST["okContact"])){
 </header>
 <br><br>
 <div class="container">
-<form action="traitement_contact.php" method="POST" class="needs-validation" novalidate>
+<form action="contact.php" method="POST" class="needs-validation" novalidate>
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>

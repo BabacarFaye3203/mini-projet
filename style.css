@@ -117,16 +117,7 @@
   background-color:rgba(20, 122, 20, 0.534);
 }
 /* avis*/
-#temoig{
-  background-color:rgba(20, 122, 20, 0.534);
-  transform: scale(0.8);
-  border-color: white;
-  
-  
-}
-#temoig:hover{
-  transform: scale(1.05);
-}
+
 #logid{
   
   background-color:rgba(20, 122, 20, 0.534);
@@ -152,6 +143,7 @@
   background-color: rgba(20, 122, 20, 0.534);
   border-radius: 5px;
   margin-top: 20px;
+
 }
 
 /*contact*/
@@ -183,6 +175,7 @@
 .contact-light{
   background-color:transparent ;
   border-radius: 3%;
+  width: 1000px;
 }
 section{
   margin-top: 5px;
@@ -216,4 +209,48 @@ section{
   position: absolute;
   max-width: 120px;
   max-height: 120px;
+}
+#colaccpatient{
+  color: rgba(20, 122, 20, 0.534);
+}
+#ic{
+  position: absolute;
+  width: 100px;
+}
+#iconTitle{
+  color: rgba(33, 238, 33, 0.534);
+}
+#titleAvis{
+  color: rgba(20, 122, 20, 0.534) ;
+}
+#devs{
+  color: rgba(20, 122, 20, 0.534);
+}
+#flush-headingThree button{
+  background-color: rgba(20, 122, 20, 0.534);;
+}
+#faqbi button{
+  background-color: rgba(20, 122, 20, 0.534);
+}
+body {
+	background-color: #f5f7fa;
+}
+
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.aqua-gradient {
+  background: linear-gradient(40deg, #2096ff, rgba(20, 122, 20, 0.534)) !important;
+}
+
+.testimonial-card .avatar {
+  width: 120px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 50%;
 }

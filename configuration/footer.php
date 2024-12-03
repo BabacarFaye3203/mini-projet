@@ -1,4 +1,3 @@
-<!--footer -->
 <section>
 <div class="container" id="fotpieds">
   <footer class="" >

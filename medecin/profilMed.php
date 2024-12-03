@@ -2,7 +2,7 @@
 session_start();
 @include '../database/DatabaseCreat.php';
 
-// Vérifier si l'utilisateur est connecté (si le médecin est connecté)
+// Vérifier si le medecin est connecté
 if (!isset($_SESSION['id_Medecin'])) {
     header("Location: ../connMed.php");
     exit();
@@ -16,6 +16,9 @@ $stmt->execute();
 $resultMedecin = $stmt->get_result();
 if ($resultMedecin->num_rows > 0) {
     $medecin = $resultMedecin->fetch_assoc();
+    $_SESSION['id_Medecin'] = $_SESSION['id_Medecin'];
+    $_SESSION['nomM_Medecin'] = $_SESSION['nomM_Medecin'];
+    
 } else {
     echo "Aucun médecin trouvé avec cet identifiant.";
     exit();
@@ -26,10 +29,11 @@ $queryPatients = "SELECT idP_Patient, nomP_Patient, prenomP, emailP FROM patient
 $stmtPatients = $connect->prepare($queryPatients);
 $stmtPatients->execute();
 $resultPatients = $stmtPatients->get_result();
+
 ?>
 
 <?php
-// Inclure l'en-tête de la page
+//  l'en-tête de la page
 include '../configuration/headMed.php';
 ?>
 
@@ -39,12 +43,11 @@ include '../configuration/headMed.php';
     Déconnexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="deconnexion.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Se Déconnecter</a></li>
   </ul>
 </div>
 
- <section class="notrecouleur text-secondary px-4 py-5 text-center">
+<section class="notrecouleur text-secondary px-4 py-5 text-center">
  <div >
     <div class="py-5" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
@@ -55,17 +58,21 @@ include '../configuration/headMed.php';
       </div>
     </div>
   </div>
+
+
+ </section>
 <div style="padding: 10% 200px 0% 200px; margin: 8% 23px 10% auto;">
     <h1>Liste des patients</h1>
-    <?php if ($resultPatients->num_rows > 0) { ?>
-        <table class="table">
+    <?php if ($resultPatients->num_rows>0) { ?>
+        <table class="table" id="myPatients">
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
-                    <th>Action</th>
+                    <th>Prise de Rendez-vous</th>
+                    <th>Voir_Profil</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,14 +83,27 @@ include '../configuration/headMed.php';
                 ?>
                     <tr>
                         <td><?= $i ?></td>
-                        <td><?= htmlspecialchars($row['nomP_Patient']); ?></td>
+                        <td><?=htmlspecialchars($row['nomP_Patient']); ?></td>
                         <td><?= htmlspecialchars($row['prenomP']); ?></td>
                         <td><?= htmlspecialchars($row['emailP']); ?></td>
                         <td>
-                            <form action="planifier_rendezVous.php" method="post" style="display: inline;">
+                            <!-- Formulaire pour prendre rendez-vous rendez-vous avec le patient  -->
+                            <form action="planifier_rendezVous.php" method="post" style="display: inline;" >
                                 <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
                                 <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
                             </form>
+                            <?php
+                                $rq = "SELECT idP_Patient, nomP_Patient, prenomP FROM Patient";
+                                $resultP = $connect->query($rq);
+
+                                if ($resultP->num_rows > 0) {
+                                    if ($row = $resultP->fetch_assoc()) {
+                                        echo " <td><a href='../patient/profilPatient.php?id=" . $row['idP_Patient'] . "' class='btn btn-primary'>Voir le profil</a></td>";
+                                    }
+                                } else {
+                                    echo "<p>Aucun patient trouvé.</p>";
+                                }
+                            ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -94,9 +114,9 @@ include '../configuration/headMed.php';
     <?php } ?>
 
     <?php
-// Récupérer la liste des rendez-vous du médecin connecté
+// la liste des rendez-vous du médecin connecté
 $queryRendezvous = "
-    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, p.nomP_Patient, p.prenomP, rdv.type_RendezVous
+    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, p.nomP_Patient, p.prenomP, rdv.type_RendezVous,rdv.Lieu
     FROM RendezVous rdv
     JOIN patient p ON rdv.idP_Patient = p.idP_Patient
     WHERE rdv.idM_Medecin = ?
@@ -121,8 +141,6 @@ if (isset($_POST['annuler_rdv'])) {
 if (isset($_POST['modifier_rdv'])) {
     $idRdv = $_POST['idRdv'];
     $nouvelle_date = $_POST['nouvelle_date'];
-
-    // Mettre à jour la date du rendez-vous
     $queryUpdate = "UPDATE RendezVous SET dateR_RendezVous = ? WHERE idR_RendezVous = ?";
     $stmtUpdate = $connect->prepare($queryUpdate);
     $stmtUpdate->bind_param("si", $nouvelle_date, $idRdv);
@@ -144,7 +162,7 @@ if (isset($_POST['supprimer_rdv'])) {
 <h1>Mes Rendez-vous</h1>
 
 <?php if ($resultRendezvous->num_rows > 0) { ?>
-    <table class="table">
+    <table class="table" id="myRDV">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
@@ -152,6 +170,7 @@ if (isset($_POST['supprimer_rdv'])) {
                 <th>Prénom du patient</th>
                 <th>Date du rendez-vous</th>
                 <th>Type de rendez-vous</th>
+                <th>Lieu du rendez-vous</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -167,6 +186,7 @@ if (isset($_POST['supprimer_rdv'])) {
                     <td><?= htmlspecialchars($rdv['prenomP']); ?></td>
                     <td><?= htmlspecialchars($rdv['dateR_RendezVous']); ?></td>
                     <td><?= htmlspecialchars($rdv['type_RendezVous']); ?></td>
+                    <td><?= htmlspecialchars($rdv['Lieu']); ?></td>
                     <td>
                         <!-- Formulaire pour annuler un rendez-vous -->
                         <form action="profilMed.php" method="post" style="display: inline;">
@@ -197,7 +217,11 @@ if (isset($_POST['supprimer_rdv'])) {
 
 
 <?php
-// Inclure le pied de page (par exemple: copyright, scripts JS)
+
+
+include '../configuration/footer.php';
+?>
+<?php
 include '../configuration/pied.php';
 ?>
 

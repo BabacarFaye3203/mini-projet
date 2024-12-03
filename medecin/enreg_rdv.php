@@ -2,7 +2,7 @@
 session_start();
 include '../database/DatabaseCreat.php'; // Connexion à la base de données
 
-// Vérifie si les données ont été soumises
+//  si les données ont été soumises
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idM = $_SESSION['idM_Medecin']; // ID du medecin connecté
     $idP = $_POST['idP']; // ID du patient sélectionné

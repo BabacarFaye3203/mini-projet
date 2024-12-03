@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($row =mysqli_fetch_assoc($result)) {
         $_SESSION['id_Medecin'] = $row['idM_Medecin'];
-        $_SESSION['username'] = $row['nomM_Medecin'];
+        $_SESSION['nomM_Medecin'] = $row['nomM_Medecin'];
         header("Location:medecin/profilMed.php"); // Redirection vers le profil du medecin
         exit();
     } else {
@@ -62,7 +62,7 @@ include 'configuration/headindex.php';?>
           <input type="password" class="form-control" name="pwd" placeholder="Votre mot de passe" required>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="je m'inscris" name="ok">
+        <input type="submit" class="btn btn-primary" value="je me connecte" name="ok">
       </form>
     </div>
 <?php include 'configuration/pied.php';

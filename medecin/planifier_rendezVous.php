@@ -2,13 +2,13 @@
 session_start();
 @include '../database/DatabaseCreat.php';
 
-// Vérifier si l'utilisateur est connecté (si le médecin est connecté)
+// Vérifier si le medecin est connecté
 if (!isset($_SESSION['id_Medecin'])) {
     header("Location: ../connMed.php");
     exit();
 }
 
-// Récupérer l'ID du patient à partir de l'URL
+// Récup l'ID du patient à partir de l'URL
 if (isset($_POST['idP'])) {
     $idP = $_POST['idP'];
 } else {
@@ -16,7 +16,7 @@ if (isset($_POST['idP'])) {
     exit();
 }
 
-// Récupérer les informations du patient
+// Récup les informations du patient
 $queryPatient = "SELECT nomP_Patient, prenomP, emailP FROM patient WHERE idP_Patient = ?";
 $stmtPatient = $connect->prepare($queryPatient);
 $stmtPatient->bind_param("i", $idP);
@@ -29,15 +29,14 @@ if ($resultPatient->num_rows > 0) {
     exit();
 }
 
-// Planifier un rendez-vous
+// Planif un rendez-vous
 if (isset($_POST['planifier_rdv'])) {
     $dateRdv = $_POST['dateRdv'];
     $typeRdv = $_POST['typeRdv'];
-    
-    // Insérer le rendez-vous dans la base de données
-    $queryInsert = "INSERT INTO RendezVous (dateR_RendezVous, type_RendezVous, idP_Patient, idM_Medecin) VALUES (?, ?, ?, ?)";
+    $lieu = $_POST['LieuRdv'];
+    $queryInsert = "INSERT INTO RendezVous (dateR_RendezVous, type_RendezVous, idP_Patient, idM_Medecin,Lieu) VALUES (?, ?, ?, ?,?)";
     $stmtInsert = $connect->prepare($queryInsert);
-    $stmtInsert->bind_param("ssii", $dateRdv, $typeRdv, $idP, $_SESSION['id_Medecin']);
+    $stmtInsert->bind_param("ssiis", $dateRdv, $typeRdv, $idP, $_SESSION['id_Medecin'],$lieu);
     $stmtInsert->execute();
     
     echo "<p>Le rendez-vous a été planifié avec succès.</p>";
@@ -46,8 +45,8 @@ if (isset($_POST['planifier_rdv'])) {
 ?>
 
 <?php
-// Inclure l'en-tête de la page
-include '../configuration/headMed.php';
+// en-tête de la page
+include '../configuration/headMedsous.php';
 ?>
 
 <h1>Planifier un rendez-vous pour <?= htmlspecialchars($patient['nomP_Patient']) . " " . htmlspecialchars($patient['prenomP']); ?></h1>
@@ -58,7 +57,7 @@ include '../configuration/headMed.php';
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="deconnexion.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Medecin</a></li>
   </ul>
 </div>
 
@@ -74,6 +73,7 @@ include '../configuration/headMed.php';
     </div>
   </div>
 
+
 <form action="planifier_rendezvous.php" method="post">
     <input type="hidden" name="idP" value="<?= $idP; ?>">
     <div class="mb-3">
@@ -84,10 +84,16 @@ include '../configuration/headMed.php';
         <label for="typeRdv" class="form-label">Type de rendez-vous</label>
         <input type="text" id="typeRdv" name="typeRdv" class="form-control" required>
     </div>
+    <div class="mb-3">
+        <label for="typeRdv" class="form-label">Lieu de rendez-vous</label>
+        <input type="text" id="LieuRDV" name="LieuRdv" class="form-control" required>
+    </div>
     <button type="submit" name="planifier_rdv" class="btn btn-primary">Planifier le rendez-vous</button>
 </form>
 
 <?php
-// Inclure le pied de page
+
+//pied de page
 include '../configuration/pied.php';
+include '../configuration/footer.php';
 ?>

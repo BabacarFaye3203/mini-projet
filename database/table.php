@@ -117,3 +117,32 @@ try{
 }catch(Exception $e){
     echo"erreur lors de la création de la base".$e->getMessage();
 }
+try{
+    $rq1="INSERT INTO Medecin (nomM_Medecin, prenomM_Medecin, matriculeM_Medecin, emailM_Medecin, adresseM_Medecin, paysM_Medecin, villeM_Medecin, specialite_Medecin, contactM_Medecin, age, sexe_Medecin, password)
+VALUES
+('Diop', 'Aissatou', 'M001', 'aissatou.diop@example.com', 'Dakar, Sénégal', 'Sénégal', 'Dakar', 'Médecine générale', '778000001', 45, 'Femme', 'password1'),
+('Fall', 'Mamadou', 'M002', 'mamadou.fall@example.com', 'Saint-Louis, Sénégal', 'Sénégal', 'Saint-Louis', 'Cardiologie', '778000002', 50, 'Homme', 'password2'),
+('Sarr', 'Mouhamed', 'M003', 'mouhamed.sarr@example.com', 'Thiès, Sénégal', 'Sénégal', 'Thiès', 'Pédiatrie', '778000003', 38, 'Homme', 'password3'),
+('Ba', 'Nafissatou', 'M004', 'nafissatou.ba@example.com', 'Ziguinchor, Sénégal', 'Sénégal', 'Ziguinchor', 'Gynécologie', '778000004', 42, 'Femme', 'password4'),
+('Diagne', 'Ibrahime', 'M005', 'ibrahime.diagne@example.com', 'Kaolack, Sénégal', 'Sénégal', 'Kaolack', 'Dermatologie', '778000005', 48, 'Homme', 'password5'),
+('Seck', 'Aminata', 'M006', 'aminata.seck@example.com', 'Louga, Sénégal', 'Sénégal', 'Louga', 'Ophtalmologie', '778000006', 37, 'Femme', 'password6'),
+('Ndiaye', 'El Hadji', 'M007', 'elhadji.ndiaye@example.com', 'Thiès, Sénégal', 'Sénégal', 'Thiès', 'Chirurgie', '778000007', 46, 'Homme', 'password7'),
+('Faye', 'Khady', 'M008', 'khady.faye@example.com', 'Dakar, Sénégal', 'Sénégal', 'Dakar', 'Neurologie', '778000008', 40, 'Femme', 'password8'),
+('Diouf', 'Oumar', 'M009', 'oumar.diouf@example.com', 'Dakar, Sénégal', 'Sénégal', 'Dakar', 'Orthopédie', '778000009', 54, 'Homme', 'password9'),
+('Mbow', 'Saliou', 'M010', 'saliou.mbow@example.com', 'Kaffrine, Sénégal', 'Sénégal', 'Kaffrine', 'Cardiologie', '778000010', 49, 'Homme', 'password10'),
+('Toure', 'Ousmane', 'M011', 'ousmane.toure@example.com', 'Kaolack, Sénégal', 'Sénégal', 'Kaolack', 'Médecine interne', '778000011', 51, 'Homme', 'password11'),
+('Sy', 'Fatoumata', 'M012', 'fatoumata.sy@example.com', 'Dakar, Sénégal', 'Sénégal', 'Dakar', 'Médecine générale', '778000012', 34, 'Femme', 'password12'),
+('Mbaye', 'Alioune', 'M013', 'alioune.mbaye@example.com', 'Tivaouane, Sénégal', 'Sénégal', 'Tivaouane', 'Dentisterie', '778000013', 39, 'Homme', 'password13'),
+('Senghor', 'Mame', 'M014', 'mame.senghor@example.com', 'Mbour, Sénégal', 'Sénégal', 'Mbour', 'Pédiatrie', '778000014', 43, 'Femme', 'password14'),
+('Bamba', 'Abdoulaye', 'M015', 'abdoulaye.bamba@example.com', 'Ziguinchor, Sénégal', 'Sénégal', 'Ziguinchor', 'Chirurgie', '778000015', 55, 'Homme', 'password15'),
+('Gueye', 'Coumba', 'M016', 'coumba.gueye@example.com', 'Dakar, Sénégal', 'Sénégal', 'Dakar', 'Ophtalmologie', '778000016', 41, 'Femme', 'password16'),
+('Sall', 'Cheikh', 'M017', 'cheikh.sall@example.com', 'Saint-Louis, Sénégal', 'Sénégal', 'Saint-Louis', 'Gynécologie', '778000017', 47, 'Homme', 'password17'),
+('Mane', 'Aminata', 'M018', 'aminata.mane@example.com', 'Kaffrine, Sénégal', 'Sénégal', 'Kaffrine', 'Psychiatrie', '778000018', 33, 'Femme', 'password18'),
+('Niane', 'Lamine', 'M019', 'lamine.niane@example.com', 'Louga, Sénégal', 'Sénégal', 'Louga', 'Cardiologie', '778000019', 44, 'Homme', 'password19'),
+('Demba', 'Khady', 'M020', 'khady.demba@example.com', 'Mbour, Sénégal', 'Sénégal', 'Mbour', 'Médecine générale', '778000020', 36, 'Femme', 'password20');
+";
+    mysqli_query($connect,$rq1);
+    //echo"créer avec succes";
+}catch(Exception $e){
+    echo"erreur lors de la création de la base".$e->getMessage();
+}

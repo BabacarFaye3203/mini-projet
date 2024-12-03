@@ -1,6 +1,118 @@
-<?php include 'configuration/headindex.php'
-?>
 
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>CSN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="style.css">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="dart-sass/bootstrap/bootstrap.scss" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+
+  <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+<header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">
+            <img src="images/CSN Contact.webp" alt="Logo CSN" class="logo-navbar">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse"  >
+      <ul class="navbar-nav" id="navbarNav">
+        <li class="nav-item"  >
+          <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#temoig">Temoignages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About">A Propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#FAQ">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
 
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,13 +145,6 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
 
 
  </section>
-
-
-
-<!-- avis des utilisateurs(patients et medecins)-->
-
-
-
 
 <!-- section a propos-->
  <section id="About">
@@ -160,7 +265,7 @@ Partage sécurisé : Transmission des données médicales à des professionnels 
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
+    <h2 class="accordion-header" id="faqbi">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
       Comment contacter les développeurs du projet ?
       </button>
@@ -219,76 +324,75 @@ Une application mobile dédiée. <code>.CSN</code></div>
  
 
  <!--section avis-->
-
-  <div class="container overflow-hidden">
+ <br><br><br><br><br><br>
+<div class="container overflow-hidden" >
     <div class="row gy-4 gy-md-0 gx-xxl-5" >
-      <div class="col-12 col-md-4" >
- 
-        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
-          <div class="card-body p-4 p-xxl-5">
-            <figure>
-            <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy"  src="images/WhatsApp Image 2024-11-27 at 21.37.58.jpeg" alt="Felix">
-              <figcaption>
-                <div class="bsb-ratings text-warning mb-3" data-bsb-star="4" data-bsb-star-off="1"></div>
-                <blockquote class="bsb-blockquote-icon mb-4">"En tant que patient souffrant d'une maladie chronique, 
-          ce site est une bénédiction pour moi.
-           Mon médecin peut suivre mon état de santé à distance 
-           et ajuster mon traitement sans que je me déplace constamment.
-            La messagerie sécurisée est parfaite pour poser mes questions entre deux consultations.
-           Je recommande vivement ce service.</blockquote>
-                <h4 class="mb-2">Felix Ngamakita</h4>
-                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>Informatique</b> <br>Maroc</h5>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+      <div class="text-center mb-4">
+            <h2 class="fw-bold" id="titleAvis">CE QU'ILS PENSENT DE NOUS</h2>
+            <p class="text-muted" id="temoig">Découvrez ce que les utilisateurs pensent  de CSN .</p>
+</div>
+<div class="container">
+
+      
+    <div class="card testimonial-card mt-2 mb-3">
+      <div class="card-up aqua-gradient"></div>
+      <div class="avatar mx-auto white">
+        <img src="images/fadal.jpeg" class="rounded-circle img-fluid"
+          alt="woman avatar">
       </div>
-      <div class="col-12 col-md-4" >
-      <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
-          <div class="card-body p-4 p-xxl-5">
-            <figure>
-            <img class="img-fluid rounded rounded-circle mb-4 border border-5" loading="lazy"  src="images/WhatsApp Image 2024-11-16 at 16.07.00 (1).jpeg" alt="Babacar">
-              <figcaption>
-                <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
-                <blockquote class="bsb-blockquote-icon mb-4">"J’ai découvert cette plateforme récemment,
-           et je dois dire qu’elle est très intuitive.
-            Trouver un spécialiste dans ma ville est devenu facile,
-             et le système de visioconférence m’a sauvé plusieurs fois quand je n’ai pas pu me déplacer.
-           Merci pour cette initiative qui rend la santé plus accessible à tous !"</blockquote>
-                <h4 class="mb-2">Babacar</h4>
-                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>Informatique</b> <br>Maroc</h5>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4" >
-        <div class="card border-0 border-bottom border-primary shadow-sm" id="temoig">
-          <div class="card-body p-4 p-xxl-5">
-            <figure>
-            <img class="img-fluid rounded rounded-circle mb-4 border border-5 "  loading="lazy" src="images/WhatsApp Image 2024-11-27 at 21.46.47.jpeg" alt="Emmanuel">
-              <figcaption>
-                <div class="bsb-ratings text-warning mb-3" data-bsb-star="5" data-bsb-star-off="0"></div>
-                <blockquote class="bsb-blockquote-icon mb-4">"J'utilise le Carnet de Santé Numérique depuis quelques mois, 
-            et je suis ravie de cette solution. J’ai pu centraliser tous mes résultats d’examens médicaux et 
-            mes ordonnances en un seul endroit. En plus, la prise de rendez-vous est super simple, 
-            et je n’ai plus besoin de passer des heures au téléphone avec les cabinets médicaux.
-             Un vrai gain de temps et d’efficacité !"</blockquote>
-                <h4 class="mb-2">Emmanuel</h4>
-                <h5 class="fs-6 text-secondary mb-0">Etudiant en <b>informatique</b> <br>Maroc</h5>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+      <div class="card-body text-center">
+        <h4 class="card-title font-weight-bold">Fadal</h4>
+        <hr>
+        <p><i class="fas fa-quote-left"></i>"En tant que patient souffrant d'une maladie chronique, <br>
+          ce site est une bénédiction pour moi.<br>
+           Mon médecin peut suivre mon état de santé à distance <br>
+           et ajuster mon traitement sans que je me déplace constamment.<br>
+            La messagerie sécurisée est parfaite pour poser mes questions entre deux consultations.<br>
+           Je recommande vivement ce service."</p>
       </div>
     </div>
-  </div>
-</section>
+    
+    <div class="container">
+  
+      
+    <div class="card testimonial-card mt-2 mb-3">
+      <div class="card-up aqua-gradient"></div>
+      <div class="avatar mx-auto white">
+        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg" class="rounded-circle img-fluid"
+          alt="woman avatar">
+      </div>
+      <div class="card-body text-center">
+        <h4 class="card-title font-weight-bold">Rosaline</h4>
+        <hr>
+        <p><i class="fas fa-quote-left"></i> "J’ai découvert cette plateforme récemment, <br>
+           et je dois dire qu’elle est très intuitive.<br>
+            Trouver un spécialiste dans ma ville est devenu facile,<br>
+             et le système de visioconférence m’a sauvé plusieurs fois quand je n’ai pas pu me déplacer.<br>
+           Merci pour cette initiative qui rend la santé plus accessible à tous !"</p>
+      </div>
+    </div>
 
 
 
-<!-- fin de la section avis-->
-
+<div class="container">
+  
+      
+    <div class="card testimonial-card mt-2 mb-3">
+      <div class="card-up aqua-gradient"></div>
+      <div class="avatar mx-auto white">
+        <img src="images/Thione.jpeg" class="rounded-circle img-fluid"
+          alt="woman avatar">
+      </div>
+      <div class="card-body text-center">
+        <h4 class="card-title font-weight-bold">Thione</h4>
+        <hr>
+        <p><i class="fas fa-quote-left"></i> "J'utilise le Carnet de Santé Numérique depuis quelques mois,<br>
+            et je suis ravie de cette solution.<br> J’ai pu centraliser tous mes résultats d’examens médicaux <br>et 
+            mes ordonnances en un seul endroit. En plus, la prise de rendez-vous est super simple, <br>
+            et je n’ai plus besoin de passer des heures au téléphone avec les cabinets médicaux.<br>
+             Un vrai gain de temps et d’efficacité !"</p>
+      </div>
+    </div>
 <!-- section contact-->
 <section id="contact" class="py-5 contact-light">
     <div class="container">
@@ -298,7 +402,7 @@ Une application mobile dédiée. <code>.CSN</code></div>
         </div>
         <div class="row">
             <!-- Formulaire pou nous contacter  -->
-  <section id="contact" class="py-5 bg-light">
+  <section id="contact"  class="py-5 bg-light">
     <div class="container">
         <div class="row align-items-center">
             <!-- Image symbolisant le contact -->
@@ -331,58 +435,78 @@ Une application mobile dédiée. <code>.CSN</code></div>
         </div>
     </div>
 </section>
+
 </main>
-
-
-
-<!--footer -->
-<section>
-<div class="container" id="fotpieds">
-  <footer class="" >
-    <div class="row" >
-      <div class="col-6 col-md-2 mb-3" >
-        <h5>Redirigez-vous!</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#logid" class="nav-link p-0 text-body-secondary">Accueil</a></li>
-          <li class="nav-item mb-2"><a href="#temoignage" class="nav-link p-0 text-body-secondary">Temoignages</a></li>
-          <li class="nav-item mb-2"><a href="#contact" class="nav-link p-0 text-body-secondary">Nous Contacter</a></li>
-          <li class="nav-item mb-2"><a href="#FAQ" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#About" class="nav-link p-0 text-body-secondary">A Propos</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Notre Devise</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Effort</a></li>
-          <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Discipline</a></li>
-          <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Rigueur</a></li>
-          <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Disponibles</a></li>
-          <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Santé</a></li>
-        </ul>
-      </div>
-      <div class="col-md-5 offset-md-1 mb-3">
-        <form>
-          <h5>Chokran!</h5>
-          <p>CSN Vous Remercie pour votre Visite !</p>
-          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <button class="btn btn-primary" type="button" id="footerbutton"><a href="contact.php" id="prenezcontact">Prenez Contact avec notre equipe</a></button>
-          </div>
-        </form>
-      </div>
-      <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"> Votre <b>Santé</b>, notre <b>Fierté!</b> </p>
-    <a href="insPatient.php" class="btn btn-primary" id="sinscfooter">S'inscrire</a>
-  </div>
-  <div>
-      <p class="float-end" ><a href="#" id="verslehaut">Retour vers le haut</a></p>
+<div class="allitem">
+  <div class="blog-allof">
+    <div class="img-date">
+     <img src="icons/DALL·E 2024-11-29 21.44.22 - A standalone icon in a minimalist flat design style_ an interconnected network of medical files, symbolizing the centralization of medical data. The i.webp" id="ic">
+     <br><br><br><br><br>
     </div>
-  </footer>
+   <div class="discretion-blog">
+      <h3 id="iconTitle">Centralisation des données médicales</h3>
+     <p>Offrir une plateforme unique pour regrouper et consulter les informations médicales des patients en toute simplicité..</p>
+    </div>
+   </div>
+</div>
+<div class="allitem">
+  <div class="blog-allof">
+    <div class="img-date">
+     <img src="icons/calicon.jpg">    
+    </div>
+    <div class="discretion-blog">
+    <h3 id="iconTitle">Amélioration du suivi médical</h3>
+    <p>Permettre un suivi précis et continu grâce à un accès rapide et sécurisé à l’historique de santé..</p>
+    </div>
+  </div>
+</div>
+    
+<div class="allitem">
+  <div class="blog-allof">
+    <div class="img-date">
+      <img  src=" icons/deuxIcons.jpg" >
+                                    
+    </div>
+    <div class="discretion-blog">
+    <h3 id="iconTitle">Facilitation de la collaboration médicale</h3>
+    <p>Favoriser l’échange d’informations entre les patients et les professionnels de santé pour une prise en charge optimale..</p>
+     </div>
+  </div>
 </div>
 </section>
- 
-<?php
+<div class="container my-5 text-center">
+    <h2 class="mb-4" id="devs">Équipe de Développement - CSN</h2>
+    <div class="d-flex flex-column align-items-center">
+        <!-- Développeur 1 -->
+        <div class="mb-5">
+            <img src="images/WhatsApp Image 2024-11-16 at 16.07.00 (1).jpeg" alt="Photo du développeur 1" 
+                 class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+            <h5 class="fw-bold">Babacar Faye</h5>
+            <p class="mb-1">Etudiant en  Informatique</p>
+            <p>Université Sultan Moulay Slimane</p>
+        </div>
+        <!-- Développeur 2 -->
+        <div class="mb-5">
+            <img src="images/WhatsApp Image 2024-11-27 at 21.37.58.jpeg" alt="Photo du développeur 2" 
+                 class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+            <h5 class="fw-bold">Felix Plaisir Ngamakita</h5>
+            <p class="mb-1">Etudiant en  Informatique</p>
+            <p>Université Sultan Moulay Slimane</p>
+        </div>
+        <!-- Développeur 3 -->
+        <div class="mb-5">
+            <img src="images/WhatsApp Image 2024-11-27 at 21.46.47.jpeg" alt="Photo du développeur 3" 
+                 class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+            <h5 class="fw-bold">Emmanuel Kant</h5>
+            <p class="mb-1">Etudiant en  Informatique</p>
+            <p>Université Sultan Moulay Slimane</p>
+        </div>
+    </div>
+</div>
 
+<!--footer -->
+
+<?php
+include 'configuration/footer.php';
  include 'configuration/piedindex.php';
 ?>

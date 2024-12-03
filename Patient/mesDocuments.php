@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carnet-de-santé</title>
+    <title>CSN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
     <link rel="stylesheet" href="../style.css">
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.php">
             <img src="../images/CSN Contact.webp" alt="Logo CSN" class="logo-navbar">
         </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,10 +108,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../index.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="accueilPatient.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ProfilPatient">Profil</a>
+          <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="planifier_rendezVous.php">Mes Rendez-vous</a>
@@ -119,17 +119,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li class="nav-item">
           <a class="nav-link" href="mesDocuments.php">Mes documents</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="listeMed.php">La liste des medecins</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-<h1>Bienvenue, <?php echo $_SESSION['nomP_Patient'].". Ici, vous trouverez tous vos documents"; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Deconnexion
+    Déconnexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="deconnexion.php" id="connbutton">Patient</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Se Déconnecter</a></li>
   </ul>
 </div>
 
@@ -144,11 +146,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
     </div>
   </div>
-
-
  </section>
 
-
+ <div class="text-center">
+            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
+            <p> Cette page est conçue pour vous permettre de gérer 
+              vos documents médicaux de manière simple et sécurisée. vous pouvez ajouter de nouveaux documents 
+              tels que des ordonnances, des analyses ou des rapports médicaux, les organiser et les consulter à tout moment. 
+              La plateforme offre également une fonctionnalité pour supprimer des documents obsolètes ou inutiles, 
+              tout en garantissant que les fichiers importants restent accessibles.
+               Grâce à cette interface intuitive, vous pouvez centraliser et sécuriser l’ensemble de vos données médicales,
+               évitant ainsi les pertes ou dispersions d’informations importantes.</p>
+  </div>
+ 
 
 <!--  ajout des documents du patient -->
   <div class="container">

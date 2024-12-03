@@ -2,11 +2,11 @@
 session_start();
 include "../database/DatabaseCreat.php"; // Connexion à la base de données
 
-// Vérifier si un patient est spécifié
+//  si un patient est spécifié
 if (isset($_POST['Detail'])) {
     $idP = $_POST['idP'];
 
-    // Récupérer les informations du patient
+    // Récup les informations du patient
     $query_patient = "SELECT nomP_Patient, prenomP, dat_naiss, emailP FROM patient WHERE idP_Patient = ?";
     $stmt_patient = $connect->prepare($query_patient);
     $stmt_patient->bind_param("i", $idP);
@@ -19,7 +19,7 @@ if (isset($_POST['Detail'])) {
         echo "Record deleted successfully";
 
     }
-    // Récupérer les rendez-vous du patient
+    // Récupération les rendez-vous du patient
     $query_rendez_vous = "SELECT dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ?";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("i", $idP);
@@ -38,7 +38,7 @@ if (isset($_POST['Detail'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<?php include '../configuration/headPatient.php';?>
+<?php include '../configuration/headMedsous.php';?>
     <h2>Détails du patient</h2>
     <?php if ($patient){ ?>
         <p><strong>Nom :</strong> <?= htmlspecialchars($patient['nomP_Patient']); ?></p>

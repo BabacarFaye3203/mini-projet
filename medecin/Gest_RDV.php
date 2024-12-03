@@ -2,7 +2,7 @@
 session_start();
 @include '../database/DatabaseCreat.php';
 
-// Vérifier si l'utilisateur est connecté
+//  si l'utilisateur est connecté
 if (!isset($_SESSION['idM_Medecin'])) {
     header("Location: ../connMed.php");
     exit();
@@ -30,7 +30,7 @@ $result = $stmt->get_result();
 $result2=$result;
 ?>
 <?php //include '../configuration/headPatient.php';
-include '../configuration/head.php';
+include '../configuration/headMedsous.php';
 ;?>
 <h1>Voici la liste de vos RDV </h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
@@ -41,7 +41,7 @@ include '../configuration/head.php';
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="deconnexion.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Medecin</a></li>
   </ul>
 </div>
 

@@ -30,11 +30,10 @@ $resultPatients = $stmt->get_result();
 
 <?php
 //en-tête de la page
-include '../configuration/headMed.php';
+include '../configuration/headMedsous.php';
 ?>
 
 <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['nomM_Medecin']); ?></h1>
-
 <h1>Bienvenue, <?php echo $patient['nomP_Patient']." ".$patient['prenomP']; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,7 +41,7 @@ include '../configuration/headMed.php';
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="deconnexion.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Medecin</a></li>
   </ul>
 </div>
 

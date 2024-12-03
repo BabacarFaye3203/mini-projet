@@ -10,7 +10,7 @@ $result = $stmt->get_result();
 $patient= $result->fetch_assoc();
 ?>
 <?php
-include '../configuration/headPatient.php';
+include '../configuration/headMedsous.php';
 ?>
 <h1>Bienvenue, <?php echo $patient['nomP_Patient']." ".$patient['prenomP']; ?></h1>
 <div class="dropdown" class="container" id="logid">
@@ -19,7 +19,7 @@ include '../configuration/headPatient.php';
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
     <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="deconnexion.php">Medecin</a></li>
+    <li><a class="dropdown-item" href="../deconnexion.php">Medecin</a></li>
   </ul>
 </div>
 
@@ -44,6 +44,10 @@ include '../configuration/headPatient.php';
     <div class="mb-3">
     <label class="form-label" for="motif">Motif</label>
     <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="motif">Lieu</label>
+    <input class="form-label" type="text" name="motif" id="motif" placeholder="Lieu du rendez-vous" required>
     </div>
     <button type="submit" class="form-label btn btn-primary">Confirmer</button>
 </form>

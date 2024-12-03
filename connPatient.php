@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['nomP_Patient'] = $row['nomP_Patient'];
 
             // Redirection vers le profil du patient
-            header("Location: Patient/profilPatient.php");
+            header("Location: Patient/accueilPatient.php");
             exit;
         } else {
             echo "Email ou mot de passe incorrect";
