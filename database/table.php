@@ -113,7 +113,70 @@ try{
     //echo"erreur lors de la création de la base".$e->getMessage();
     exit();
 }
+try {
+    $req1="create table if not exists rdva
+    (
+        IDA  int auto_increment
+        primary key,
+    idR  int         null,
+    type varchar(20) null,
+    dat  datetime    null,
+    idP  int         null,
+    idM  int         null,
+    constraint rdva_pk
+        unique (idR)
+);";
+    $connect->query($rq1);
+}catch (Exception $e){
+    exit();
+}
+try {
+    $req1="create table if not exists rdvn
+(
+    IDN  int auto_increment
+        primary key,
+    idR  int         null,
+    type varchar(20) null,
+    dat  datetime    null,
+    idP  int         null,
+    idM  int         null,
+    constraint idR
+        unique (idR),
+    constraint rdvn_pk
+        unique (idR),
+    constraint rdvn_pk2
+        unique (idR)
+);
+";
+    $connect->query($rq1);
+}catch (Exception $e){
+    exit();
+}
+try {
+    $req1="create table rendezvous
+(
+    idR_RendezVous   int auto_increment
+        primary key,
+    dateR_RendezVous datetime    null,
+    type_RendezVous  varchar(20) null,
+    idP_Patient      int         null,
+    idM_Medecin      int         null,
+    constraint rendezvous_ibfk_1
+        foreign key (idP_Patient) references patient (idP_Patient),
+    constraint rendezvous_ibfk_2
+        foreign key (idM_Medecin) references medecin (idM_Medecin)
+);
 
+create index idM_Medecin
+    on rendezvous (idM_Medecin);
+
+create index idP_Patient
+    on rendezvous (idP_Patient);
+";
+    $connect->query($rq1);
+}catch (Exception $e){
+    exit();
+}
 
 /*
 try{

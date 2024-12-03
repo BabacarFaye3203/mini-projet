@@ -18,18 +18,12 @@ $req="INSERT INTO documents (idP_Patient,doc_name ,
                        doc_path) 
 VALUES (?,?,?)";
         $stmt = $connect->prepare($req);
-        if(!$stmt){
-            echo "erreur";
-        }
         $stmt->bind_param("sss",$idP_Patient,$nomDocument, $targerdocpath);
         if ($stmt->execute()) {
-            echo "Le document a été ajouté avec succès.";
-        } else {
-            echo "Erreur : Impossible d'enregistrer le document dans la base de données.";
+            header("documents.php");
+            //echo "Le document a été ajouté avec succès.";
         }
         $stmt->close();
-    } else {
-        echo "Erreur lors du telechargement du document.";
     }
 }
 ?>
