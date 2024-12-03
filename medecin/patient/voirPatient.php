@@ -18,7 +18,7 @@ if (isset($_POST['Detail'])) {
     $patient = $result_patient->fetch_assoc();
     // Récupérer les rendez-vous du patient
     $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,
-       dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=?";
+       dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=? order by dateR_RendezVous asc";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("ii", $idP,$idM);
     $stmt_rendez_vous->execute();
@@ -35,13 +35,34 @@ else if(isset($_POST['DetailRDVA'])){
     $result_patient = $stmt_patient->get_result();
     $patient = $result_patient->fetch_assoc();
     // Récupérer les rendez-vous du patient
-    $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,dateR_RendezVous as date_rdv,
-    idP_Patient ,type_RendezVous  as motif 
-    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=?";
+    $query_rendez_vous = "SELECT type,dat,
+    idP,idM
+    FROM rdva WHERE idP = ? and idM=?
+    order by dat asc";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("ii", $idP,$idM);
     $stmt_rendez_vous->execute();
     $result_rendez_vous1 = $stmt_rendez_vous->get_result();
+}
+else if(isset($_POST['DetailRDVN'])){
+    $idP = $_POST['idP'];
+
+    // Récupérer les informations du patient
+    $query_patient = "SELECT nomP_Patient, prenomP, dat_naiss, emailP FROM patient WHERE idP_Patient = ?";
+    $stmt_patient = $connect->prepare($query_patient);
+    $stmt_patient->bind_param("i", $idP);
+    $stmt_patient->execute();
+    $result_patient = $stmt_patient->get_result();
+    $patient = $result_patient->fetch_assoc();
+    // Récupérer les rendez-vous du patient
+    $query_rendez_vous = "SELECT type,dat,
+    idP,idM
+    FROM rdvn WHERE idP = ? and idM=?
+    order by dat asc";
+    $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
+    $stmt_rendez_vous->bind_param("ii", $idP,$idM);
+    $stmt_rendez_vous->execute();
+    $result_rendez_vous2 = $stmt_rendez_vous->get_result();
 }
 ?>
 <!DOCTYPE html>
@@ -69,9 +90,10 @@ else if(isset($_POST['DetailRDVA'])){
         <p><strong>Date de naissance :</strong> <?= htmlspecialchars($patient['dat_naiss']); ?></p>
         <p><strong>Email :</strong> <?= htmlspecialchars($patient['emailP']); ?></p><br>
 
-        <h3>Rendez-vous</h3>
+
 
         <?php if (@$result_rendez_vous->num_rows > 0){ ?>
+            <h3>Liste de tous les RDV</h3>
             <table class="table">
                 <thead class="table-dark">
                 <tr>
@@ -122,6 +144,7 @@ else if(isset($_POST['DetailRDVA'])){
                 <?php } ?>
             </table>
             <?php } else if (@$result_rendez_vous1->num_rows > 0){ ?>
+            <h3>Liste des RDV acceptés</h3>
                 <table class="table">
                     <thead class="table-dark">
                     <tr>
@@ -130,17 +153,32 @@ else if(isset($_POST['DetailRDVA'])){
                     </thead>
                     <?php while ($row = $result_rendez_vous1->fetch_assoc()){ ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['date_rdv']); ?></td>
-                            <td> <?= htmlspecialchars($row['motif']); ?></td>
+                            <td><?= htmlspecialchars($row['dat']); ?></td>
+                            <td> <?= htmlspecialchars($row['type']); ?></td>
                         </tr>
                     <?php } ?>
                 </table>
-            <?php }else{ ?>
-            <p><script>window.alert("Aucun rendez-vous pour ce patient !!")</script></p>
+    <?php } else if (@$result_rendez_vous2->num_rows > 0){ ?>
+            <h3>Liste des RDV annulés ou a reprogrammés</h3>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Date</th><th>Motif</th><th>Action</th>
+        </tr>
+        </thead>
+        <?php while ($row = $result_rendez_vous2->fetch_assoc()){ ?>
+        <form action="modifRDV.php" method="post">
+            <tr>
+                <input type="hidden" name="datA" value="<?= htmlspecialchars($row['dat']); ?>" >
+                <input type="hidden" name="idP" value="<?= htmlspecialchars($row['idP']); ?>" >
+                <td><input type="datetime-local" name="date_rdv" value="<?= htmlspecialchars($row['dat']); ?>" ></td>
+                <input type="hidden" name="motif" value="<?= htmlspecialchars($row['type']); ?>">
+                <td><?= htmlspecialchars($row['type']); ?></td>
+                <td><input type="submit" class="btn btn-primary" name="modifRDV" value="Re-programmer"></td>
+            </tr></form>
         <?php } ?>
-    <?php }else{ ?>
-        <p><script>window.alert("Patient non trouvé !!")</script></p>
-    <?php } ?>
+    </table>
+    <?php }}?>
 </div>
 </body>
 <?php

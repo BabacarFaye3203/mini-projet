@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../../database/DatabaseCreat.php';
-if (isset($_POST['Annuler'])) {k
+if (isset($_POST['Annuler'])) {
     $idM=$_SESSION['idM_Medecin'];
     $idP = $_POST['idP'];
     $dat = $_POST['dat'];
@@ -29,9 +29,7 @@ VALUES ($idr,'$typ','$dat',$idP,$idM)
     }
     finally{
         if ( $stmt_supp->execute()===TRUE ) {
-            //   $connect->commit();
             echo "<script>window.alert('Votre rendez-vous a été annulé')</script>";
-            // header("Location: profilMed.php");
             header("Location: Gest_RDV.php");
         }
     }

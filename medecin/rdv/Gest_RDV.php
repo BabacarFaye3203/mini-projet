@@ -29,7 +29,7 @@ $stmt->bind_param("i", $idM_Med);
 $stmt->execute();
 $result = $stmt->get_result();
 //****************--Selection des rendez-vous acceptés--***********************
-$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.emailP as mail,p.prenomP as pren,rdv.idP as idP,rdv.dat as date_rdv
+$query = "SELECT p.idP_Patient, p.nomP_Patient as nomPatient,p.prenomP as pren,rdv.idP as idP,rdv.dat as date_rdv
           FROM rdva rdv
           JOIN patient p ON rdv.idP = p.idP_Patient
           WHERE rdv.idM = ?
@@ -48,6 +48,25 @@ $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idM_Med);
 $stmt->execute();
 $result3 = $stmt->get_result();
+//Suppression des rendez-vous ou la date limite est dépassée
+$query_rendez_vous0 = "DELETE FROM rdva WHERE dat< LOCALTIME and idM = ?;";
+$stmt_a = $connect->prepare($query_rendez_vous0);
+$stmt_a->bind_param("i", $idM_Med);
+$stmt_a->execute();
+/*try {
+    $connect->query($query);
+}catch (Exception $e){
+    exit();
+}*/
+$query_rendez_vous0 = "DELETE FROM rdvn WHERE dat< LOCALTIME and idM = ?;";
+$stmt_a = $connect->prepare($query_rendez_vous0);
+$stmt_a->bind_param("i", $idM_Med);
+$stmt_a->execute();
+/*try {
+    $connect->query($query);
+}catch (Exception $e){
+    exit();
+}*/
 ?>
 <?php //include '../configuration/headPatient.php';
 include '../../configuration/head.php';
@@ -98,7 +117,7 @@ include '../../configuration/head.php';
                             <td>
                                 <form action="../patient/voirPatient.php" method="post" class="d-inline">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
-                                    <button type="submit" class="btn btn-info btn-sm" name="Detail">Details</button>
+                                    <input type="submit" class="btn btn-info btn-sm" name="Detail" value="Détails">
                                 </form>
                             </td>
                         </tr>
@@ -153,7 +172,7 @@ include '../../configuration/head.php';
         <?php } ?>
     </div>
 </div>
-<!--*********************--Rendez-vous acceptés--*********************************-->
+<!--*********************--Rendez-vous annulés--*********************************-->
 <div class="container d-grid gap-2 my-4">
     <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample1">
         Rendez-vous Annulés
@@ -182,7 +201,7 @@ include '../../configuration/head.php';
                             <td>
                                 <form action="../patient/voirPatient.php" method="post" class="d-inline">
                                     <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
-                                    <button type="submit" class="btn btn-info btn-sm" name="DetailRDVA">Details</button>
+                                    <button type="submit" class="btn btn-info btn-sm" name="DetailRDVN">Details</button>
                                 </form>
                             </td>
                         </tr>

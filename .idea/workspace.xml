@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/patient/voirPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/patient/voirPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/Gest_RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/Gest_RDV.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/acceptP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/acceptP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/annulerRendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/annulerRendezVous.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/enreg_rdv.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/enreg_rdv.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +202,7 @@
       <workItem from="1733062427037" duration="15878000" />
       <workItem from="1733147224581" duration="172000" />
       <workItem from="1733156697625" duration="4620000" />
-      <workItem from="1733235045040" duration="14095000" />
+      <workItem from="1733235045040" duration="19906000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -361,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733238585960</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1733249189027</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733249189027</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
