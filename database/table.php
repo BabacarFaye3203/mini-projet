@@ -153,7 +153,7 @@ try {
     exit();
 }
 try {
-    $req1="create table rdv_commun
+    $req1="create table if not exists rdv_commun
 (
     id  int auto_increment
         primary key,
