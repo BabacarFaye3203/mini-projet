@@ -160,7 +160,7 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
           Le système est conçu pour garantir la confidentialité et la sécurité des données des utilisateurs, tout en offrant une interface intuitive. Il permet également une meilleure gestion des traitements et des rendez-vous médicaux, ce qui peut améliorer la prise en charge globale des patients. Grâce à son accès en ligne, il offre une grande flexibilité pour consulter les informations médicales, même à distance.
         </p>
         <p>
-            Ce carnet numérique vise à améliorer la qualité des soins de santé en offrant une vision complète et accessible de l'historique médical d'un patient. Il est également conçu pour être facile à utiliser, avec des fonctionnalités adaptées aux besoins des patients et des professionnels de santé. En plus des informations de santé, le carnet inclura des rappels pour les traitements à suivre et les examens à réaliser. Il s'agit d'une véritable révolution dans la gestion de la santé, qui va au-delà du simple stockage d'informations médicales pour offrir une solution complète et pratique.
+            Ce carnet de santé numérique vise à améliorer la qualité des soins de santé en offrant une vision complète et accessible de l'historique médical d'un patient. Il est également conçu pour être facile à utiliser, avec des fonctionnalités adaptées aux besoins des patients et des professionnels de santé. En plus des informations de santé, le carnet inclura des rappels pour les traitements à suivre et les examens à réaliser. Il s'agit d'une véritable révolution dans la gestion de la santé, qui va au-delà du simple stockage d'informations médicales pour offrir une solution complète et pratique.
         </p>
         
         <p>
@@ -169,7 +169,7 @@ Accédez à vos données en toute simplicité, où que vous soyez !</p>
         <div class="collapse" id="extraText">
           
           <p>
-            Ce carnet numérique permet aussi de centraliser les informations provenant de différents professionnels de santé. Les patients peuvent facilement partager leurs données médicales avec plusieurs médecins ou spécialistes, améliorant ainsi la coordination des soins. Il favorise la dématérialisation des dossiers médicaux et offre une vue d'ensemble sur les traitements reçus, les prescriptions effectuées, et même les analyses de laboratoire. Le carnet peut également être relié à des appareils médicaux connectés pour suivre en temps réel des paramètres vitaux comme la tension artérielle, le rythme cardiaque, ou le taux de glucose, offrant ainsi une surveillance continue.
+            Il permet également de centraliser les informations provenant de différents professionnels de santé. Les patients peuvent facilement partager leurs données médicales avec plusieurs médecins ou spécialistes, améliorant ainsi la coordination des soins. Il favorise la dématérialisation des dossiers médicaux et offre une vue d'ensemble sur les traitements reçus, les prescriptions effectuées, et même les analyses de laboratoire. Le carnet peut également être relié à des appareils médicaux connectés pour suivre en temps réel des paramètres vitaux comme la tension artérielle, le rythme cardiaque, ou le taux de glucose, offrant ainsi une surveillance continue.
           </p>
         </div>
       </div>
@@ -329,7 +329,7 @@ Une application mobile dédiée. <code>.CSN</code></div>
     <div class="row gy-4 gy-md-0 gx-xxl-5" >
       <div class="text-center mb-4">
             <h2 class="fw-bold" id="titleAvis">CE QU'ILS PENSENT DE NOUS</h2>
-            <p class="text-muted" id="temoig">Découvrez ce que les utilisateurs pensent  de CSN .</p>
+            <p class="text-muted" id="temoig">Découvrez ce que les utilisateurs pensent  du CSN .</p>
 </div>
 <div class="container">
 

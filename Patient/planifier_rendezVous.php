@@ -10,7 +10,7 @@ if (!isset($_SESSION['idP_Patient'])) {
 
 // Récupérer les rendez-vous du patient avec les informations du médecin
 $queryRendezvous = "
-    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, m.nomM_Medecin, m.prenomM_Medecin, rdv.type_RendezVous, rdv.Lieu
+    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, m.nomM_Medecin, m.prenomM_Medecin, rdv.type_RendezVous, rdv.Lieu,rdv.statut
     FROM RendezVous rdv
     JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
     WHERE rdv.idP_Patient = ?
@@ -55,6 +55,33 @@ if (isset($_POST['supprimer_rdv'])) {
   $stmtDelete->execute();
   echo "<p>Le rendez-vous a été supprimé définitivement.</p>";
 }
+
+
+//la liste de tous les medecins
+$query = "SELECT idM_Medecin, nomM_Medecin, prenomM_Medecin, emailM_Medecin FROM medecin";
+$stmt = $connect->prepare($query);
+$stmt->execute();
+$resultPatients = $stmt->get_result();
+$rows=$resultPatients->fetch_assoc();
+
+if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
+  $date=htmlspecialchars($_POST["date_rdv"]);
+  $motif=htmlspecialchars($_POST["motif"]);
+  $lieu=htmlspecialchars($_POST["lieu"]);
+
+  $rq="INSERT INTO rendezvous(dateR_RendezVous,type_RendezVous,idP_Patient,idM_Medecin,Lieu)VALUES(?,?,?,?,?)";
+  $stm=$connect->prepare($rq);
+  $stm->bind_param("ssiis",$date,$motif,$rows["idM_Medecin"],$_SESSION['idP_Patient'],$lieu);
+  if($stm->execute()){
+      $resultat=$stm->get_result();
+      echo"rendez-vous planifié";
+  }else{
+      echo"erreur de planification";
+  }
+  
+  
+}
+
 
 ?>
 
@@ -164,7 +191,9 @@ médicales pour une meilleure organisation de votre santé.</p>
                     <th>Prénom du Médecin</th>
                     <th>Date du Rendez-vous</th>
                     <th>Lieu du Rendez-vous</th>
+                    <th>Statut</th>
                     <th>Actions</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -179,6 +208,7 @@ médicales pour une meilleure organisation de votre santé.</p>
                         <td><?= htmlspecialchars($rdv['prenomM_Medecin']); ?></td>
                         <td><?= htmlspecialchars($rdv['dateR_RendezVous']); ?></td>
                         <td><?= htmlspecialchars($rdv['Lieu']); ?></td>
+                        <td><?= htmlspecialchars($rdv['statut']); ?></td>
                         <td>
                         <!-- Formulaire pour annuler un rendez-vous -->
                         <form action="planifier_rendezVous.php" method="post" style="display: inline;">
@@ -206,6 +236,26 @@ médicales pour une meilleure organisation de votre santé.</p>
     <?php } else { ?>
         <p>Aucun rendez-vous prévu.</p>
     <?php } ?>
+</div>
+
+<!--form pour rdv-->
+<div class="container">
+<form action="planifier_rendezVous.php" method="post" >
+ 
+    <div class="mb-3">
+    <label class="form-label" for="date">Date et heure :</label><br>
+    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required><br><br>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="motif">Motif</label><br>
+    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required><br><br>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="motif">Lieu</label><br>
+    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br><br>
+    </div>
+    <input type="submit" class="form-label btn btn-primary" name="ok">Demandez le RDV</input>
+</form>
 </div>
 
 <?php

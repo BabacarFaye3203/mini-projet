@@ -61,6 +61,8 @@ include '../configuration/headMed.php';
 
 
  </section>
+<a href="Gest_RDV.php">RDV</a>
+
 <div style="padding: 10% 200px 0% 200px; margin: 8% 23px 10% auto;">
     <h1>Liste des patients</h1>
     <?php if ($resultPatients->num_rows>0) { ?>
@@ -79,6 +81,7 @@ include '../configuration/headMed.php';
                 <?php
                 $i = 0;
                 while ($row = $resultPatients->fetch_assoc()) {
+                    $_SESSION["idP_Patient"]=$row["idP_Patient"];
                     $i++;
                 ?>
                     <tr>
@@ -137,7 +140,7 @@ if (isset($_POST['annuler_rdv'])) {
     echo "<p>Le rendez-vous a été annulé avec succès.</p>";
 }
 
-// Modifier la date d'un rendez-vous
+// Modif la date d'un rendez-vous
 if (isset($_POST['modifier_rdv'])) {
     $idRdv = $_POST['idRdv'];
     $nouvelle_date = $_POST['nouvelle_date'];
@@ -148,7 +151,7 @@ if (isset($_POST['modifier_rdv'])) {
     echo "<p>La date du rendez-vous a été mise à jour avec succès.</p>";
 }
 
-// Supprimer un rendez-vous
+// Supp un rendez-vous
 if (isset($_POST['supprimer_rdv'])) {
     $idRdv = $_POST['idRdv'];
     $queryDelete = "DELETE FROM RendezVous WHERE idR_RendezVous = ?";
@@ -158,62 +161,6 @@ if (isset($_POST['supprimer_rdv'])) {
     echo "<p>Le rendez-vous a été supprimé définitivement.</p>";
 }
 ?>
-
-<h1>Mes Rendez-vous</h1>
-
-<?php if ($resultRendezvous->num_rows > 0) { ?>
-    <table class="table" id="myRDV">
-        <thead class="table-dark">
-            <tr>
-                <th>#</th>
-                <th>Nom du patient</th>
-                <th>Prénom du patient</th>
-                <th>Date du rendez-vous</th>
-                <th>Type de rendez-vous</th>
-                <th>Lieu du rendez-vous</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $i = 0;
-            while ($rdv = $resultRendezvous->fetch_assoc()) {
-                $i++;
-            ?>
-                <tr>
-                    <td><?= $i ?></td>
-                    <td><?= htmlspecialchars($rdv['nomP_Patient']); ?></td>
-                    <td><?= htmlspecialchars($rdv['prenomP']); ?></td>
-                    <td><?= htmlspecialchars($rdv['dateR_RendezVous']); ?></td>
-                    <td><?= htmlspecialchars($rdv['type_RendezVous']); ?></td>
-                    <td><?= htmlspecialchars($rdv['Lieu']); ?></td>
-                    <td>
-                        <!-- Formulaire pour annuler un rendez-vous -->
-                        <form action="profilMed.php" method="post" style="display: inline;">
-                            <input type="hidden" name="idRdv" value="<?= $rdv['idR_RendezVous']; ?>">
-                            <input type="submit" class="btn btn-warning" name="annuler_rdv" value="Annuler">
-                        </form>
-
-                        <!-- Formulaire pour modifier la date d'un rendez-vous -->
-                        <form action="profilMed.php" method="post" style="display: inline;">
-                            <input type="hidden" name="idRdv" value="<?= $rdv['idR_RendezVous']; ?>">
-                            <input type="datetime-local" name="nouvelle_date" class="form-control" required>
-                            <input type="submit" class="btn btn-info" name="modifier_rdv" value="Modifier la date">
-                        </form>
-
-                        <!-- Formulaire pour supprimer un rendez-vous -->
-                        <form action="profilMed.php" method="post" style="display: inline;">
-                            <input type="hidden" name="idRdv" value="<?= $rdv['idR_RendezVous']; ?>">
-                            <input type="submit" class="btn btn-danger" name="supprimer_rdv" value="Supprimer">
-                        </form>
-                    </td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-<?php } else { ?>
-    <p>Aucun rendez-vous prévu.</p>
-<?php } ?>
 
 
 <?php

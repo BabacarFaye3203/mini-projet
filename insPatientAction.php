@@ -34,7 +34,7 @@ taille_Patient,contactP,CIN_Patient,password) values (?,?,?,?,?,?,?,?,?,?,?,?,?,
          $stm->bind_param("ssssssssssssddiss",$nom,$prenom,$adresse,$email,$pays,
              $ville,$gsang,$matricule,$profession,$statut,$age,$sexe,
              $poids,$taille,$contact,$cin,$pwd);
-        if($stm->execute()){//cho "Inscription avec succes";
+        if($stm->execute()){//echo "Inscription avec succes";
             echo"inscription avec succes";
         
 

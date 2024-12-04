@@ -12,7 +12,7 @@ $patient= $result->fetch_assoc();
 <?php
 include '../configuration/headMedsous.php';
 ?>
-<h1>Bienvenue, <?php echo $patient['nomP_Patient']." ".$patient['prenomP']; ?></h1>
+<h1>Bienvenue, <?php echo $patient['nomP_Patient']; ?></h1>
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Déconnexion
@@ -34,7 +34,7 @@ include '../configuration/headMedsous.php';
       </div>
     </div>
   </div>
-<h2>Prendre rendez-vous avec Mr/Mme <?= htmlspecialchars($patient['nomP_Patient']); ?></h2>
+
 <form action="enreg_rdv.php" method="post" >
     <input type="hidden" name="idP" value="<?= $idP; ?>">
     <div class="mb-3">

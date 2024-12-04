@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Utilisation d'une requête préparée pour éviter les injections SQL
     $stm = $connect->prepare("SELECT * FROM patient WHERE emailP = ? AND password = ?");
-    $stm->bind_param("ss", $email, $pwd); // "ss" signifie deux chaînes (string)
+    $stm->bind_param("ss", $email, $pwd);
 
     if ($stm->execute()) {
         $res = $stm->get_result(); // Récupération du résultat
