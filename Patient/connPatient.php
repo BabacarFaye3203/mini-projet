@@ -5,19 +5,7 @@ include '../database/DatabaseCreat.php'; //connexion à la base
   if (isset($_POST["ok"])){
     $email = $_POST['email'];
     $pwd= $_POST['pwd'];
-  /*  $stm="SELECT idP_Patient,nomP_Patient FROM `patient` WHERE `emailP`=$email AND `password`=$pwd";
-    $res=mysqli_query($connect,$stm);
-    if($res){
-      echo"selection avec succes";
-    }else{
 
-      echo "erreur de selection";}
-    while($rows=mysqli_fetch_assoc($res)) {
-      @$_SESSION['idP_Patient'] = $rows['idP_Patient'];
-      @$_SESSION['nomP_Patient'] = $rows['nomP_Patient'];
-      header("Location:Patient/profilPatient.php"); // Redirection vers le profil du patient
-      exit();
-  }*/
     $req="SELECT idP_Patient,nomP_Patient FROM `patient` WHERE `emailP`= ? AND `password`= ?";
       $stmt = $connect->prepare($req);
       $stmt->bind_param("ss", $email, $pwd);

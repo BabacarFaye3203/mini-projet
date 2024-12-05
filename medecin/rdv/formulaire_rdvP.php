@@ -36,6 +36,10 @@ include '../../configuration/patient/headPatient.php';
     <label class="form-label" for="motif">Motif</label>
     <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
     </div>
+    <div class="mb-3">
+    <label class="form-label" for="lieu">Lieu</label>
+    <input class="form-label" type="text" name="lieu" id="lieu"  required>
+    </div>
     <button type="submit" class="form-label btn btn-primary">Confirmer</button>
 </form>
 </div>

@@ -41,6 +41,7 @@ $result = $stmt->get_result();
 <!-- Modifier les informations personnelles du patient -->
 <a href="profile.php" style="text-underline: none"><h1 style="text-underline: none">PROFILE</h1></a>
 <a href="doc/documents.php" style="text-underline: none"><h1 style="text-underline: none">DOCUMENTS</h1></a>
+<a href="rdv/Gest_RDVMed.php" style="text-underline: none"><h1 style="text-underline: none">MES RENDEZ-VOUS</h1></a>
 <?php echo "</div>"?>
 <?php
 include '../configuration/patient/piedPatient.php';

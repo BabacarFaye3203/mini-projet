@@ -5,14 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
+      <change afterPath="$PROJECT_DIR$/Patient/docteur/modifRDV.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/medecin/patient/modifRDVP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/connPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/connPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/docteur/voirMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/docteur/voirMed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/profilPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/profilPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/acceptM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/acceptM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/annulerRendezVousM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/annulerRendezVousM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/rdv/formulaire_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/formulaire_rdvM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/patient/modifRDV.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/patient/voirPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/patient/voirPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/Gest_RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/Gest_RDV.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/acceptP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/acceptP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/annulerRendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/annulerRendezVous.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/enreg_rdv.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/enreg_rdv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/formulaire_rdvP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/formulaire_rdvP.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <execution />
   </component>
   <component name="Git.Settings">
@@ -46,16 +65,16 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;emmanuel&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/RAMADJI CYRUS/Documents/GitHub/mini-projet/Patient&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/RAMADJI CYRUS/Documents/GitHub/mini-projet/Patient/docteur&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php.composer&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -66,6 +85,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\Patient\docteur" />
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\Patient" />
       <recent name="C:\Users\RAMADJI CYRUS\Documents\GitHub\mini-projet\medecin" />
     </key>
@@ -197,7 +217,13 @@
       <workItem from="1733062427037" duration="15878000" />
       <workItem from="1733147224581" duration="172000" />
       <workItem from="1733156697625" duration="4620000" />
-      <workItem from="1733235045040" duration="21456000" />
+      <workItem from="1733235045040" duration="26465000" />
+      <workItem from="1733273059366" duration="3861000" />
+      <workItem from="1733407304772" duration="417000" />
+      <workItem from="1733408492872" duration="910000" />
+      <workItem from="1733410085386" duration="913000" />
+      <workItem from="1733412794056" duration="15369000" />
+      <workItem from="1733430361247" duration="111000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -375,7 +401,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733257490582</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1733259867332</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1733259867332</updated>
+    </task>
+    <task id="LOCAL-00024" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1733259960749</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1733259960749</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,5 +454,9 @@
     <MESSAGE value="Insertin des donnees dans la table Medicin" />
     <MESSAGE value="MISES A JOURS" />
     <option name="LAST_COMMIT_MESSAGE" value="MISES A JOURS" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

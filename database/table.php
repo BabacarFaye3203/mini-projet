@@ -36,6 +36,7 @@ try{
     type_RendezVous varchar(20),
     idP_Patient INT,
     idM_Medecin INT,
+    lieu text,
     PRIMARY KEY (idR_RendezVous),
    FOREIGN KEY (idP_Patient) REFERENCES patient(idP_Patient),
     FOREIGN KEY (idM_Medecin) REFERENCES medecin(idM_Medecin))
@@ -69,24 +70,7 @@ try{
     //echo"erreur lors de la création de la base".$e->getMessage();
     exit();
 }
-try {
-    $req1="
-    CREATE TABLE IF NOT EXISTS consultation (
-    idC INT AUTO_INCREMENT PRIMARY KEY,
-    id_Patient INT ,
-    id_Medecin INT ,
-    date_consultation DATETIME ,
-    motif TEXT ,
-    FOREIGN KEY (id_Patient) REFERENCES patient(idP_Patient),
-    FOREIGN KEY (id_Medecin) REFERENCES medecin(idM_Medecin)
-)ENGINE=InnoDB;";
-    $connect->query($rq1);
-    //echo "<br>Table creer";
-}
-catch (Exception $ex){
-    //echo"erreur lors de la création de la base".$e->getMessage();
-    exit();
-}
+
 try{
     $rq1="
     CREATE TABLE IF NOT EXISTS avoir (idP_Patient INT AUTO_INCREMENT NOT NULL,
@@ -123,6 +107,7 @@ try {
     dat  datetime    null,
     idP  int         null,
     idM  int         null,
+    lieu text,
     constraint rdva_pk
         unique (idR)
 );";
@@ -140,6 +125,7 @@ try {
     dat  datetime    null,
     idP  int         null,
     idM  int         null,
+    lieu text,
     constraint idR
         unique (idR),
     constraint rdvn_pk
