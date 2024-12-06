@@ -1,27 +1,24 @@
 <?php
 session_start();
-include '../../database/DatabaseCreat.php'; // Connexion à la base de données
+include '../../database/DatabaseCreat.php';
 // Vérifie si les données ont été soumises
-if (isset($_POST['modifRDV'])) {
-    $idM = $_SESSION['idP_Patient']; // ID du medecin connecté
-    $date_rdv = $_POST['date_rdv']; // Date et heure du rdv
+if (isset($_POST['modifier'])) {
+    $idM = $_SESSION['idP_Patient'];
+    $date_rdv = $_POST['date_rdv'];
     $lieu=$_POST['lieu'];
     $idr=$_POST['idr'];
-    if (!empty($idP) && !empty($date_rdv) && !empty($motif)) {
-        // Insertion dans la table des rendez-vous
-        $query = "UPDATE rendezvous SET statut='reprogrammé',lieu=?,dateR_RendezVous=? where idR_RendezVous=?";
+    if (!empty($date_rdv) && !empty($lieu) && !empty($idr)) {
+        $query = "UPDATE rendezvous SET dateR_RendezVous=?, lieu=?, statut='reprogrammé' WHERE idR_RendezVous=?";
         $stmt = $connect->prepare($query);
-        $stmt->bind_param("ssi",$lieu,$date_rdv, $idr);
-        
-        if ($stmt->execute() ) {
-            // Redirige avec un message de succès
-            header("Location: ../rdv/Gest_RDVMed.php?success=Rendez-vous ajouté avec succès");
+        $stmt->bind_param("ssi", $date_rdv, $lieu, $idr);
+
+        if ($stmt->execute()) {
+            header("Location: ../rdv/Gest_RDVMed.php?success=Rendez-vous modifié avec succès");
             exit();
         } else {
-            echo "<script>window.alert('Erreur : Impossible de sauvegarder le rendez-vous.')</script>";
+            echo "Erreur : Impossible de mettre à jour le rendez-vous.";
         }
+    } else {
+        echo "Veuillez remplir tous les champs.";
     }
 }
-
-
-

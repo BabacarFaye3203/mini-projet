@@ -10,8 +10,8 @@ if (isset($_POST['Detail'])) {
     $idP = $_POST['idP'];
     // Récupérer les rendez-vous du patient
     $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as typ,
-       dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif,lieu FROM rendezvous WHERE idP_Patient = ? and 
-                idM_Medecin=? and statut='soumis'  order by dateR_RendezVous ";
+       dateR_RendezVous as date_rdv,idP_Patient ,type_RendezVous  as motif,lieu FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=?
+                and statut='soumis' and origine='patient'  order by dateR_RendezVous ";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("ii", $idP,$idM);
     $stmt_rendez_vous->execute();
@@ -20,8 +20,8 @@ if (isset($_POST['Detail'])) {
 else if(isset($_POST['DetailRDVA'])){
     $idP = $_POST['idP'];
     // Récupérer les rendez-vous acceptes du patient
-    $query_rendez_vous = "SELECT type_RendezVous,dateR_RendezVous,idP_Patient,idM_Medecin
-    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=? and statut='accepté'
+    $query_rendez_vous = "SELECT type_RendezVous as type,dateR_RendezVous as dat,idP_Patient,idM_Medecin,lieu
+    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=? and statut='accepté' 
     order by dateR_RendezVous ";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("ii", $idP,$idM);
@@ -33,12 +33,23 @@ else if(isset($_POST['DetailRDVN'])){
     // Récupérer les rendez-vous annules du patient
     $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as type,dateR_RendezVous as dat
      ,idP_Patient,idM_Medecin,lieu
-    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=? and statut='annulé'
+    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=? and statut='annulé' 
     order by dateR_RendezVous ";
     $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
     $stmt_rendez_vous->bind_param("ii", $idP,$idM);
     $stmt_rendez_vous->execute();
     $result_rendez_vous2 = $stmt_rendez_vous->get_result();
+}else if(isset($_POST['DetailRDVR'])){
+    $idP = $_POST['idP'];
+    // Récupérer les rendez-vous annules du patient
+    $query_rendez_vous = "SELECT idR_RendezVous as idr,type_RendezVous as type,dateR_RendezVous as dat
+     ,idP_Patient,idM_Medecin,lieu
+    FROM rendezvous WHERE idP_Patient = ? and idM_Medecin=? and statut='reprogrammé' 
+    order by dateR_RendezVous ";
+    $stmt_rendez_vous = $connect->prepare($query_rendez_vous);
+    $stmt_rendez_vous->bind_param("ii", $idP,$idM);
+    $stmt_rendez_vous->execute();
+    $result_rendez_vous3 = $stmt_rendez_vous->get_result();
 }
 
 // Récupérer les informations du patient
@@ -125,13 +136,14 @@ $patient = $result_patient->fetch_assoc();
                 <table class="table">
                     <thead class="table-dark">
                     <tr>
-                        <th>Date</th><th>Motif</th>
+                        <th>Date</th><th>Motif</th><th>Lieu</th>
                     </tr>
                     </thead>
                     <?php while ($row = $result_rendez_vous1->fetch_assoc()){ ?>
                         <tr>
                             <td><?= htmlspecialchars($row['dat']); ?></td>
                             <td> <?= htmlspecialchars($row['type']); ?></td>
+                            <td> <?= htmlspecialchars($row['lieu']); ?></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -144,35 +156,32 @@ $patient = $result_patient->fetch_assoc();
         </tr>
         </thead>
         <?php while ($row = $result_rendez_vous2->fetch_assoc()){ ?>
-        <form action="modifRDV.php" method="post">
-            <tr>
-                <input type="hidden" name="idr" value="<?= htmlspecialchars($row['idr']); ?>" >
-                <td><input type="datetime-local" name="date_rdv" value="<?= htmlspecialchars($row['dat']); ?>" ></td>
-                <input type="hidden" name="motif" value="<?= htmlspecialchars($row['type']); ?>">
-                <td><?= htmlspecialchars($row['type']); ?></td>
-                <td><input type="text" name="lieu" value="<?= htmlspecialchars($row['lieu']); ?>"></td>
-                <td><input type="submit" class="btn btn-primary" name="modifRDV" value="Re-programmer"></td>
-            </tr></form>
+            <form action="modifRDVP.php" method="post">
+                <tr>
+                    <input type="hidden" name="idr" value="<?= htmlspecialchars($row['idr']); ?>" >
+                    <td><input type="datetime-local" name="date_rdv" value="<?= htmlspecialchars($row['dat']); ?>"></td>
+                    <input type="hidden" name="motif" value="<?= htmlspecialchars($row['type']); ?>">
+                    <td><?= htmlspecialchars($row['type']); ?></td>
+                    <td><input type="text" name="lieu" value="<?= htmlspecialchars($row['lieu']); ?>"></td>
+                    <td><input type="submit" class="btn btn-primary" name="modifier" value="Re-programmer"></td>
+                </tr>
+            </form>
         <?php } ?>
     </table>
-        <?php } else if (@$result_rendez_vous2->num_rows > 0){ ?>
+        <?php } else if (@$result_rendez_vous3->num_rows > 0){ ?>
             <h3>Liste des RDV reprogrammés</h3>
             <table class="table">
                 <thead class="table-dark">
                 <tr>
-                    <th>Date</th><th>Motif</th><th>Lieu</th><th>Action</th>
+                    <th>Date</th><th>Motif</th><th>Lieu</th>>
                 </tr>
                 </thead>
-                <?php while ($row = $result_rendez_vous2->fetch_assoc()){ ?>
-                    <form action="modifRDVP.php" method="post">
+                <?php while ($row = $result_rendez_vous3->fetch_assoc()){ ?>
                         <tr>
-                            <input type="hidden" name="idr" value="<?= htmlspecialchars($row['idr']); ?>" >
-                            <td><input type="datetime-local" name="date_rdv" value="<?= htmlspecialchars($row['dat']); ?>" ></td>
-                            <input type="hidden" name="motif" value="<?= htmlspecialchars($row['type']); ?>">
-                            <td><input type="text" name="lieu" value="<?= htmlspecialchars($row['lieu']); ?>"></td>
+                            <td><?= htmlspecialchars($row['dat']); ?></td>
                             <td><?= htmlspecialchars($row['type']); ?></td>
-                            <td><input type="submit" class="btn btn-primary" name="modifRDV" value="Re-programmer"></td>
-                        </tr></form>
+                            <td><?= htmlspecialchars($row['lieu']); ?>></td>
+                        </tr>
                 <?php } ?>
             </table>
 

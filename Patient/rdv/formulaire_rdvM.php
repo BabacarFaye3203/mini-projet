@@ -4,7 +4,7 @@ $idM = $_GET['idM'];
 $req="SELECT idM_Medecin,nomM_Medecin as n,prenomM_Medecin as p,emailM_Medecin as e,
        specialite_Medecin as sp,contactM_Medecin as c,sexe_Medecin as s, age FROM `medecin` where idM_Medecin=?";
 $stmt = $connect->prepare($req);
-$stmt->bind_param("i", $idM);l
+$stmt->bind_param("i", $idM);
 $stmt->execute();
 $result0 = $stmt->get_result();
 $med= $result0->fetch_assoc();

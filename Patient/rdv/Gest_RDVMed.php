@@ -9,20 +9,12 @@ if (!isset($_SESSION['idP_Patient'])) {
 }
 
 $idP = $_SESSION['idP_Patient'];
-/*
-$req="SELECT * FROM `medecin` WHERE `idM_Medecin`= ? ";
-$stmt = $connect->prepare($req);
-$stmt->bind_param("i", $idM_Med);
-$stmt->execute();
-$stmt->store_result();
-if ($stmt->num_rows > 0) {
-    $med=  $stmt->fetch();
-}*/
+
 //****************--Selection des rendez-vous --******************************
 $query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM,rdv.dateR_RendezVous as date_rdv
           FROM rendezvous rdv
           JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
-          WHERE rdv.idP_Patient = ? and statut='soumis'
+          WHERE rdv.idP_Patient = ? and rdv.statut='soumis' and rdv.origine='medecin'
           GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idP);
@@ -32,7 +24,7 @@ $result = $stmt->get_result();
 $query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM,rdv.dateR_RendezVous as date_rdv
           FROM rendezvous rdv
           JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
-          WHERE rdv.idP_Patient = ? and statut='accepté'
+          WHERE rdv.idP_Patient = ? and rdv.statut='accepté' 
           GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idP);
@@ -42,7 +34,7 @@ $result2 = $stmt->get_result();
 $query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM,rdv.dateR_RendezVous as date_rdv
           FROM rendezvous rdv
           JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
-          WHERE rdv.idP_Patient = ? and statut='annulé'
+          WHERE rdv.idP_Patient = ? and rdv.statut='annulé' 
           GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idP);
@@ -52,12 +44,12 @@ $result3 = $stmt->get_result();
 $query = "SELECT m.idM_Medecin, m.nomM_Medecin as nomMed,m.prenomM_Medecin as pren,rdv.idM_Medecin as idM,rdv.dateR_RendezVous as date_rdv
           FROM rendezvous rdv
           JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
-          WHERE rdv.idP_Patient = ? and statut='reprogrammé'
+          WHERE rdv.idP_Patient = ? and rdv.statut='reprogrammé' 
           GROUP BY m.idM_Medecin";
 $stmt = $connect->prepare($query);
 $stmt->bind_param("i", $idP);
 $stmt->execute();
-$result2 = $stmt->get_result();
+$result4 = $stmt->get_result();
 /*
 //Suppression des rendez-vous ou la date limite est dépassée
 $query_rendez_vous0 = "DELETE FROM rdva WHERE dat< LOCALTIME and idM = ?;";
@@ -151,7 +143,7 @@ include '../../configuration/head.php';
                                 <td>
                                     <form action="../docteur/voirMed.php" method="post" class="d-inline">
                                         <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                                        <button type="submit" class="btn btn-info btn-sm" name="DetailRDVA">Details</button>
+                                        <input type="submit" class="btn btn-info btn-sm" name="DetailRDVA" value="Details">
                                     </form>
                                 </td>
                             </tr>
@@ -194,7 +186,7 @@ include '../../configuration/head.php';
                                 <td>
                                     <form action="../docteur/voirMed.php" method="post" class="d-inline">
                                         <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                                        <button type="submit" class="btn btn-info btn-sm" name="DetailRDVN">Details</button>
+                                        <input type="submit" class="btn btn-info btn-sm" name="DetailRDVN" value="Details">
                                     </form>
                                 </td>
                             </tr>
@@ -217,7 +209,7 @@ include '../../configuration/head.php';
 
     <div class="collapse" id="collapseExample3">
         <div class="card card-body">
-            <?php if ($result3->num_rows > 0) { ?>
+            <?php if ($result4->num_rows > 0) { ?>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead class="table-dark">
@@ -229,7 +221,7 @@ include '../../configuration/head.php';
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $i = 0; while ($row = $result3->fetch_assoc()) { $i++; ?>
+                        <?php $i = 0; while ($row = $result4->fetch_assoc()) { $i++; ?>
                             <tr>
                                 <td><?= $i; ?></td>
                                 <td><?= htmlspecialchars($row['nomMed']); ?></td>
@@ -237,7 +229,7 @@ include '../../configuration/head.php';
                                 <td>
                                     <form action="../docteur/voirMed.php" method="post" class="d-inline">
                                         <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                                        <button type="submit" class="btn btn-info btn-sm" name="DetailRDVN">Details</button>
+                                        <input type="submit" class="btn btn-info btn-sm" name="DetailRDVR" value="Details">
                                     </form>
                                 </td>
                             </tr>
@@ -246,7 +238,7 @@ include '../../configuration/head.php';
                     </table>
                 </div>
             <?php } else { ?>
-                <p class="text-center text-muted">Aucun rendez-vous annulé trouvé.</p>l
+                <p class="text-center text-muted">Aucun rendez-vous re-programmé trouvé.</p>
             <?php } ?>
         </div>
     </div></section><!--</div>-->

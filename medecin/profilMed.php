@@ -42,7 +42,7 @@ $result = $stmt->get_result();
 ;?>
 <h1>Bienvenue, Dr. <span style="font-family: 'Copperplate Gothic Bold',serif ;"><?php echo $_SESSION['nomM_Medecin']." ".$_SESSION['prenomM_Medecin']?></span></h1>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
-<?php echo "<div style='padding:10% 200px 0% 200px ;
+<?php echo "<div style='padding:10% 200px 0 200px ;
                 margin:8% 23px 10% auto ;'>";?>
 <h1>Liste des patients</h1>
 <?php if($result0->num_rows > 0) { ?>
@@ -95,7 +95,7 @@ $result = $stmt->get_result();
 <!-- Modifier les informations personnelles du patient -->
 <a href="profile.php"><h3>PROFILE</h3></a>
 <a href="#"><h4>Documents</h4></a>
-<form action="/Patient/ajouter_document.php" method="POST" enctype="multipart/form-data">
+<form action="../Patient/doc/ajouter_document.php" method="POST" enctype="multipart/form-data">
     <div class="mb-3 container">
         <div class="form-floating mb-3">
             <select name="type" class="form-select" id="floatingSelect" aria-label="Floating label select example">

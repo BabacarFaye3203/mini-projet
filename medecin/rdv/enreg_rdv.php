@@ -3,7 +3,7 @@ session_start();
 include '../../database/DatabaseCreat.php'; // Connexion à la base de données
 
 // Vérifie si les données ont été soumises
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['Confirmer'])) {
     $idM = $_SESSION['idM_Medecin']; // ID du medecin connecté
     $idP = $_POST['idP']; // ID du patient sélectionné
     $date_rdv = $_POST['date_rdv']; // Date et heure du rdv
@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lieu=$_POST['lieu'];
     if (!empty($idP) && !empty($date_rdv) && !empty($motif)) {
         // Insertion dans la table des rendez-vous
-        $query = "INSERT INTO rendezvous (dateR_RendezVous, type_RendezVous, idP_Patient,idM_Medecin,lieu,statut) VALUES (?,?,?,?,?,'soumis')";
+        $query = "INSERT INTO rendezvous (dateR_RendezVous, type_RendezVous, idP_Patient,
+                        idM_Medecin,lieu,statut,origine) VALUES (?,?,?,?,?,'soumis','medecin')";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ssiis", $date_rdv,$motif,$idP,$idM,$lieu);
         //Insertion pour pouvoir afficher les patients de chaque medecin
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute() && $stmt_insert->execute()) {
             // Redirige avec un message de succès
-            header("Location: ../profilMed.php?success=Rendez-vous ajouté avec succès");
+            header("Location: Gest_RDV.php?success=Rendez-vous ajouté avec succès");
             exit();
         } else {
             echo "<script>window.alert('Erreur : Impossible de sauvegarder le rendez-vous.')</script>";
@@ -37,4 +38,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "<script>window.alert('Méthode non autorisée. ')</script>";
 }
+
 

@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="223847a7-dd17-43ea-80a1-4c033ae4437e" name="Changes" comment="MISES A JOURS">
-      <change afterPath="$PROJECT_DIR$/Patient/docteur/modifRDV.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/medecin/patient/modifRDVP.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8dfc0e61-8fa8-496b-9d18-db38875ca4cd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/connPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/connPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patient/docteur/modifRDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/docteur/modifRDV.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patient/docteur/voirMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/docteur/voirMed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/profilPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/profilPatient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/Gest_RDVMed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/rdv/acceptM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/acceptM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patient/rdv/annulerRendezVousM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/annulerRendezVousM.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/enreg_rdvM.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patient/rdv/formulaire_rdvM.php" beforeDir="false" afterPath="$PROJECT_DIR$/Patient/rdv/formulaire_rdvM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/patient/modifRDV.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/patient/modifRDVP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/patient/modifRDVP.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/patient/voirPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/patient/voirPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/profilMed.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/profilMed.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/rdv/Gest_RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/Gest_RDV.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/rdv/acceptP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/acceptP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medecin/rdv/annulerRendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/annulerRendezVous.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/rdv/enreg_rdv.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/enreg_rdv.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medecin/rdv/formulaire_rdvP.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/formulaire_rdvP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medecin/rdv/planifier_rendezVous.php" beforeDir="false" afterPath="$PROJECT_DIR$/medecin/rdv/planifier_rendezVous.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +218,9 @@
       <workItem from="1733410085386" duration="913000" />
       <workItem from="1733412794056" duration="15369000" />
       <workItem from="1733430361247" duration="111000" />
+      <workItem from="1733430892465" duration="8863000" />
+      <workItem from="1733453978273" duration="14451000" />
+      <workItem from="1733504626562" duration="1291000" />
     </task>
     <task id="LOCAL-00001" summary="Une modification sur la table, certains types comme enum et les **not found**">
       <option name="closed" value="true" />
@@ -417,7 +414,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733259960749</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="MISES A JOURS">
+      <option name="closed" value="true" />
+      <created>1733431071962</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1733431071962</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

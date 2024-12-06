@@ -31,7 +31,7 @@ include '../../configuration/patient/headPatient.php';
     <div class="mb-3">
     <label class="form-label" for="date">Date et heure :</label>
     <input class="form-label" type="datetime-local" id="date" name="date_rdv" required>
-    </div>
+    </div>n
     <div class="mb-3">
     <label class="form-label" for="motif">Motif</label>
     <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required>
@@ -40,7 +40,7 @@ include '../../configuration/patient/headPatient.php';
     <label class="form-label" for="lieu">Lieu</label>
     <input class="form-label" type="text" name="lieu" id="lieu"  required>
     </div>
-    <button type="submit" class="form-label btn btn-primary">Confirmer</button>
+    <input type="submit" class="form-label btn btn-primary" name="Confirmer" value="Confirmer" >
 </form>
 </div>
 <?php }?>

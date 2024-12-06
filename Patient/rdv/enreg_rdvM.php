@@ -11,9 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lieu=$_POST['lieu'];
     if (!empty($idM) && !empty($date_rdv) && !empty($motif)) {
         // Insertion dans la table des rendez-vous
-        $query = "INSERT INTO rendezvous (dateR_RendezVous, type_RendezVous, idP_Patient,idM_Medecin,lieu,statut) VALUES (?, ?, ?,?,?,'soumis')";
+        $query = "INSERT INTO rendezvous (dateR_RendezVous, type_RendezVous, idP_Patient,idM_Medecin,lieu,statut,origine)
+        VALUES (?, ?, ?,?,?,'soumis','patient')";
         $stmt = $connect->prepare($query);
-        $stmt->bind_param("ssiis",$date_rdv,$motif,$idP,$idM);
+        $stmt->bind_param("ssiis",$date_rdv,$motif,$idP,$idM,$lieu);
         //Insertion pour pouvoir afficher les patients de chaque medecin
         $query_insert = "INSERT INTO rdv_commun (idP,idM)
         SELECT ?, ? from dual
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute() && $stmt_insert->execute()) {
             // Redirige avec un message de succès
-            header("Location: ../profilPatient.php?success=Rendez-vous ajouté avec succès");
+            header("Location: Gest_RDVMed.php?success=Rendez-vous ajouté avec succès");
             exit();
         } else {
             echo "<script>window.alert('Erreur : Impossible de sauvegarder le rendez-vous.')</script>";
