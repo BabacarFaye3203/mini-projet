@@ -58,7 +58,7 @@ if (isset($_POST['supprimer_rdv'])) {
 
 
 //la liste de tous les medecins
-$query = "SELECT idM_Medecin, nomM_Medecin, prenomM_Medecin, emailM_Medecin FROM medecin";
+$query = "SELECT idM_Medecin, nomM_Medecin, prenomM_Medecin, email FROM medecin";
 $stmt = $connect->prepare($query);
 $stmt->execute();
 $resultPatients = $stmt->get_result();
@@ -120,7 +120,7 @@ if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="accueilPatient.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
@@ -238,7 +238,7 @@ médicales pour une meilleure organisation de votre santé.</p>
     <?php } ?>
 </div>
 
-<!--form pour rdv-->
+<!--form pour rdv
 <div class="container">
 <form action="planifier_rendezVous.php" method="post" >
  
@@ -257,10 +257,17 @@ médicales pour une meilleure organisation de votre santé.</p>
     <input type="submit" class="form-label btn btn-primary" name="ok">Demandez le RDV</input>
 </form>
 </div>
-
+-->
 <?php
 // Inclure le pied de page
 include '../configuration/footer.php';
+?>
+<script>
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+</script>
+<?php
 include '../configuration/pied.php';
 ?>
 

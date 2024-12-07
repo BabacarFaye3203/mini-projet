@@ -33,17 +33,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../index.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="../medecin/accueil.php">Mes Patients</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="profilMed.php">Profil</a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link" href="#myRDV">Mes Rendez-vous</a>
+        <li class="nav-item">
+          <a class="nav-link" href="../medecin/planifier_rendezVous.php">Mes Rendez-vous</a>
         </li>
+        <!--
         <li class="nav-item">
           <a class="nav-link" href="#myPatients">Mes Patients</a>
-        </li>
+        </li>-->
+    
       </ul>
     </div>
   </div>

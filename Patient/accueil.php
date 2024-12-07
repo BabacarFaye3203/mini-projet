@@ -1,14 +1,25 @@
 <?php
 session_start();
-@include '../database/DatabaseCreat.php';
+include '../database/DatabaseCreat.php';
 
+// si l'utilisateur est connecté
+if (!isset($_SESSION['idP_Patient'])) {
+    header("Location: ../connPatient.php");
+    exit();
+}
+$idP_Patient = $_SESSION['idP_Patient'];
 
-// Récupérer la liste de tous les medecins
-$queryPatients = "SELECT idM_Medecin, nomM_Medecin, prenomM_Medecin, email,villeM_Medecin,specialite_Medecin FROM medecin";
-$stmtPatients = $connect->prepare($queryPatients);
-$stmtPatients->execute();
-$resultPatients = $stmtPatients->get_result();
+$patients = "SELECT * FROM Patient WHERE idP_Patient = $idP_Patient";
+$result = $connect->query($patients);
 
+//  si le patient existe
+if ($result->num_rows > 0) {
+    $patient = $result->fetch_assoc();
+    $_SESSION["nomP_Patient"]=$patient["nomP_Patient"];
+    $_SESSION["prenomP"]=$patient['prenomP'];
+} else {
+    die("Aucun patient trouvé avec cet ID.");
+}
 ?>
 
 
@@ -65,8 +76,6 @@ $resultPatients = $stmtPatients->get_result();
     </div>
   </div>
 </nav>
-
-
 <div class="dropdown" class="container" id="logid">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Déconnexion
@@ -76,7 +85,7 @@ $resultPatients = $stmtPatients->get_result();
   </ul>
 </div>
 
-<section class="notrecouleur text-secondary px-4 py-5 text-center">
+ <section class="notrecouleur text-secondary px-4 py-5 text-center">
  <div >
     <div class="py-5" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
@@ -88,60 +97,55 @@ $resultPatients = $stmtPatients->get_result();
     </div>
   </div>
 
+
  </section>
- <br><br><br>
- <div class="text-center">
-            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
-            <p class="container">Bienvenue sur la page des médecins
-Découvrez notre liste de médecins qualifiés prêts à vous accompagner pour vos besoins de santé.
- Sur cette page, vous pouvez consulter les profils des médecins, leurs spécialités,
- et leurs horaires disponibles. Prenez rendez-vous facilement en quelques clics en sélectionnant
-  le médecin de votre choix et en choisissant un créneau qui vous convient.
-   Nous mettons tout en œuvre pour rendre votre expérience simple et rapide,
-afin que vous puissiez recevoir les soins dont vous avez besoin, au moment opportun.</p>
-  </div>
- 
- <div style="padding: 10% 200px 0% 200px; margin: 8% 23px 10% auto;">
-    <h1>Nos Médecins</h1>
-    <div class="row">
-        <?php if ($resultPatients->num_rows > 0){ 
-            $i = 0;
-            ?>
-           <?php while ($row = $resultPatients->fetch_assoc()) {
-                $i++;
-            ?>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <!-- Image de la carte -->
-                    <img src="../images/mon Med.webp" class="card-img-top" alt="Image de <?= htmlspecialchars($row['nomM_Medecin']); ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= htmlspecialchars($row['nomM_Medecin']) . ' ' . htmlspecialchars($row['prenomM_Medecin']); ?></h5>
-                        <p class="card-text"><?= htmlspecialchars($row['email']); ?></p>
-                        <p class="card-text"><?= htmlspecialchars($row['specialite_Medecin']); ?></p>
-                        <p class="card-text"><?= htmlspecialchars($row['villeM_Medecin']); ?></p>
-                        <form action="formRDVPatient.php" method="post">
-                            <input type="hidden" name="idM" value="<?= $row['idM_Medecin']; ?>">
-                            <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
-                        </form>
-                        <a href="../patient/profilPatient.php?id=<?= $row['idM_Medecin']; ?>" class="btn btn-primary mt-3">Voir le Profil</a>
-                    </div>
+    <!-- Contenu -->
+    <main class="container my-4">
+        <!-- message de  de Bienvenue -->
+        <div class="text-center">
+            <h2>Bienvenue, <?php echo $patient['prenomP'] . " " . $patient['nomP_Patient']; ?> !</h2>
+            <p>Voici une vue d'ensemble de votre profil.</p>
+        </div>
+
+        <!-- Informations Personnelles -->
+        <div class="my-4">
+            <div class="card">
+                <div class="card-header " id="colaccpatient">
+                    Informations Personnelles
+                </div>
+                <div class="card-body">
+                    <p><strong>Adresse :</strong> <?php echo $patient['adresseP']; ?></p>
+                    <p><strong>Email :</strong> <?php echo $patient['email']; ?></p>
+                    <p><strong>Pays :</strong> <?php echo $patient['paysP']; ?></p>
+                    <p><strong>Ville :</strong> <?php echo $patient['villeP']; ?></p>
+                    <p><strong>Contact :</strong> <?php echo $patient['contactP']; ?></p>
+                    <p><strong>Âge :</strong> <?php echo $patient['ageP']; ?> ans</p>
+                    <p><strong>Sexe :</strong> <?php echo $patient['sexeP']; ?></p>
                 </div>
             </div>
-            <?php } ?>
-        <?php } ?>
-        
-   
-    </div>
-</div>
+        </div>
 
-<?php
+        <!-- Données Médicales -->
+        <div class="my-4">
+            <div class="card">
+                <div class="card-header " id="colaccpatient">
+                    Données Médicales
+                </div>
+                <div class="card-body">
+                    <p><strong>Groupe Sanguin :</strong> <?php echo $patient['groupe_sanguin_Patient']; ?></p>
+                    <p><strong>Poids :</strong> <?php echo $patient['poids_Patient']; ?> kg</p>
+                    <p><strong>Taille :</strong> <?php echo $patient['taille_Patient']; ?> m</p>
+                    <p><strong>Situation Matrimoniale :</strong> <?php echo $patient['situation_matri_Patient']; ?></p>
+                    <p><strong>Profession :</strong> <?php echo $patient['profession_Patient']; ?></p>
+                    <p><strong>Statut :</strong> <?php echo $patient['statut_Patient']; ?></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <?php
 include '../configuration/footer.php';
-?>
-<script>
-  if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-  }
-</script>
-<?php
 include '../configuration/pied.php';
 ?>
+
+
+

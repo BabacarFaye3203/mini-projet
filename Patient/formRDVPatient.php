@@ -1,27 +1,35 @@
 <?php
 session_start();
-include '../database/DatabaseCreat.php';
+@include '../database/DatabaseCreat.php';
 
-// si l'utilisateur est connecté
+// Vérifier si le patient est connecté
 if (!isset($_SESSION['idP_Patient'])) {
     header("Location: ../connPatient.php");
     exit();
 }
-$idP_Patient = $_SESSION['idP_Patient'];
 
-$patients = "SELECT * FROM Patient WHERE idP_Patient = $idP_Patient";
-$result = $connect->query($patients);
 
-//  si le patient existe
-if ($result->num_rows > 0) {
-    $patient = $result->fetch_assoc();
-    $_SESSION["nomP_Patient"]=$patient["nomP_Patient"];
-    $_SESSION["prenomP"]=$patient['prenomP'];
-} else {
-    die("Aucun patient trouvé avec cet ID.");
+
+if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
+  $date=htmlspecialchars($_POST["date_rdv"]);
+  $motif=htmlspecialchars($_POST["motif"]);
+  $lieu=htmlspecialchars($_POST["lieu"]);
+
+  $rq="INSERT INTO rendezvous(dateR_RendezVous,type_RendezVous,idP_Patient,idM_Medecin,Lieu)VALUES(?,?,?,?,?)";
+  $stm=$connect->prepare($rq);
+  $stm->bind_param("ssiis",$date,$motif,$rows["idM_Medecin"],$_SESSION['idP_Patient'],$lieu);
+  if($stm->execute()){
+      $resultat=$stm->get_result();
+      echo"rendez-vous planifié";
+  }else{
+      echo"erreur de planification";
+  }
+  
+  
 }
-?>
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +66,7 @@ if ($result->num_rows > 0) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="accueilPatient.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
@@ -96,56 +104,56 @@ if ($result->num_rows > 0) {
       </div>
     </div>
   </div>
-
-
  </section>
-    <!-- Contenu -->
-    <main class="container my-4">
-        <!-- message de  de Bienvenue -->
-        <div class="text-center">
-            <h2>Bienvenue, <?php echo $patient['prenomP'] . " " . $patient['nomP_Patient']; ?> !</h2>
-            <p>Voici une vue d'ensemble de votre profil.</p>
-        </div>
 
-        <!-- Informations Personnelles -->
-        <div class="my-4">
-            <div class="card">
-                <div class="card-header " id="colaccpatient">
-                    Informations Personnelles
-                </div>
-                <div class="card-body">
-                    <p><strong>Adresse :</strong> <?php echo $patient['adresseP']; ?></p>
-                    <p><strong>Email :</strong> <?php echo $patient['emailP']; ?></p>
-                    <p><strong>Pays :</strong> <?php echo $patient['paysP']; ?></p>
-                    <p><strong>Ville :</strong> <?php echo $patient['villeP']; ?></p>
-                    <p><strong>Contact :</strong> <?php echo $patient['contactP']; ?></p>
-                    <p><strong>Âge :</strong> <?php echo $patient['ageP']; ?> ans</p>
-                    <p><strong>Sexe :</strong> <?php echo $patient['sexeP']; ?></p>
-                </div>
-            </div>
-        </div>
+ <div class="text-center">
+            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
+            <p> Sur cette page, vous pouvez gérer efficacement tous vos rendez-vous médicaux. 
+              Vous y trouverez la liste complète de vos rendez-vous planifiés,
+               incluant des détails tels que la date, le type de consultation,
+                le lieu, ainsi que le nom du médecin concerné.
 
-        <!-- Données Médicales -->
-        <div class="my-4">
-            <div class="card">
-                <div class="card-header " id="colaccpatient">
-                    Données Médicales
-                </div>
-                <div class="card-body">
-                    <p><strong>Groupe Sanguin :</strong> <?php echo $patient['groupe_sanguin_Patient']; ?></p>
-                    <p><strong>Poids :</strong> <?php echo $patient['poids_Patient']; ?> kg</p>
-                    <p><strong>Taille :</strong> <?php echo $patient['taille_Patient']; ?> m</p>
-                    <p><strong>Situation Matrimoniale :</strong> <?php echo $patient['situation_matri_Patient']; ?></p>
-                    <p><strong>Profession :</strong> <?php echo $patient['profession_Patient']; ?></p>
-                    <p><strong>Statut :</strong> <?php echo $patient['statut_Patient']; ?></p>
-                </div>
-            </div>
-        </div>
-    </main>
-    <?php
+Cette page vous permet également de :
+
+Annuler un rendez-vous en cas d'empêchement.
+Modifier la date ou l'heure pour mieux correspondre à votre emploi du temps.
+Supprimer définitivement un rendez-vous si celui-ci n'est plus nécessaire.
+De plus, vous avez la possibilité de planifier un nouveau rendez-vous directement depuis cette page,
+ en choisissant le médecin et en précisant la date, le type, et le lieu souhaités.
+
+L’objectif est de vous offrir une gestion centralisée et simplifiée de vos consultations 
+médicales pour une meilleure organisation de votre santé.</p>
+  </div>
+
+<!--form pour rdv-->
+<div class="container">
+<form action="planifier_rendezVous.php" method="post" >
+ 
+    <div class="mb-3">
+    <label class="form-label" for="date">Date et heure :</label><br>
+    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required><br><br>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="motif">Motif</label><br>
+    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required><br><br>
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="motif">Lieu</label><br>
+    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br><br>
+    </div>
+    <input type="submit" class="form-label btn btn-primary" name="ok">Demandez le RDV</input>
+</form>
+</div>
+
+<?php
+// Inclure le pied de page
 include '../configuration/footer.php';
+?>
+<script>
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+</script>
+<?php
 include '../configuration/pied.php';
 ?>
-
-
-

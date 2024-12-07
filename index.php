@@ -119,8 +119,7 @@
     Se connecter
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Patient</a></li>
-    <li><a class="dropdown-item" href="connMed.php">Medecin</a></li>
+    <li><a class="dropdown-item active" href="connPatient.php" id="connbutton">Je me connecte</a></li>
   </ul>
 </div>
 
@@ -232,7 +231,7 @@ Partage sécurisé : Transmission des données médicales à des professionnels 
       <div class="accordion-body">Oui. La sécurité des données personnelles et médicales est une priorité. 
         Les informations sont cryptées et accessibles uniquement aux utilisateurs autorisés.
 
-. <code>.accordion-flush</code></div>
+. <code>.CSN</code></div>
     </div>
   </div>
   <div class="accordion-item">

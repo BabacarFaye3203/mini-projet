@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         CIN_Patient = ?,
         nomP_Patient = ?,
         prenomP = ?, 
-        emailP = ?, 
+        email = ?, 
         contactP = ?, 
         sexeP = ?, 
         taille_Patient = ?, 
@@ -135,7 +135,7 @@ $prenom,
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="accueilPatient.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
@@ -196,7 +196,7 @@ $prenom,
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">EMAIL:</label>
-        <input type="email" class="form-control" name="email" id="email" value="<?php echo $patient["emailP"]; ?>">
+        <input type="email" class="form-control" name="email" id="email" value="<?php echo $patient["email"]; ?>">
     </div>
     <div class="mb-3">
         <label for="prenom" class="form-label">Prénom:</label>

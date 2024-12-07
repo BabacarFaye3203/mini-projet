@@ -6,28 +6,37 @@ ob_start(); // Évitez les problèmes de sortie avant les en-têtes
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
-
+  $posts=["patient","medecin","admin"];
+  $trouver=false;
     // Utilisation d'une requête préparée pour éviter les injections SQL
-    $stm = $connect->prepare("SELECT * FROM patient WHERE emailP = ? AND password = ?");
-    $stm->bind_param("ss", $email, $pwd);
+    foreach($posts as $post){
+      $stm = $connect->prepare("SELECT * FROM $post WHERE email = ? AND password = ?");
+      $stm->bind_param("ss", $email, $pwd);
+  
+      if ($stm->execute()) {
+          $res = $stm->get_result(); // Récupération du résultat
+          if ($res->num_rows > 0) {
+              $row = $res->fetch_assoc();
+              $trouver=true;
+              $_SESSION['idP_Patient'] = $row['idP_Patient'];
+              $_SESSION['nomP_Patient'] = $row['nomP_Patient'];
+              $_SESSION['id_Medecin']=$row['idM_Medecin'];
+              $_SESSION['nomM_Medecin'] = $row['nomM_Medecin'];
 
-    if ($stm->execute()) {
-        $res = $stm->get_result(); // Récupération du résultat
-        if ($res->num_rows > 0) {
-            $row = $res->fetch_assoc();
-            $_SESSION['idP_Patient'] = $row['idP_Patient'];
-            $_SESSION['nomP_Patient'] = $row['nomP_Patient'];
+  
+              // Redirection vers le profil du patient
+              header("Location: $post/accueil.php");
+              exit;
+          } else {
+              echo "Email ou mot de passe incorrect";
+          }
+      } else {
+          echo "Erreur lors de l'exécution de la requête : " . $stm->error;
+      }
+  }
 
-            // Redirection vers le profil du patient
-            header("Location: Patient/accueilPatient.php");
-            exit;
-        } else {
-            echo "Email ou mot de passe incorrect";
-        }
-    } else {
-        echo "Erreur lors de l'exécution de la requête : " . $stm->error;
     }
-}
+
 
 
 ?>
@@ -35,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 include 'configuration/headindex.php';?>
 
 
- <section class="notrecouleur text-secondary px-4 py-5 text-center">
- <h3>Connexion en tant que patient</h3><br>
+ <section class="notrecouleur text-secondary px-1 py-0 text-center">
+ <h3>Connexion</h3><br>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     S'inscrire
@@ -45,9 +54,9 @@ include 'configuration/headindex.php';?>
     <li><a class="dropdown-item" href="insPatient.php">Oui, je suis Sur</a></li>
   </ul>
 </div>
-<section class="notrecouleur text-secondary px-4 py-5 text-center">
+<section class="notrecouleur text-secondary px-1 py-1 text-center">
  <div >
-    <div class="py-5" id="darkness">
+ <div class="py-2" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
@@ -75,6 +84,6 @@ include 'configuration/headindex.php';?>
         <input type="submit" class="btn btn-primary" value="je me connecte" name="ok">
       </form>
     </div>
-<?php include 'configuration/footer.php';
+<?php
   include 'configuration/pied.php';
 ?>

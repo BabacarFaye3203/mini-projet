@@ -1,169 +1,102 @@
 <?php
 session_start();
-@include '../database/DatabaseCreat.php';
+include '../database/DatabaseCreat.php';
 
-// Vérifier si le medecin est connecté
+// Vérifier si l'utilisateur est connecté comme médecin
 if (!isset($_SESSION['id_Medecin'])) {
-    header("Location: ../connMed.php");
+    header("Location: ../connPatient.php");
     exit();
 }
 
-// Récupérer les informations du médecin connecté
-$req = "SELECT * FROM `medecin` WHERE `idM_Medecin`= ? ";
-$stmt = $connect->prepare($req);
-$stmt->bind_param("i", $_SESSION['id_Medecin']);
-$stmt->execute();
-$resultMedecin = $stmt->get_result();
-if ($resultMedecin->num_rows > 0) {
-    $medecin = $resultMedecin->fetch_assoc();
-    $_SESSION['id_Medecin'] = $_SESSION['id_Medecin'];
-    $_SESSION['nomM_Medecin'] = $_SESSION['nomM_Medecin'];
-    
+// Récupérer l'ID du médecin depuis la session
+$idM_Medecin = $_SESSION['id_Medecin'];
+
+// Préparer et exécuter la requête pour récupérer les informations du médecin
+$stmt = $connect->prepare("SELECT * FROM Medecin WHERE idM_Medecin = ?");
+$stmt->bind_param("i", $idM_Medecin);
+
+if ($stmt->execute()) {
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $medecin = $result->fetch_assoc();
+    } else {
+        echo "Aucun médecin trouvé avec cet identifiant.";
+        exit();
+    }
 } else {
-    echo "Aucun médecin trouvé avec cet identifiant.";
+    echo "Erreur lors de l'exécution de la requête : " . $stmt->error;
     exit();
 }
-
-// Récupérer la liste de tous les patients
-$queryPatients = "SELECT idP_Patient, nomP_Patient, prenomP, emailP FROM patient";
-$stmtPatients = $connect->prepare($queryPatients);
-$stmtPatients->execute();
-$resultPatients = $stmtPatients->get_result();
-
 ?>
+
 
 <?php
 //  l'en-tête de la page
 include '../configuration/headMed.php';
 ?>
 
-<h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['nomM_Medecin']); ?></h1>
-<div class="dropdown" class="container" id="logid">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Déconnexion
-  </button>
-  <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="../deconnexion.php">Se Déconnecter</a></li>
-  </ul>
-</div>
-
-<section class="notrecouleur text-secondary px-4 py-5 text-center">
- <div >
-    <div class="py-5" id="darkness">
-      <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
-           organiser et sécuriser toutes vos informations médicales.
-        </div>
-      </div>
-    </div>
-  </div>
-
-
- </section>
-<a href="Gest_RDV.php">RDV</a>
-
-<div style="padding: 10% 200px 0% 200px; margin: 8% 23px 10% auto;">
-    <h1>Liste des patients</h1>
-    <?php if ($resultPatients->num_rows>0) { ?>
-        <table class="table" id="myPatients">
-            <thead class="table-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Prise de Rendez-vous</th>
-                    <th>Voir_Profil</th>
-                </tr>
-            </thead>
+    <div class="container mt-5">
+        <h1>Informations personnelles du Médecin</h1>
+        <br><br>
+        <table class="table table-striped table-bordered">
             <tbody>
-                <?php
-                $i = 0;
-                while ($row = $resultPatients->fetch_assoc()) {
-                    $_SESSION["idP_Patient"]=$row["idP_Patient"];
-                    $i++;
-                ?>
-                    <tr>
-                        <td><?= $i ?></td>
-                        <td><?=htmlspecialchars($row['nomP_Patient']); ?></td>
-                        <td><?= htmlspecialchars($row['prenomP']); ?></td>
-                        <td><?= htmlspecialchars($row['emailP']); ?></td>
-                        <td>
-                            <!-- Formulaire pour prendre rendez-vous rendez-vous avec le patient  -->
-                            <form action="planifier_rendezVous.php" method="post" style="display: inline;" >
-                                <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
-                                <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
-                            </form>
-                            <?php
-                                $rq = "SELECT idP_Patient, nomP_Patient, prenomP FROM Patient";
-                                $resultP = $connect->query($rq);
-
-                                if ($resultP->num_rows > 0) {
-                                    if ($row = $resultP->fetch_assoc()) {
-                                        echo " <td><a href='../patient/profilPatient.php?id=" . $row['idP_Patient'] . "' class='btn btn-primary'>Voir le profil</a></td>";
-                                    }
-                                } else {
-                                    echo "<p>Aucun patient trouvé.</p>";
-                                }
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
+                <tr>
+                    <th>Nom</th>
+                    <td><?php echo htmlspecialchars($medecin["nomM_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td><?php echo htmlspecialchars($medecin["prenomM_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><?php echo htmlspecialchars($medecin["email"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td><?php echo htmlspecialchars($medecin["adresseM_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Pays</th>
+                    <td><?php echo htmlspecialchars($medecin["paysM_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td><?php echo htmlspecialchars($medecin["villeM_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Spécialité</th>
+                    <td><?php echo htmlspecialchars($medecin["specialite_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Sexe</th>
+                    <td><?php echo htmlspecialchars($medecin["sexe_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Âge</th>
+                    <td><?php echo htmlspecialchars($medecin["age"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Numéro de Service</th>
+                    <td><?php echo htmlspecialchars($medecin["matriculeM_Medecin"]); ?></td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td><?php echo htmlspecialchars($medecin["contactM_Medecin"]); ?></td>
+                </tr>
             </tbody>
         </table>
-    <?php } else { ?>
-        <p>Aucun patient trouvé.</p>
-    <?php } ?>
+      
+        <form action="updateProfil.php" method="POST">
+            <div class="text-center">
+                <button type="submit" id="butprofpatient">Mettre à jour</button>
+            </div>
+        </form>
+        </div>
+    </div>
 
     <?php
-// la liste des rendez-vous du médecin connecté
-$queryRendezvous = "
-    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, p.nomP_Patient, p.prenomP, rdv.type_RendezVous,rdv.Lieu
-    FROM RendezVous rdv
-    JOIN patient p ON rdv.idP_Patient = p.idP_Patient
-    WHERE rdv.idM_Medecin = ?
-    ORDER BY rdv.dateR_RendezVous DESC
-";
-$stmtRendezvous = $connect->prepare($queryRendezvous);
-$stmtRendezvous->bind_param("i", $_SESSION['id_Medecin']);
-$stmtRendezvous->execute();
-$resultRendezvous = $stmtRendezvous->get_result();
-
-// Annuler un rendez-vous
-if (isset($_POST['annuler_rdv'])) {
-    $idRdv = $_POST['idRdv'];
-    $queryDelete = "DELETE FROM RendezVous WHERE idR_RendezVous = ?";
-    $stmtDelete = $connect->prepare($queryDelete);
-    $stmtDelete->bind_param("i", $idRdv);
-    $stmtDelete->execute();
-    echo "<p>Le rendez-vous a été annulé avec succès.</p>";
-}
-
-// Modif la date d'un rendez-vous
-if (isset($_POST['modifier_rdv'])) {
-    $idRdv = $_POST['idRdv'];
-    $nouvelle_date = $_POST['nouvelle_date'];
-    $queryUpdate = "UPDATE RendezVous SET dateR_RendezVous = ? WHERE idR_RendezVous = ?";
-    $stmtUpdate = $connect->prepare($queryUpdate);
-    $stmtUpdate->bind_param("si", $nouvelle_date, $idRdv);
-    $stmtUpdate->execute();
-    echo "<p>La date du rendez-vous a été mise à jour avec succès.</p>";
-}
-
-// Supp un rendez-vous
-if (isset($_POST['supprimer_rdv'])) {
-    $idRdv = $_POST['idRdv'];
-    $queryDelete = "DELETE FROM RendezVous WHERE idR_RendezVous = ?";
-    $stmtDelete = $connect->prepare($queryDelete);
-    $stmtDelete->bind_param("i", $idRdv);
-    $stmtDelete->execute();
-    echo "<p>Le rendez-vous a été supprimé définitivement.</p>";
-}
-?>
-
-
-<?php
 
 
 include '../configuration/footer.php';
@@ -171,5 +104,3 @@ include '../configuration/footer.php';
 <?php
 include '../configuration/pied.php';
 ?>
-
-

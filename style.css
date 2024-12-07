@@ -254,3 +254,9 @@ body {
   border: 5px solid #fff;
   border-radius: 50%;
 }
+#annulOver{
+  color: red;
+}
+#barAdmin{
+  background-color: rgba(20, 122, 20, 0.534);
+}

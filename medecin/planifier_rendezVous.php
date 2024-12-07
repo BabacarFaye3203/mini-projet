@@ -10,7 +10,7 @@ if (isset($_POST['RDV'])) {
 
 // Récupérer les rendez-vous du patient avec les informations du médecin
 $queryRendezvous = "
-    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, p.nomP_Patient, p.prenomP, rdv.type_RendezVous, rdv.Lieu,rdv.statut
+    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, p.nomP_Patient, p.prenomP, rdv.type_RendezVous, rdv.Lieu,rdv.statut,rdv.dateR_RendezVous
     FROM RendezVous rdv
     JOIN patient p ON rdv.idP_Patient = p.idP_Patient
     WHERE rdv.idM_Medecin = ?
@@ -45,19 +45,10 @@ if (isset($_POST['modifier_rdv'])) {
   echo "<p>La date du rendez-vous a été mise à jour avec succès.</p>";
 }
 
-// Supprimer un rendez-vous
-if (isset($_POST['supprimer_rdv'])) {
-  $idRdv = $_POST['idRdv'];
-  $queryDelete = "DELETE FROM RendezVous WHERE idR_RendezVous = ?";
-  $stmtDelete = $connect->prepare($queryDelete);
-  $stmtDelete->bind_param("i", $idRdv);
-  $stmtDelete->execute();
-  echo "<p>Le rendez-vous a été supprimé définitivement.</p>";
-}
 
 
 //la liste de tous les patients
-$query = "SELECT idP_Patient, nomP_Patient, prenomP, emailP FROM patient";
+$query = "SELECT idP_Patient, nomP_Patient, prenomP, email FROM patient";
 $stmt = $connect->prepare($query);
 $stmt->execute();
 $resultPatients = $stmt->get_result();
@@ -102,6 +93,7 @@ if (isset($_GET['idR_RendezVous']) && isset($_GET['statut'])) {
 <?php
 //en-tête de la page
 include '../configuration/headMedsous.php';
+
 ?>
 
 <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['nomM_Medecin']); ?></h1>
@@ -144,6 +136,7 @@ include '../configuration/headMedsous.php';
                 <?php
                 $i = 0;
                 while ($rdv = $resultRendezvous->fetch_assoc()) {
+                    $dateRDv=$rdv['dateR_RendezVous'];
                     $i++;
                 ?>
                     <tr>
@@ -156,6 +149,13 @@ include '../configuration/headMedsous.php';
                         <td>
                         <button onclick="updateStatut(<?= $rdv['idR_RendezVous']; ?>, 'Accepté')">Accepter</button>
                         <button onclick="updateStatut(<?= $rdv['idR_RendezVous']; ?>, 'Refusé')">Refuser</button>
+                        <?php if(abs(strtotime("now")-strtotime($dateRDv))>= 86400){?>
+                            <button onclick="updateStatut(<?= $rdv['idR_RendezVous']; ?>, 'annulé')">annulé</button>
+                        <?php } else { ?>
+                            <p id="annulOver">vous ne pouvez malheureusement plus supprimer le rendez-vous. Delai de suppression écoulé</p>
+                        <?php } ?>
+
+                        
 
                       
                         </td>
@@ -167,7 +167,7 @@ include '../configuration/headMedsous.php';
         <p>Aucun rendez-vous prévu.</p>
     <?php } ?>
 </div>
-<!--form pour rdv-->
+<!--form pour rdv
 <div class="container">
 <form action="planifier_rendezVous.php" method="post" >
  
@@ -186,6 +186,7 @@ include '../configuration/headMedsous.php';
     <input type="submit" class="form-label btn btn-primary" name="ok">Confirmer</input>
 </form>
 </div>
+-->
 <?php
 ?>
 <?php
@@ -204,6 +205,12 @@ include '../configuration/pied.php';
 }
 
 </script>
+<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+
 <?php
 include '../configuration/footer.php';
 ?>

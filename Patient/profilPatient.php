@@ -75,7 +75,7 @@ if ($stmt->execute()) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="accueilPatient.php">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
@@ -147,7 +147,7 @@ if ($stmt->execute()) {
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td><?php echo $patient["emailP"]; ?></td>
+                    <td><?php echo $patient["email"]; ?></td>
                 </tr>
                 <tr>
                     <th>Prénom</th>
