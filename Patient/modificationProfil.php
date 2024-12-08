@@ -162,7 +162,7 @@ $prenom,
   </ul>
 </div>
 
- <section class="notrecouleur text-secondary px-4 py-5 text-center">
+ <section class="notrecouleur text-secondary px-1 py-2 text-center">
  <div >
     <div class="py-5" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
@@ -172,11 +172,6 @@ $prenom,
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="text-center">
-            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
-            <p> Ici, vous pouvez mettre a jour vos informations personnelles !</p>
   </div>
 
 
@@ -255,5 +250,13 @@ $prenom,
 
 <?php
 include '../configuration/footer.php';
+?>
+<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+</script>
+
+<?php
 include '../configuration/pied.php';
 ?>

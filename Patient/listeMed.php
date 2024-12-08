@@ -76,9 +76,9 @@ $resultPatients = $stmtPatients->get_result();
   </ul>
 </div>
 
-<section class="notrecouleur text-secondary px-4 py-5 text-center">
+<section class="notrecouleur text-secondary px-1 py-2 text-center">
  <div >
-    <div class="py-5" id="darkness">
+    <div class="py-1" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,

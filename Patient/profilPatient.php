@@ -74,21 +74,30 @@ if ($stmt->execute()) {
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+      <?php if (!isset($_GET['id'])): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="planifier_rendezVous.php">Mes Rendez-vous</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="listeMed.php">La liste des medecins</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
+        </li>
+                <?php else: ?>
+                    
+             <?php endif; ?>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ProfilPatient">Informations personnelles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="planifier_rendezVous.php">Mes Rendez-vous</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="mesDocuments.php">Mes documents</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="listeMed.php">La liste des medecins</a>
-        </li>
+        
+        
+        
       </ul>
     </div>
   </div>
@@ -102,9 +111,9 @@ if ($stmt->execute()) {
   </ul>
 </div>
 
- <section class="notrecouleur text-secondary px-4 py-5 text-center">
+ <section class="notrecouleur text-secondary px-1 py-2 text-center">
  <div >
-    <div class="py-5" id="darkness">
+    <div class="py-1" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
@@ -118,8 +127,9 @@ if ($stmt->execute()) {
  </section>
 
  <div class="text-center">
-            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
-            <p> Sur cette page, vous avez la possibilité de consulter 
+            
+            <?php if (!isset($_GET['id'])): ?>
+                <p> Sur cette page, vous avez la possibilité de consulter 
                 et de modifier vos informations personnelles à tout moment.
                  Cela comprend des données importantes telles que votre nom, prénom,
                   adresse email, numéro de téléphone, ainsi que d'autres informations de contact.
@@ -128,6 +138,10 @@ if ($stmt->execute()) {
                      La page vous offre une interface simple et sécurisée pour effectuer ces modifications,
                       afin que vous puissiez garder 
                 votre profil à jour tout en respectant votre vie privée.</p>
+                <?php else: ?>
+                    <p class="text-muted text-center">Vous consultez ce profil en tant que médecin de <?php $patient["nomP_Patient"];?>.</p>
+             <?php endif; ?>
+           
   </div>
 
     <!--les informations personnelles du patient -->
@@ -204,14 +218,14 @@ if ($stmt->execute()) {
             </tbody>
         </table>
         <div class="text-center">
-            <?php if (isset($_SESSION['idP_Patient'])): ?>
+            <?php if (!isset($_GET['id'])): ?>
                     <form action="modificationProfil.php" method="POST">
                         <div class="text-center">
                             <button type="submit" id="butprofpatient">Mettre à jour</button>
                         </div>
                     </form>
                 <?php else: ?>
-                    <p class="text-muted text-center">Vous consultez ce profil en tant que médecin.</p>
+                    <p class="text-muted text-center">Vous consultez ce profil en tant que médecin de <?php $patient["nomP_Patient"];?>.</p>
              <?php endif; ?>
             
         </div>

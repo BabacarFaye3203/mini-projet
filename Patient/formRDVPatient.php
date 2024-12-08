@@ -93,9 +93,9 @@ if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
   </ul>
 </div>
 
- <section class="notrecouleur text-secondary px-4 py-5 text-center">
+ <section class="notrecouleur text-secondary px-1 py-2 text-center">
  <div >
-    <div class="py-5" id="darkness">
+    <div class="py-1" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
@@ -108,21 +108,6 @@ if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
 
  <div class="text-center">
             <h2>Bienvenue, <?= htmlspecialchars($_SESSION['nomP_Patient']); ?></h2>
-            <p> Sur cette page, vous pouvez gérer efficacement tous vos rendez-vous médicaux. 
-              Vous y trouverez la liste complète de vos rendez-vous planifiés,
-               incluant des détails tels que la date, le type de consultation,
-                le lieu, ainsi que le nom du médecin concerné.
-
-Cette page vous permet également de :
-
-Annuler un rendez-vous en cas d'empêchement.
-Modifier la date ou l'heure pour mieux correspondre à votre emploi du temps.
-Supprimer définitivement un rendez-vous si celui-ci n'est plus nécessaire.
-De plus, vous avez la possibilité de planifier un nouveau rendez-vous directement depuis cette page,
- en choisissant le médecin et en précisant la date, le type, et le lieu souhaités.
-
-L’objectif est de vous offrir une gestion centralisée et simplifiée de vos consultations 
-médicales pour une meilleure organisation de votre santé.</p>
   </div>
 
 <!--form pour rdv-->
@@ -131,17 +116,17 @@ médicales pour une meilleure organisation de votre santé.</p>
  
     <div class="mb-3">
     <label class="form-label" for="date">Date et heure :</label><br>
-    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required><br><br>
+    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required><br>
     </div>
     <div class="mb-3">
     <label class="form-label" for="motif">Motif</label><br>
-    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required><br><br>
+    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required><br>
     </div>
     <div class="mb-3">
     <label class="form-label" for="motif">Lieu</label><br>
-    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br><br>
+    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br>
     </div>
-    <input type="submit" class="form-label btn btn-primary" name="ok">Demandez le RDV</input>
+    <input type="submit" class="form-label btn btn-primary" name="ok"></input>
 </form>
 </div>
 

@@ -1,44 +1,56 @@
 <?php
- include 'database/DatabaseCreat.php';
- $erreur="";
- if(isset($_POST["ok"])){
-     if(empty($_POST["cin"]) || empty($_POST["nom"]) || empty($_POST["prenom"])||empty($_POST["email"])||empty($_POST["adresse"])||empty($_POST["pays"])||empty($_POST["ville"])||empty($_POST["gsang"])||empty($_POST["matri"])||empty($_POST["profession"])||empty($_POST["statut"])||empty($_POST["age"])||empty($_POST["sexe"])||empty($_POST["poids"])||empty($_POST["taille"])||empty($_POST["contact"])||empty($_POST["pwd"])||empty($_POST["cpwd"])){
-       header("location:insPatient.php");
-       $erreur="tous les champs doivent être remplis";
-     }else{
-         @$nom=$_POST["nom"];
-         @$prenom=$_POST["prenom"];
-         @$cin=$_POST["cin"];
-         @$pays=$_POST["pays"]; @$adresse=$_POST["adresse"];
-         @$ville=$_POST["ville"]; @$gsang=$_POST["gsang"]; @$matricule=$_POST["matri"];
-         @$profession=$_POST["profession"]; @$statut=$_POST["statut"]; @$age=$_POST["age"];
-         @$sexe=$_POST["sexe"]; @$poids=$_POST["poids"]; @$taille=$_POST["taille"];
-         @$contact=$_POST["contact"];
-         if($_POST["pwd"]==$_POST["cpwd"]){
-           $pwd=$_POST["pwd"];
-         }else{
-           echo"les deux mdp doivent etre identiques";
-           
-         }
-         if(!preg_match("#^[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z]{2,3}#",$_POST["email"])){
-           echo"email invalide";
-         }else{
-           $email=$_POST["email"];
-         }
-         $req1=("INSERT INTO patient (nomP_Patient,prenomP,adresseP,emailP,paysP,
-                     villeP,groupe_sanguin_Patient,
-    situation_matri_Patient,profession_Patient,
-                     statut_Patient,ageP,sexeP,poids_Patient,
-taille_Patient,contactP,CIN_Patient,password) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-         $stm=$connect->prepare($req1);
-         $stm->bind_param("ssssssssssssddiss",$nom,$prenom,$adresse,$email,$pays,
-             $ville,$gsang,$matricule,$profession,$statut,$age,$sexe,
-             $poids,$taille,$contact,$cin,$pwd);
-        if($stm->execute()){//echo "Inscription avec succes";
-            echo"inscription avec succes";
-        
+include 'database/DatabaseCreat.php';
 
-     }
-   }
+$nom = isset($_POST['nomP']) ? htmlspecialchars($_POST['nomP']) :'';
+$prenom = isset($_POST['prenomP']) ? htmlspecialchars($_POST['prenomP']) : '';
+$adresse = isset($_POST['adresseP']) ? htmlspecialchars($_POST['adresseP']) : '';
+$email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+$pays = isset($_POST['paysP']) ? htmlspecialchars($_POST['paysP']) : '';
+$ville = isset($_POST['villeP']) ? htmlspecialchars($_POST['villeP']) : '';
+$groupe_sanguin = isset($_POST['groupe_sanguin_Patient']) ? htmlspecialchars($_POST['groupe_sanguin_Patient']) : '';
+$situation_matri = isset($_POST['situation_matri_Patient']) ? htmlspecialchars($_POST['situation_matri_Patient']) : '';
+$profession = isset($_POST['profession_Patient']) ? htmlspecialchars($_POST['profession_Patient']) : '';
+$statut = isset($_POST['statut_Patient']) ? htmlspecialchars($_POST['statut_Patient']) : '';
+$age = isset($_POST['ageP']) ? htmlspecialchars($_POST['ageP']) : '';
+$sexe = isset($_POST['sexeP']) ? htmlspecialchars($_POST['sexeP']) : '';
+$poids = isset($_POST['poids_Patient']) ? htmlspecialchars($_POST['poids_Patient']) : '';
+$taille = isset($_POST['taille_Patient']) ? htmlspecialchars($_POST['taille_Patient']) : '';
+$contact = isset($_POST['contactP']) ? htmlspecialchars($_POST['contactP']) : '';
+$CIN = isset($_POST['CIN_Patient']) ? htmlspecialchars($_POST['CIN_Patient']) : '';
+$password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
 
-  }
+// Préparation de la requête SQL
+$sql = "INSERT INTO Patient (nomP_Patient, prenomP, adresseP, email, paysP, villeP, groupe_sanguin_Patient, situation_matri_Patient, profession_Patient, statut_Patient, ageP, sexeP, poids_Patient, taille_Patient, contactP, CIN_Patient, password) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = $connect->prepare($sql);
+$stmt->bind_param(
+    "ssssssssssisddsss",
+    $nom,
+    $prenom,
+    $adresse,
+    $email,
+    $pays,
+    $ville,
+    $groupe_sanguin,
+    $situation_matri,
+    $profession,
+    $statut,
+    $age,
+    $sexe,
+    $poids,
+    $taille,
+    $contact,
+    $CIN,
+    $password
+);
+
+if ($stmt->execute()) {
+    echo "Patient ajouté avec succès !";
+} else {
+    echo "Erreur : " . $stmt->error;
+}
+
+// Fermeture de la connexion
+$stmt->close();
+$connect->close();

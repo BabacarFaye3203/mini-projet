@@ -15,7 +15,7 @@ include 'configuration/headindex.php';
     <li><a class="dropdown-item" href="connMed.php">Me Connecter</a></li>
   </ul>
 </div>
-<section class="notrecouleur text-secondary px-4 py-5 text-center">
+<section class="notrecouleur text-secondary px-1 py-2 text-center">
  <div >
     <div class="py-5" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>

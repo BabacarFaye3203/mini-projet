@@ -84,7 +84,7 @@ include '../configuration/headMedsous.php';
                         <td>
                             <form action="planifier_rendezVous.php" method="post" style="display: inline;">
                                 <input type="hidden" name="idP" value="<?= $row['idP_Patient']; ?>">
-                                <input type="submit" class="btn btn-success" name="RDV" value="Prendre rendez-vous">
+                                <input type="submit" class="btn btn-success" name="RDV" value="Planifier rendez-vous">
                             </form>
                         </td>
                     </tr>

@@ -106,9 +106,9 @@ include '../configuration/headMedsous.php';
   </ul>
 </div>
 
- <section class="notrecouleur text-secondary px-4 py-5 text-center">
+ <section class="notrecouleur text-secondary px-1 py-2 text-center">
  <div >
-    <div class="py-5" id="darkness">
+    <div class="py-1" id="darkness">
       <h1 class="display-5 fw-bold text-white" >Votre CSN</h1>
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4" id="textDark">CSN est une plateforme innovante conçue pour centraliser,
@@ -117,7 +117,7 @@ include '../configuration/headMedsous.php';
       </div>
     </div>
   </div>
-<div style="padding: 10% 200px 0% 200px; margin: 8% 23px 10% auto;">
+<div style="padding: 10% 200px 0% 200px; margin: 0% 23px 10% auto;">
     <h2>Liste de vos rendez-vous</h2>
     <?php if ($resultRendezvous->num_rows > 0) { ?>
         <table class="table" id="myRDV">

@@ -61,17 +61,17 @@ include '../configuration/headMedsous.php';
  
     <div class="mb-3">
     <label class="form-label" for="date">Date et heure :</label><br>
-    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required><br><br>
+    <input class="form-label" type="datetime-local" id="date" name="date_rdv" required><br>
     </div>
     <div class="mb-3">
     <label class="form-label" for="motif">Motif</label><br>
-    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required><br><br>
+    <input class="form-label" type="text" name="motif" id="motif" placeholder="motif du rendez-vous" required><br>
     </div>
     <div class="mb-3">
     <label class="form-label" for="motif">Lieu</label><br>
-    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br><br>
+    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br>
     </div>
-    <input type="submit" class="form-label btn btn-primary" name="ok">Confirmer</input>
+    <input type="submit" class="form-label btn btn-primary" name="ok"></input>
 </form>
 </div>
 <?php

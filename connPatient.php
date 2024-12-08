@@ -51,7 +51,8 @@ include 'configuration/headindex.php';?>
     S'inscrire
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="insPatient.php">Oui, je suis Sur</a></li>
+    <li><a class="dropdown-item" href="insPatient.php">Patient</a></li>
+    <li><a class="dropdown-item" href="inscMedecin.php">Medecin</a></li>
   </ul>
 </div>
 <section class="notrecouleur text-secondary px-1 py-1 text-center">
