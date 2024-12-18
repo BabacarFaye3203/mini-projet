@@ -12,7 +12,7 @@ include 'configuration/headindex.php';
     connexion
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item" href="connMed.php">Me Connecter</a></li>
+    <li><a class="dropdown-item" href="connPatient.php">Me Connecter</a></li>
   </ul>
 </div>
 <section class="notrecouleur text-secondary px-1 py-2 text-center">

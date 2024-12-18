@@ -9,8 +9,7 @@ if (!isset($_SESSION['idP_Patient'])) {
 }
 
 // Récupérer les rendez-vous du patient avec les informations du médecin
-$queryRendezvous = "
-    SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, m.nomM_Medecin, m.prenomM_Medecin, rdv.type_RendezVous, rdv.Lieu,rdv.statut
+$queryRendezvous = "SELECT rdv.idR_RendezVous, rdv.dateR_RendezVous, m.nomM_Medecin, m.prenomM_Medecin, rdv.type_RendezVous, rdv.Lieu,rdv.statut
     FROM RendezVous rdv
     JOIN medecin m ON rdv.idM_Medecin = m.idM_Medecin
     WHERE rdv.idP_Patient = ?
@@ -57,30 +56,6 @@ if (isset($_POST['supprimer_rdv'])) {
 }
 
 
-//la liste de tous les medecins
-$query = "SELECT idM_Medecin, nomM_Medecin, prenomM_Medecin, email FROM medecin";
-$stmt = $connect->prepare($query);
-$stmt->execute();
-$resultPatients = $stmt->get_result();
-$rows=$resultPatients->fetch_assoc();
-
-if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
-  $date=htmlspecialchars($_POST["date_rdv"]);
-  $motif=htmlspecialchars($_POST["motif"]);
-  $lieu=htmlspecialchars($_POST["lieu"]);
-
-  $rq="INSERT INTO rendezvous(dateR_RendezVous,type_RendezVous,idP_Patient,idM_Medecin,Lieu)VALUES(?,?,?,?,?)";
-  $stm=$connect->prepare($rq);
-  $stm->bind_param("ssiis",$date,$motif,$rows["idM_Medecin"],$_SESSION['idP_Patient'],$lieu);
-  if($stm->execute()){
-      $resultat=$stm->get_result();
-      echo"rendez-vous planifié";
-  }else{
-      echo"erreur de planification";
-  }
-  
-  
-}
 
 
 ?>

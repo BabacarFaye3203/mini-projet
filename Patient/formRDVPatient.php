@@ -9,6 +9,12 @@ if (!isset($_SESSION['idP_Patient'])) {
 }
 
 
+//la liste de tous les medecins
+$query = "SELECT idM_Medecin, nomM_Medecin, prenomM_Medecin, email, adresseM_Medecin FROM medecin";
+$stmt = $connect->prepare($query);
+$stmt->execute();
+$resultMeds = $stmt->get_result();
+$rows=$resultMeds->fetch_assoc();
 
 if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
   $date=htmlspecialchars($_POST["date_rdv"]);
@@ -124,11 +130,12 @@ if( $_SERVER['REQUEST_METHOD']="POST" && isset($_POST["ok"])){
     </div>
     <div class="mb-3">
     <label class="form-label" for="motif">Lieu</label><br>
-    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" required><br>
+    <input class="form-label" type="text" name="lieu" id="motif" placeholder="Lieu du rendez-vous" value="<?php echo $rows["adresseM_Medecin"]; ?>" disabled><br>
     </div>
     <input type="submit" class="form-label btn btn-primary" name="ok"></input>
 </form>
 </div>
+
 
 <?php
 // Inclure le pied de page

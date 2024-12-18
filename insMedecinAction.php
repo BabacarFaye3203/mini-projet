@@ -27,14 +27,14 @@ if(isset($_POST["ok"])){
             $email=$_POST["email"];
         }
         $req1=("INSERT INTO medecin (nomM_Medecin, prenomM_Medecin, matriculeM_Medecin,
-                     emailM_Medecin, adresseM_Medecin, paysM_Medecin,
+                     email, adresseM_Medecin, paysM_Medecin,
                      villeM_Medecin, specialite_Medecin, contactM_Medecin,
                      age, sexe_Medecin, password) values (?,?,?,?,?,?,?,?,?,?,?,?)");
         $stm=$connect->prepare($req1);
         $stm->bind_param("sssssssssiss",$nom,$prenom,$code,$email,$adresse,
             $pays,$ville,$specialite,$contact,$age,$sexe,$pwd);
         if($stm->execute()){echo "Inscription avec succès";
-            header("Location:connMed.php");}
+           }
         else{echo "Désolé";}
 
     }

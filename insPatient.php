@@ -33,7 +33,7 @@ include 'configuration/headindex.php';
  </section id="insPatient">
     <br><br>
     <div class="container my-5">
-        <form action="ajouterPatient.php" method="post" class="row g-3">
+        <form action="" method="post" class="row g-3">
             <div class="col-md-6">
                 <label for="nomP_Patient" class="form-label">Nom:</label>
                 <input type="text" id="nomP_Patient" name="nomP" class="form-control" required>
