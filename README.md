@@ -30,7 +30,6 @@ Installation et configuration
 	4.	Configurez le fichier connexion_db.php avec vos paramètres MySQL :
  <?php
 $host = 'localhost';
-$db = 'csn';
 $user = 'root';
 $password = '';
 ?>
@@ -41,8 +40,10 @@ Contribution
 
 Les contributions sont les bienvenues ! Si vous souhaitez participer :
 	1.	Forkez le projet.
+ 
 	2.	Créez une branche pour vos modifications :
  git checkout -b feature/ma-nouvelle-fonctionnalite
+
 
  3.	Envoyez une pull request après vos modifications.
 
